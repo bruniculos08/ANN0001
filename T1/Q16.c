@@ -3,7 +3,7 @@
 #include <locale.h>
 
 double function(double x){
-    return sqrt(x)-cos(x);
+    return 2*(x+1)*(x-0.5)*(x-1);
 }
 
 double aproximateDerivative(double a, double b){ // <- Aproximação da derivada (coeficiente angular da reta que passa...
@@ -34,6 +34,7 @@ void secante(double (*f)(double), double(*df)(double, double), double x0, double
         x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0)); // Essa equação é igual à da linha comentada acima!
                      
         //Obs.: Note que o x obtido na 1º iteração será x2
+
         x0 = x1;
         x1 = x2;
     }
@@ -48,8 +49,8 @@ int main(){
     double (*df)(double, double);
     f = function;
     df = aproximateDerivative;
-    double x0 = 0.83824;
-    double x1 = 2.05516;
+    double x0 = -0.28589;
+    double x1 = 0.70414;
     int vetor[] = {1, 3, 5};
     for(int i = 0; i < sizeof(vetor)/sizeof(vetor[0]); i++){
         secante(f, df, x0, x1, vetor[i]);

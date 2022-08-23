@@ -20,7 +20,7 @@
         "kind": 2,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "def f(x): \n    return sqrt(x)-cos(x)\ndef aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]",
+        "peekOfCode": "def f(x): \n    return pi*x - exp(x)\ndef aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
@@ -29,7 +29,7 @@
         "kind": 2,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "def aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765",
+        "peekOfCode": "def aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nvetor = [1, 3, 5]",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
@@ -38,7 +38,7 @@
         "kind": 2,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "def secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "peekOfCode": "def secante(x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nvetor = [1, 3, 5]\nx0 = 0.83824\nx1 = 2.05516",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
@@ -47,7 +47,7 @@
         "kind": 5,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "vetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "peekOfCode": "vetor = [1, 3, 5]\nx0 = 0.83824\nx1 = 2.05516\nfor n in vetor:\n    secante(x1, x0, n)",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
@@ -56,7 +56,7 @@
         "kind": 5,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "x0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "peekOfCode": "x0 = 0.83824\nx1 = 2.05516\nfor n in vetor:\n    secante(x1, x0, n)",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
@@ -65,7 +65,7 @@
         "kind": 5,
         "importPath": "Método da Secante.secante",
         "description": "Método da Secante.secante",
-        "peekOfCode": "x1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "peekOfCode": "x1 = 2.05516\nfor n in vetor:\n    secante(x1, x0, n)",
         "detail": "Método da Secante.secante",
         "documentation": {}
     },
