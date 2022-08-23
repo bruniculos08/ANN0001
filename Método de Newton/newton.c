@@ -11,15 +11,15 @@ double functionDerivative(double x){
 }
 
 // Note que para uma função f(x), de derivada f'(x), a reta tangente a um ponto (c, f(c)) quaisquer é...
-// ... dada por y = f(x) + f'(x)(x-c) 
+// ... dada por y = f(c) + f'(c)(x-c) 
 
 // Geometricamente pode se notar quando y = 0, ou seja, quando a reta mencionada cruza o eixo x, teremos...
-// ... 0 = f(x) + f'(x)(x-c) -> x = c - f(x)/f'(x)
+// ... 0 = f(c) + f'(c)(x-c) -> x = c - f(c)/f'(c)
 
 // Logo temos o valor para o qual a reta cruza o eixo x, que é um valor mais próximo ao valor qual f(x) cruza o eixo x,...
 // ... e assim podemos repetir a aproximação calculando uma nova reta tangente obtendo uma aproximação ainda melhor.
 
-// Para obter cada novo ponto de aproximação deve-se faze x = c - f(x)/f'(x) e c = x, repetindo o processo.
+// Para obter cada novo ponto de aproximação deve-se faze x = c - f(c)/f'(c) e c = x, repetindo o processo.
 
 
 void newton(double (*f)(double), double(*df)(double), double m, double tolerance){

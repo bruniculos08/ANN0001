@@ -1,0 +1,117 @@
+[
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "new",
+        "importPath": "hashlib",
+        "description": "hashlib",
+        "isExtraImport": true,
+        "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "def f(x): \n    return sqrt(x)-cos(x)\ndef aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "aproximateDerivative",
+        "kind": 2,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "def aproximateDerivative(x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "secante",
+        "kind": 2,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "def secante(x1, x0, n):\n    for i in range(n):\n        #x1 = x0 - f(x0)/aproximateDerivative(x1, x0)\n        x1 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n    print(x1)\nvetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "vetor = [1, 2, 3, 4, 5]\nx0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "x0",
+        "kind": 5,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "x0 = 0.05656\nx1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "x1",
+        "kind": 5,
+        "importPath": "Método da Secante.secante",
+        "description": "Método da Secante.secante",
+        "peekOfCode": "x1 = 1.32765\nfor n in vetor:\n    secante(x1, x0, n)",
+        "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "T1.Q5",
+        "description": "T1.Q5",
+        "peekOfCode": "def f(x):\n    return x*(x-1)*(x-2) + 0.42\ndef df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)",
+        "detail": "T1.Q5",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 2,
+        "importPath": "T1.Q5",
+        "description": "T1.Q5",
+        "peekOfCode": "def df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:",
+        "detail": "T1.Q5",
+        "documentation": {}
+    },
+    {
+        "label": "newton",
+        "kind": 2,
+        "importPath": "T1.Q5",
+        "description": "T1.Q5",
+        "peekOfCode": "def newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:\n        # 0 = f(c) + df(c)(x-c) \n        # -> x-c = - f(c)/df(c) ",
+        "detail": "T1.Q5",
+        "documentation": {}
+    },
+    {
+        "label": "c",
+        "kind": 5,
+        "importPath": "T1.Q5",
+        "description": "T1.Q5",
+        "peekOfCode": "c = 2.65161653\nvetor = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195]\nfor iterations in vetor:\n    newton(f, df, c, iterations)",
+        "detail": "T1.Q5",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q5",
+        "description": "T1.Q5",
+        "peekOfCode": "vetor = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195]\nfor iterations in vetor:\n    newton(f, df, c, iterations)",
+        "detail": "T1.Q5",
+        "documentation": {}
+    }
+]

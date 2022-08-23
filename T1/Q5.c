@@ -40,7 +40,7 @@ int main(){
     double (*df)(double);
     f = function;
     df = functionDerivative;
-    double m = 2.7261457;
+    double m = 2.92952751;
     int vetor[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195};
     for(int i = 0; i < sizeof(vetor)/sizeof(vetor[0]); i++) newton(f, df, m, vetor[i]);
 }
