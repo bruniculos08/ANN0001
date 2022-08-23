@@ -3,7 +3,8 @@
 #include <locale.h>
 
 double function(double x){
-    return pow(x, 2) - 4.1005*x + 1.2895;
+    return log(pow(x, 2)) - 0.7; // ou 2*log(x) - 0.7
+    // A solução desta equação (log(x²) -0.7 = 0) é também a solução de log(x²) = 0.7
 }
 
 void bisection(double (*f)(double), double a, double b, int iterations){
@@ -39,6 +40,6 @@ int main(){
     double (*f)(double);
     f = function;
     double a = 1.0635, b = 5.894;
-    int vetor[] = {2 , 3, 6, 7, 8, 9, 10, 15, 16, 19, 22, 23, 27, 28, 29, 30, 32, 36, 38, 39};
+    int vetor[] = {2, 3, 6, 7, 8, 9, 10, 15, 16, 19, 22, 23, 27, 28, 29, 30, 32, 36, 38, 39};
     for(int i = 0; i < sizeof(vetor)/sizeof(vetor[0]); i++) bisection(f, a, b, vetor[i]);
 }
