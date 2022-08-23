@@ -7,7 +7,7 @@ double function(double x){
 }
 
 double functionDerivative(double x){
-    return 3*pow(x, 2) - 6*x + 2;
+    return 3*x*x - 6*x + 2;
 }
 
 // Obs.: a função log() usa base e (número de euler).
@@ -40,7 +40,7 @@ int main(){
     double (*df)(double);
     f = function;
     df = functionDerivative;
-    double m = 1.59529719694400330;
+    double m = 2.7261457;
     int vetor[] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195};
     for(int i = 0; i < sizeof(vetor)/sizeof(vetor[0]); i++) newton(f, df, m, vetor[i]);
 }
