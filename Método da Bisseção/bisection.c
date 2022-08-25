@@ -35,16 +35,6 @@ void bisection(double (*f)(double), double a, double b, double tolerance){
         printf("Esse intervalo não pode ser utilizado.\n");
         return;
     }
-
-    if(f(a) == 0){
-        printf("x = %.17f é uma raiz da função.\n", a);
-        return;
-    }
-
-    if(f(b) == 0){
-        printf("x = %.17f é uma raiz da função.\n", b);
-        return;
-    }
     
     double m = (a+b)/2;
     while(fabs(f(m)) >= tolerance)

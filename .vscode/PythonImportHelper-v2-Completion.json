@@ -8,11 +8,54 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "new",
         "importPath": "hashlib",
         "description": "hashlib",
         "isExtraImport": true,
         "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "function",
+        "kind": 2,
+        "importPath": "Método da Falsa Posição.falsePosition",
+        "description": "Método da Falsa Posição.falsePosition",
+        "peekOfCode": "def function(x):\n    return pi*x-exp(x)\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, tol):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):",
+        "detail": "Método da Falsa Posição.falsePosition",
+        "documentation": {}
+    },
+    {
+        "label": "falsePositionAux",
+        "kind": 2,
+        "importPath": "Método da Falsa Posição.falsePosition",
+        "description": "Método da Falsa Posição.falsePosition",
+        "peekOfCode": "def falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, tol):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):\n        x = falsePositionAux(f, a, b)\n        print(\"x = %.17f na %i iteração\" % (x, i))",
+        "detail": "Método da Falsa Posição.falsePosition",
+        "documentation": {}
+    },
+    {
+        "label": "falsePosition",
+        "kind": 2,
+        "importPath": "Método da Falsa Posição.falsePosition",
+        "description": "Método da Falsa Posição.falsePosition",
+        "peekOfCode": "def falsePosition(f, a, b, tol):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):\n        x = falsePositionAux(f, a, b)\n        print(\"x = %.17f na %i iteração\" % (x, i))\n        if(abs(f(x) < tol)): \n            break\n        if(f(a)*f(x) < 0): \n            b = x",
+        "detail": "Método da Falsa Posição.falsePosition",
         "documentation": {}
     },
     {
@@ -70,11 +113,47 @@
         "documentation": {}
     },
     {
+        "label": "function",
+        "kind": 2,
+        "importPath": "T1.Q22",
+        "description": "T1.Q22",
+        "peekOfCode": "def function(x):\n    return exp(5*x)-2\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):",
+        "detail": "T1.Q22",
+        "documentation": {}
+    },
+    {
+        "label": "falsePositionAux",
+        "kind": 2,
+        "importPath": "T1.Q22",
+        "description": "T1.Q22",
+        "peekOfCode": "def falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):\n        x = falsePositionAux(f, a, b)\n        #print(\"x = %.17f na %i iteração\" % (x, i))",
+        "detail": "T1.Q22",
+        "documentation": {}
+    },
+    {
+        "label": "falsePosition",
+        "kind": 2,
+        "importPath": "T1.Q22",
+        "description": "T1.Q22",
+        "peekOfCode": "def falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): return\n    i = 1\n    while(1):\n        x = falsePositionAux(f, a, b)\n        #print(\"x = %.17f na %i iteração\" % (x, i))\n        if(i >= n): \n            break\n        if(f(a)*f(x) < 0): \n            b = x",
+        "detail": "T1.Q22",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q22",
+        "description": "T1.Q22",
+        "peekOfCode": "vetor = [1 , 25, 50, 100, 200, 400, 800, 1600, 3200, 4800, 6400, 8000, 10000]\nfor i in vetor:\n    falsePosition(function, -0.993624, 1.9528124, i)",
+        "detail": "T1.Q22",
+        "documentation": {}
+    },
+    {
         "label": "f",
         "kind": 2,
         "importPath": "T1.Q5",
         "description": "T1.Q5",
-        "peekOfCode": "def f(x):\n    return x*(x-1)*(x-2) + 0.42\ndef df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)",
+        "peekOfCode": "def f(x):\n    return x*(x-1)*(x-2) + 0.42\ndef df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c\n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)",
         "detail": "T1.Q5",
         "documentation": {}
     },
@@ -83,7 +162,7 @@
         "kind": 2,
         "importPath": "T1.Q5",
         "description": "T1.Q5",
-        "peekOfCode": "def df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:",
+        "peekOfCode": "def df(x):\n    return 3*(x**2) - 6*x + 2\ndef newton(f, df, c, iterations):\n    x = c\n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:",
         "detail": "T1.Q5",
         "documentation": {}
     },
@@ -92,7 +171,7 @@
         "kind": 2,
         "importPath": "T1.Q5",
         "description": "T1.Q5",
-        "peekOfCode": "def newton(f, df, c, iterations):\n    x = c \n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:\n        # 0 = f(c) + df(c)(x-c) \n        # -> x-c = - f(c)/df(c) ",
+        "peekOfCode": "def newton(f, df, c, iterations):\n    x = c\n    for i in range(iterations):\n        x = x - f(x)/df(x)\n    # Naprint(\"x = \", x,\" para \", iterations,\" iterações\")\n    print(\"%.10f,\"%x)\n        # Equação da reta tangente à P(c, f(c)) é dada por: y = f(c) + df(c)(x-c)\n        # Na interceção da reta com o eixo x temos:\n        # 0 = f(c) + df(c)(x-c) \n        # -> x-c = - f(c)/df(c) ",
         "detail": "T1.Q5",
         "documentation": {}
     },

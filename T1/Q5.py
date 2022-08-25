@@ -7,7 +7,7 @@ def df(x):
     return 3*(x**2) - 6*x + 2
 
 def newton(f, df, c, iterations):
-    x = c 
+    x = c
     for i in range(iterations):
         x = x - f(x)/df(x)
     # Naprint("x = ", x," para ", iterations," iterações")
