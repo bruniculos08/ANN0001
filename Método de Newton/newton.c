@@ -38,5 +38,5 @@ int main(){
     f = function;
     df = functionDerivative;
     double m = 2;
-    newton(f, df, m, 0.0000001);
+    newton(f, df, m, 0.00000000001);
 }
