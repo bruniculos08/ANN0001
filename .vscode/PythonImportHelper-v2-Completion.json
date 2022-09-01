@@ -72,6 +72,30 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "cmath",
+        "description": "cmath",
+        "isExtraImport": true,
+        "detail": "cmath",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "cmath",
+        "description": "cmath",
+        "isExtraImport": true,
+        "detail": "cmath",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "cmath",
+        "description": "cmath",
+        "isExtraImport": true,
+        "detail": "cmath",
+        "documentation": {}
+    },
+    {
         "label": "new",
         "importPath": "hashlib",
         "description": "hashlib",
@@ -1256,6 +1280,618 @@
         "description": "T1.Q32",
         "peekOfCode": "vetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
         "detail": "T1.Q32",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def f(x):\n    return pw*((4/3)*(r**3) - (x**2)*r + (x**3)/3)- ps*(4*(r**3)/3)\ndef df(x):\n    result = pw*( -2*x*r + x**2)\n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def df(x):\n    result = pw*( -2*x*r + x**2)\n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "falsePositionAux",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): ",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "falsePosition",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): \n            b = x\n        else: \n            a = x\n    print(\"%.17f\" %(x))",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "newton",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def newton(f, df, m, n):\n    for i in range(n):\n        if(df(m) == 0): return\n        m = m - (f(m)/df(m))\n    print(m)\ndef bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "bisection",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2\n        if(f(a)*f(m) < 0):\n            b = m\n        else: \n            a = m\n    print(\"%.17f\"%(m))",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "aproximateDerivative",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def aproximateDerivative(f, x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "secante",
+        "kind": 2,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "def secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")\n# Pelo método da bisseção:\na = 0",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "r",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "r = 6.18\nps = 192.82\npw = 1000\n# x = lambda\ndef f(x):\n    return pw*((4/3)*(r**3) - (x**2)*r + (x**3)/3)- ps*(4*(r**3)/3)\ndef df(x):\n    result = pw*( -2*x*r + x**2)\n    return result\ndef falsePositionAux(f, a, b):",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "ps",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "ps = 192.82\npw = 1000\n# x = lambda\ndef f(x):\n    return pw*((4/3)*(r**3) - (x**2)*r + (x**3)/3)- ps*(4*(r**3)/3)\ndef df(x):\n    result = pw*( -2*x*r + x**2)\n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "pw",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "pw = 1000\n# x = lambda\ndef f(x):\n    return pw*((4/3)*(r**3) - (x**2)*r + (x**3)/3)- ps*(4*(r**3)/3)\ndef df(x):\n    result = pw*( -2*x*r + x**2)\n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "a = 0\nb = 12.36\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\nprint(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\nx_0 = 7.42\nvetor = [1, 3, 5]\nfor n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "b = 12.36\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\nprint(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\nx_0 = 7.42\nvetor = [1, 3, 5]\nfor n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "vetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\nprint(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\nx_0 = 7.42\nvetor = [1, 3, 5]\nfor n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 1.48",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "x_0",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "x_0 = 7.42\nvetor = [1, 3, 5]\nfor n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 1.48\nx_1 = 10.27\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "vetor = [1, 3, 5]\nfor n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 1.48\nx_1 = 10.27\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "x_0",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "x_0 = 1.48\nx_1 = 10.27\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 12.36\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "x_1",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "x_1 = 10.27\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 12.36\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "vetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 12.36\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "a = 0\nb = 12.36\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "b = 12.36\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q33",
+        "description": "T1.Q33",
+        "peekOfCode": "vetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q33",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "falsePositionAux",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): ",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "falsePosition",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): \n            b = x\n        else: \n            a = x\n    print(\"%.17f\" %(x))",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "newton",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def newton(f, df, m, n):\n    for i in range(n):\n        if(df(m) == 0): return\n        m = m - (f(m)/df(m))\n    print(m)\ndef bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "bisection",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2\n        if(f(a)*f(m) < 0):\n            b = m\n        else: \n            a = m\n    print(\"%.17f\"%(m))",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "aproximateDerivative",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def aproximateDerivative(f, x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "secante",
+        "kind": 2,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "def secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")\n# Pelo método da bisseção:\na = 0",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "r1",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "r1 = 2.66\nr2 = 5.48\nH = 5.04\npt = 262.37\npw = 1000\nx = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "r2",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "r2 = 5.48\nH = 5.04\npt = 262.37\npw = 1000\nx = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) ",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "H",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "H = 5.04\npt = 262.37\npw = 1000\nx = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "pt",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "pt = 262.37\npw = 1000\nx = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result\ndef falsePositionAux(f, a, b):",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "pw",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "pw = 1000\nx = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "x = (H*r1)/(r2-r1)\n# x = lambda\ndef f(h):\n    return pt*H*((r1**2) + (r2**2) + (r1*r2)) - pw*(H-h)*((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x)\ndef df(h):\n    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "a = 0\nb = 5.04\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "b = 5.04\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "vetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.62",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "#x_0",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.62\nx_1 = 4.95\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "#vetor",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.62\nx_1 = 4.95\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "x_0",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "x_0 = 0.62\nx_1 = 4.95\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 5.04\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "x_1",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "x_1 = 4.95\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 5.04\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "vetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 5.04\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "a = 0\nb = 5.04\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "b = 5.04\nvetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q34",
+        "description": "T1.Q34",
+        "peekOfCode": "vetor = [2, 4, 7, 9]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q34",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def f(h):\n    result = L*((0.5*pi*(r**2)) - (r**2)*asin(h/r) - h*(sqrt((r**2) - (h**2)))) - V\n    return result.real\n#def df(h):\n#    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n#    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "falsePositionAux",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def falsePositionAux(f, a, b):\n    fa = abs(f(a))\n    fb = abs(f(b))\n    return (a*fb + b*fa)/(fa + fb)\ndef falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): ",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "falsePosition",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def falsePosition(f, a, b, n):\n    if(f(a)*f(b) > 0): \n        return\n    for i in range(n):\n        x = falsePositionAux(f, a, b)\n        if(f(a)*f(x) < 0): \n            b = x\n        else: \n            a = x\n    print(\"%.17f\" %(x))",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "newton",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def newton(f, df, m, n):\n    for i in range(n):\n        if(df(m) == 0): return\n        m = m - (f(m)/df(m))\n    print(m)\ndef bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "bisection",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def bisection(f, a, b, n):\n    if(f(a)*f(b) > 0):\n        return\n    for i in range(n):\n        m = (a+b)/2\n        if(f(a)*f(m) < 0):\n            b = m\n        else: \n            a = m\n    print(\"%.17f\"%(m))",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "aproximateDerivative",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def aproximateDerivative(f, x1, x0):\n    return (f(x1)-f(x0))/(x1-x0)\ndef secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "secante",
+        "kind": 2,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "def secante(f, x1, x0, n):\n    for i in range(n):\n        x2 = x0 - f(x0)/aproximateDerivative(f, x1, x0)\n        #x2 = (x0*f(x1) - x1*f(x0))/(f(x1)-f(x0))\n        x0 = x1\n        x1 = x2\n    print(x2)\nprint(\"\\nPelo método da bisseção\")\n# Pelo método da bisseção:\na = 0",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "r",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "r = 1.82\nL = 1.73\nV = 8.0\n# x = lambda\ndef f(h):\n    result = L*((0.5*pi*(r**2)) - (r**2)*asin(h/r) - h*(sqrt((r**2) - (h**2)))) - V\n    return result.real\n#def df(h):\n#    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n#    return result",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "L",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "L = 1.73\nV = 8.0\n# x = lambda\ndef f(h):\n    result = L*((0.5*pi*(r**2)) - (r**2)*asin(h/r) - h*(sqrt((r**2) - (h**2)))) - V\n    return result.real\n#def df(h):\n#    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n#    return result\ndef falsePositionAux(f, a, b):",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "V",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "V = 8.0\n# x = lambda\ndef f(h):\n    result = L*((0.5*pi*(r**2)) - (r**2)*asin(h/r) - h*(sqrt((r**2) - (h**2)))) - V\n    return result.real\n#def df(h):\n#    result = -pw*(H-h)*(2*(r1**2)/x + 2*h*(r1**2)/(x**2) + (r1*r2)/x) + pw((r1**2) + 2*(r1**2)*h/x + (h**2)*(r1**2)/(x**2) + (r2**2) + (r1*r2) + (h*r1*r2)/x) \n#    return result\ndef falsePositionAux(f, a, b):\n    fa = abs(f(a))",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "a = 0\nb = 1.82\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "b = 1.82\nvetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "vetor = [2, 4, 8, 12]\nfor n in vetor: bisection(f, a, b, n)\n#print(\"\\nPelo método de Newton\")\n# Pelo método de Newton:\n#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.19",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "#x_0",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "#x_0 = 7.42\n#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.19\nx_1 = 1.49\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "#vetor",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "#vetor = [1, 3, 5]\n#for n in vetor: newton(f, df, x_0, n)\nprint(\"\\nPelo método da secante\")\n# Pelo método da secante:\nx_0 = 0.19\nx_1 = 1.49\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "x_0",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "x_0 = 0.19\nx_1 = 1.49\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 1.82\nvetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "x_1",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "x_1 = 1.49\nvetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 1.82\nvetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "vetor = [1, 2, 5]\nfor n in vetor: secante(f, x_1, x_0, n)\nprint(\"\\nPelo método da posição falsa\")\n# Pelo método da posição falsa:\na = 0\nb = 1.82\nvetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "a = 0\nb = 1.82\nvetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "b = 1.82\nvetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
+        "documentation": {}
+    },
+    {
+        "label": "vetor",
+        "kind": 5,
+        "importPath": "T1.Q35",
+        "description": "T1.Q35",
+        "peekOfCode": "vetor = [2, 4, 7, 11]\nfor n in vetor: falsePosition(f, a, b, n)",
+        "detail": "T1.Q35",
         "documentation": {}
     },
     {
