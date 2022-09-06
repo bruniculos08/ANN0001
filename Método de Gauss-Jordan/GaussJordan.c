@@ -35,9 +35,18 @@ void swapLine(float **matrix, int cols, int Line1, int Line2){
 // matriz com algum coeficiente 0 não está funcionando (sugestão: fazer função que troque as linhas)
 
 void gaussJordan(float **matrix, int rows, int cols){
-    cols = cols -1; // a última coluna é a matriz B tal que A.X = B, ou seja, valores que o sistema de equações deve satisfazer
-    for(int j = 0; j < cols; j++){
+    // (1) A última coluna é a matriz B é tal que A.X = B, ou seja, são os valores que o sistema de equações deve satisfazer.
+    for(int j = 0; j < cols-1; j++){
         for(int i = j; i < rows; i++){
+
+            // (2) Se estivermos em uma linha cujo pivô da atual coluna seria 0, deve-se trocar essa linha com a seguinte,...
+            // ... e caso isso também resulte em um pivô nulo, deve-se repetir o processo até que não se possa mais trocar...
+            // ... de linhas:
+            if(matrix[i][j] == 0 && i < rows-1){
+                int k = i;
+                while(matrix[k][j] == 0 && k < rows-1) swapLine(matrix, cols, i, i+1);
+            }
+
             if(matrix[i][j] != 0){
                 printf("dividir linha %i (pivo %f)\n", i, matrix[i][j]);
                 divLine(matrix, cols, i, matrix[i][j]);
