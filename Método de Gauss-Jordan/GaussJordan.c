@@ -86,7 +86,7 @@ float **createMatrix(int *rows, int *cols){
         matrix[i] = (float *)malloc((*cols)*sizeof(float));
 
         // (2.1) Setando os elementos da matriz iguais à zero para inserção (por meio de adição) das arestas na função createGraph:
-        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%.17f ", &matrix[i][j]);
+        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%f ", &matrix[i][j]);
         //fscanf(filePointer, "\n");
     }
     return matrix;
