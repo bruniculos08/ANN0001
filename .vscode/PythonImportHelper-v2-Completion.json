@@ -24,6 +24,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "cmath",
+        "description": "cmath",
+        "isExtraImport": true,
+        "detail": "cmath",
+        "documentation": {}
+    },
+    {
         "label": "sqrt",
         "importPath": "cmath",
         "description": "cmath",
@@ -198,6 +206,87 @@
         "description": "Método da Secante.secante",
         "peekOfCode": "x1 = 2.05516\nfor n in vetor:\n    secante(x1, x0, n)",
         "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "alpha",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.sum",
+        "description": "Método de Gauss-Jordan.sum",
+        "peekOfCode": "alpha = (53/180)*pi\nbeta = (59/180)*pi\nprint(\"\\nAbout alpha: \")\nprint(\"cos(alpha) =\", cos(alpha).real)\nprint(\"sin(alpha) =\", sin(alpha).real)\nprint(\"\\nAbout beta: \")\nprint(\"cos(beta) =\", cos(beta).real)\nprint(\"sin(beta) =\", sin(beta).real)",
+        "detail": "Método de Gauss-Jordan.sum",
+        "documentation": {}
+    },
+    {
+        "label": "beta",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.sum",
+        "description": "Método de Gauss-Jordan.sum",
+        "peekOfCode": "beta = (59/180)*pi\nprint(\"\\nAbout alpha: \")\nprint(\"cos(alpha) =\", cos(alpha).real)\nprint(\"sin(alpha) =\", sin(alpha).real)\nprint(\"\\nAbout beta: \")\nprint(\"cos(beta) =\", cos(beta).real)\nprint(\"sin(beta) =\", sin(beta).real)",
+        "detail": "Método de Gauss-Jordan.sum",
+        "documentation": {}
+    },
+    {
+        "label": "m1",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "m1 = 3.75\nm2 = 5.8\nm3 = 3.77\ng = 9.81\nk1 = 86.26\nk2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "m2",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "m2 = 5.8\nm3 = 3.77\ng = 9.81\nk1 = 86.26\nk2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "m3",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "m3 = 3.77\ng = 9.81\nk1 = 86.26\nk2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)\nprint(k3+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "g = 9.81\nk1 = 86.26\nk2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)\nprint(k3+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "k1",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "k1 = 86.26\nk2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)\nprint(k3+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "k2",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "k2 = 83.86\nk3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)\nprint(k3+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "documentation": {}
+    },
+    {
+        "label": "k3",
+        "kind": 5,
+        "importPath": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "description": "Método de Gauss-Jordan.tempCodeRunnerFile",
+        "peekOfCode": "k3 = 53.42\nprint(m1*g)\nprint(m2*g)\nprint(m3*g)\nprint(k1+k2)\nprint(k3+k2)",
+        "detail": "Método de Gauss-Jordan.tempCodeRunnerFile",
         "documentation": {}
     },
     {

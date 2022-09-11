@@ -4,7 +4,8 @@
 
 void printVetor(double *vetor, int rows){
     for(int i = 0; i < rows; i++){ 
-        printf("x_%i = %.17f\n", i+1, vetor[i]);
+        //printf("x_%i = %.17f\n", i+1, vetor[i]);
+        printf("%.7f, ", vetor[i]);
     }
     printf("\n");
 }
@@ -41,12 +42,12 @@ void jacobi(double **matrix, int rows, int cols, double *vetor, int n){
             tempVetor[i] = temp;
         }
         // O vetor de solução só pe atualizado depois de uma iteração completa (diferente do método de Seidel)
-        for(int i = 0; i < rows; i++) vetor[i] = tempVetor[i];
+        for(int i = 0; i < rows; i++) vetor[i] = tempVetor[i]; 
 
         //printf("%i iteracoes:\n", k+1);
         //printVetor(vetor, rows);
     }
-    printf("%i iteracoes:\n", n);
+    //printf("%i iteracoes:\n", n);
     printVetor(vetor, rows);
 }
 
@@ -86,12 +87,13 @@ int main(){
     vetor = malloc((*rows)*sizeof(double));
 
     //for (int i = 0; i < *rows; i++) vetor[i] = 0;
-    vetor[0] = -0.42;
-    vetor[1] = -1.17;
-    vetor[2] = -3.55;
-    vetor[3] = 3.23;
+    // Obs.: o vetor deveria ser resetado dentro do loop, por isso o exercício deu errado
+    vetor[0] = -3.55;
+    vetor[1] = 4.44;
+    vetor[2] =  -2.83;
+    vetor[3] = 2.72;
 
-    int rodadas[] = {3, 6, 8, 10, 11, 15, 16, 19, 23, 24, 26, 29};
+    int rodadas[] = {2, 10, 11, 12, 13, 15, 17, 19, 20, 22, 24, 26};
 
     printVetor(vetor, *rows);
     printMatrix(matrix, *rows, *cols);

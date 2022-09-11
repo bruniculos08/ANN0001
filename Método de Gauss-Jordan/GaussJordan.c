@@ -2,30 +2,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printMatrix(float **matrix, int rows, int cols){
+void printMatrix(double **matrix, int rows, int cols){
     for(int i = 0; i < rows; i++){ 
         for(int j = 0; j < cols; j++){
-            printf("%.17f ", matrix[i][j]);
+            printf("%.9f ", matrix[i][j]);
         }
         printf("\n");
     }
     printf("\n");
 }
 
-void mulLine(float **matrix, int cols, int resultLine, float mult){
+void mulLine(double **matrix, int cols, int resultLine, double mult){
     for(int i = 0; i < cols; i++) matrix[resultLine][i] = matrix[resultLine][i]*mult; 
 }
 
-void divLine(float **matrix, int cols, int resultLine, float divisor){
+void divLine(double **matrix, int cols, int resultLine, double divisor){
     for(int i = 0; i < cols; i++) matrix[resultLine][i] = matrix[resultLine][i]/divisor; 
 }
 
-void addLine(float **matrix, int cols, int resultLine, int sumLine, float sumLineMul){
+void addLine(double **matrix, int cols, int resultLine, int sumLine, double sumLineMul){
     for(int i = 0; i < cols; i++) matrix[resultLine][i] = matrix[resultLine][i] + sumLineMul*matrix[sumLine][i];
 }
 
-void swapLine(float **matrix, int cols, int Line1, int Line2){
-    float temp;
+void swapLine(double **matrix, int cols, int Line1, int Line2){
+    double temp;
     for(int i = 0; i < cols; i++){
         temp = matrix[Line1][i];
         matrix[Line1][i] = matrix[Line2][i];
@@ -35,7 +35,7 @@ void swapLine(float **matrix, int cols, int Line1, int Line2){
 
 // matriz com algum coeficiente 0 não está funcionando (sugestão: fazer função que troque as linhas)
 
-void gaussJordan(float **matrix, int rows, int cols){
+void gaussJordan(double **matrix, int rows, int cols){
     // (1) A última coluna é a matriz B é tal que A.X = B, ou seja, são os valores que o sistema de equações deve satisfazer,...
     // ... assim, dado que a última coluna da matriz não se trata sobre as variáveis, j varia de 0 a cols-1 pois a última coluna...
     // ... não é usada no processo de escalonamento:
@@ -69,7 +69,7 @@ void gaussJordan(float **matrix, int rows, int cols){
     }
 }
 
-float **createMatrix(int *rows, int *cols){
+double **createMatrix(int *rows, int *cols){
 
     FILE *filePointer;
     filePointer = fopen("Matrix.txt", "r");
@@ -78,15 +78,15 @@ float **createMatrix(int *rows, int *cols){
 
     // (1) Alocando os ponteiros para as linhas da matriz:
     // - o ponteiro de ponteiro aponta para um espaço a partir de onde há um número rows de ponteiros para int's
-    float **matrix = (float **)malloc((*rows)*sizeof(float*));
+    double **matrix = (double **)malloc((*rows)*sizeof(double*));
 
     // (2) Alocando os ponteiros para as colunas da matriz:
     // - cada ponteiro para int aponta para um espaço a partir de onde há um número columns de int's
     for(int i=0; i<(*rows); i++){
-        matrix[i] = (float *)malloc((*cols)*sizeof(float));
+        matrix[i] = (double *)malloc((*cols)*sizeof(double));
 
         // (2.1) Setando os elementos da matriz iguais à zero para inserção (por meio de adição) das arestas na função createGraph:
-        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%f ", &matrix[i][j]);
+        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%lf ", &matrix[i][j]);
         //fscanf(filePointer, "\n");
     }
     return matrix;
@@ -98,7 +98,7 @@ int main(){
     int *cols;
     cols = malloc(sizeof(int));
     
-    float **matrix = createMatrix(rows, cols);
+    double **matrix = createMatrix(rows, cols);
     printMatrix(matrix, *rows, *cols);
     gaussJordan(matrix, *rows, *cols);
     printMatrix(matrix, *rows, *cols);
