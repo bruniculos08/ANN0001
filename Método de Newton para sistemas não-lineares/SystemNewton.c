@@ -5,7 +5,7 @@
 // Note que as funções são escritas na forma: z = f(x, y)
 
 double f1(double x, double y){
-    return x*x +2*(y*y)-3;
+    return x*x + y*y - 5;
 }
 
 double f1x(double x, double y){
@@ -13,19 +13,19 @@ double f1x(double x, double y){
 }
 
 double f1y(double x, double y){
-    return 4*y;
+    return 2*y;
 }
 
 double f2(double x, double y){
-    return 4*(x*x) + y*y - 6;
+    return x*x + x*y*y*y - 3;
 }
 
 double f2x(double x, double y){
-    return 8*x;
+    return 2*x + y*y*y;
 }
 
 double f2y(double x, double y){
-    return 2*y;
+    return 3*x*y*y;
 }
 
 // A generalização do método de Newton para n variáveis, sendo X_k uma matriz na k-ésima iteração do algoritmo...
@@ -86,8 +86,8 @@ double newton(double x0, double y0, int n){
 
 int main(){
     int vetor[] = {1, 2, 3, 4, 5};
-    double x0 = 1.3015;
-    double y0 = -1.0469;
+    double x0 = -1.6257;
+    double y0 = 1.4687;
     for(int i = 0; i < sizeof(vetor)/sizeof(vetor[0]); i++){
         newton(x0, y0, vetor[i]);
     }
