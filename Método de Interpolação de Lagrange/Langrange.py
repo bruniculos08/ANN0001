@@ -34,5 +34,7 @@ if __name__ == '__main__':
     # Exemplo 1
     # Exemplo 2
 
-    # Exemplo 3 
+    # Exemplo 3 (exemplo dos exercício, ou seja, código não fixo):
+    X = [1.108, 1.606, 2.99]
+    Y = [1.533, 1.958, 0.029]
 
