@@ -1,0 +1,254 @@
+[
+    {
+        "label": "lagrange",
+        "kind": 2,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "def lagrange(X, Y):\n\tnum = len(X)\n\t# num é o número de pontos\n\tcoeffs = []\n\tfor i in range(num):\n\t\tprod = 1\n\t\tfor j in range(num):\n\t\t\tif(i != j): \n\t\t\t\tprod *= (X[i]-X[j])\n\t\tci = Y[i]/prod",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "def build_poly(X, coeffs):\n\tdef func(x):\n\t\tsoma = 0\n\t\tfor i, ci in enumerate(coeffs):\n\t\t\tprod = ci\n\t\t\tfor j in range(len(coeffs)):\n\t\t\t\tif(i != j): prod *= (x-X[j])\n\t\t\tsoma += prod\n\t\treturn soma\n\treturn func",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tnum",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tnum = len(X)\n\t# num é o número de pontos\n\tcoeffs = []\n\tfor i in range(num):\n\t\tprod = 1\n\t\tfor j in range(num):\n\t\t\tif(i != j): \n\t\t\t\tprod *= (X[i]-X[j])\n\t\tci = Y[i]/prod\n\t\tcoeffs.append(ci)",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tcoeffs",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tcoeffs = []\n\tfor i in range(num):\n\t\tprod = 1\n\t\tfor j in range(num):\n\t\t\tif(i != j): \n\t\t\t\tprod *= (X[i]-X[j])\n\t\tci = Y[i]/prod\n\t\tcoeffs.append(ci)\n\treturn coeffs\n# Essa função constrói e retorna o polinômio de langrange:",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tprod",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\t\tprod = 1\n\t\tfor j in range(num):\n\t\t\tif(i != j): \n\t\t\t\tprod *= (X[i]-X[j])\n\t\tci = Y[i]/prod\n\t\tcoeffs.append(ci)\n\treturn coeffs\n# Essa função constrói e retorna o polinômio de langrange:\ndef build_poly(X, coeffs):\n\tdef func(x):",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tci",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\t\tci = Y[i]/prod\n\t\tcoeffs.append(ci)\n\treturn coeffs\n# Essa função constrói e retorna o polinômio de langrange:\ndef build_poly(X, coeffs):\n\tdef func(x):\n\t\tsoma = 0\n\t\tfor i, ci in enumerate(coeffs):\n\t\t\tprod = ci\n\t\t\tfor j in range(len(coeffs)):",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\t\tsoma",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\t\tsoma = 0\n\t\tfor i, ci in enumerate(coeffs):\n\t\t\tprod = ci\n\t\t\tfor j in range(len(coeffs)):\n\t\t\t\tif(i != j): prod *= (x-X[j])\n\t\t\tsoma += prod\n\t\treturn soma\n\treturn func\n# Apesar de lembrar a função \"main\" de python, a seguinte função separa um pedaço do código em que, caso todo o código seja...\n# ... importado para outro arquivo, este pedaço não será importado:",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\t\t\tprod",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\t\t\tprod = ci\n\t\t\tfor j in range(len(coeffs)):\n\t\t\t\tif(i != j): prod *= (x-X[j])\n\t\t\tsoma += prod\n\t\treturn soma\n\treturn func\n# Apesar de lembrar a função \"main\" de python, a seguinte função separa um pedaço do código em que, caso todo o código seja...\n# ... importado para outro arquivo, este pedaço não será importado:\nif __name__ == \"__main__\":\n\timport numpy as np",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tX",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tX = [2.728, 2.937, 3.202, 3.478, 3.698, 4.069, 4.308, 4.536]\n\tY = [0.681, 0.777, 0.857, 0.918, 0.956, 0.999, 0.967, 0.54]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tY",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tY = [0.681, 0.777, 0.857, 0.918, 0.956, 0.999, 0.967, 0.54]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo01.png\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tcoeffs",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo01.png\")\n\tplt.close()",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tp",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo01.png\")\n\tplt.close()\n\t# Exemplo 2:",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo01.png\")\n\tplt.close()\n\t# Exemplo 2:\n\tdef f(x):\n\t\treturn e**(cos(x)**2) + e**(-x**2) + log(x, e)\n\tX = [2.603, 5.325, 7.733]",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tpt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tpt = [p(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo01.png\")\n\tplt.close()\n\t# Exemplo 2:\n\tdef f(x):\n\t\treturn e**(cos(x)**2) + e**(-x**2) + log(x, e)\n\tX = [2.603, 5.325, 7.733]\n\tY = [f(xi) for xi in X]",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tX",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tX = [2.603, 5.325, 7.733]\n\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tY",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tcoeffs",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tp",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tpt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(-x**2) + cos(x) + 3",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tft",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(-x**2) + cos(x) + 3\n\tX = [0.154, 0.671, 1.247, 1.927, 2.316, 3.167, 3.693, 4.054, 4.665, 5.023, 5.628, 6.13, 6.792]",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tX",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tX = [0.154, 0.671, 1.247, 1.927, 2.316, 3.167, 3.693, 4.054, 4.665, 5.023, 5.628, 6.13, 6.792]\n\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tY",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tcoeffs",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tp",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")\n\tplt.close()\n# Neste método de interpolação, para uma lista de pontos (geral): \n#",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tpt",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")\n\tplt.close()\n# Neste método de interpolação, para uma lista de pontos (geral): \n#\n# (x0, y0), (x1, y1), ..., (xn-1, yn-1)",
+        "detail": "Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "\tft",
+        "kind": 5,
+        "importPath": "Langrange",
+        "description": "Langrange",
+        "peekOfCode": "\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")\n\tplt.close()\n# Neste método de interpolação, para uma lista de pontos (geral): \n#\n# (x0, y0), (x1, y1), ..., (xn-1, yn-1)\n#",
+        "detail": "Langrange",
+        "documentation": {}
+    }
+]
