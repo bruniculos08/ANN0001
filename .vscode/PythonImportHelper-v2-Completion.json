@@ -474,7 +474,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(cos(x)**2) + e**(-x**2) + log(x, e)",
+        "peekOfCode": "\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(-x**2) + cos(x) + 3",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
@@ -483,7 +483,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(cos(x)**2) + e**(-x**2) + log(x, e)\n\tX = [2.603, 5.325, 7.733]",
+        "peekOfCode": "\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo02.png\")\n\tplt.close()\n\t# Exemplo 03 (código não fixo):\n\tdef f(x):\n\t\treturn e**(-x**2) + cos(x) + 3\n\tX = [0.154, 0.671, 1.247, 1.927, 2.316, 3.167, 3.693, 4.054, 4.665, 5.023, 5.628, 6.13, 6.792]",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
@@ -492,7 +492,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tX = [2.603, 5.325, 7.733]\n\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")",
+        "peekOfCode": "\tX = [0.154, 0.671, 1.247, 1.927, 2.316, 3.167, 3.693, 4.054, 4.665, 5.023, 5.628, 6.13, 6.792]\n\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
@@ -501,7 +501,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")",
+        "peekOfCode": "\tY = [f(xi) for xi in X]\n\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
@@ -510,7 +510,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")",
+        "peekOfCode": "\tcoeffs = lagrange(X, Y)\n\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
@@ -519,7 +519,7 @@
         "kind": 5,
         "importPath": "Método de Interpolação de Lagrange.Langrange",
         "description": "Método de Interpolação de Lagrange.Langrange",
-        "peekOfCode": "\tp = build_poly(X, coeffs)\n\t#for ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")",
+        "peekOfCode": "\tp = build_poly(X, coeffs)\n\tfor ci in coeffs: print(f'{ci:.20f},') \n\t# for xi in X: print(f'{p(xi)}')\n\tt = np.linspace(min(X), max(X), 100)\n\tpt = [p(ti) for ti in t]\n\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")",
         "detail": "Método de Interpolação de Lagrange.Langrange",
         "documentation": {}
     },
