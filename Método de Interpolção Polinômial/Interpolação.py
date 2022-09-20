@@ -57,7 +57,7 @@ if __name__ == '__main__':
     # Note que p será o polinômio interpolador (pois build_poly retorna uma função)
 
     # Verificando:
-    print(f'{p(1) = } e {p(3) = }')
+    # print(f'{p(1) = } e {p(3) = }')
     # Se o resulta de p(xi) = yi o polinômio está correto
 
     # Para visualização:
@@ -73,4 +73,74 @@ if __name__ == '__main__':
     plt.plot(t, pt, color = "red")    # Plota o gráfico da maneira comentada anteriormente
     plt.scatter(X, Y, color = "blue") # Plota pontos apenas
  
-    plt.savefig("Interpolação.png")
+    plt.savefig("Exemplo01.png")
+    plt.close()
+    # O comando close() "limpa" o gráfico (para não ficar plotando um em cima do outro).
+
+
+    # Exemplo 2 com uma lista de coordenadas baseada em uma função para então comparar o gráfico do...
+    # ... polinômio com o gráfico da função:
+    
+    from math import *
+
+    # Note que basta trocar a função f(x) para se obter uma interpolação totalmente diferente para a função que se queira.
+    def f(x):
+        return exp(-(x**2))
+
+    # É necessário forçar o valor de cada xi em X à ser um float (sem isso pode ocorrer erro na função "vandermonde").
+    X = [float(n) for n in range(-10, 11, 1)]
+    Y = [f(xi) for xi in X]
+
+    coeffs = vandermonde(X, Y)
+
+    p = build_poly(coeffs)
+
+    t = np.linspace(-5, 5, 50)
+    pt = [p(ti) for ti in t]
+    ft = [f(ti) for ti in t]
+
+    plt.plot(t, pt, color = "red")
+    plt.scatter(X, Y, color = "blue")
+    plt.plot(t, ft, color = "green")
+
+    plt.savefig("Exemplo02.png")
+    plt.close()
+
+    # Exemplo 3 (exemplo dos exercício, ou seja, código não fixo):
+
+    def g(x):
+        return sin(sqrt(1+tan(x)))
+
+    X = [3.196, 3.804, 4.113]
+    Y = [g(xi) for xi in X]
+
+    coeffs = vandermonde(X, Y)
+    
+    # Printando coeficientes:
+    # for i, ci in enumerate(coeffs): print(f'a{i} = {ci}')
+    # for ci in coeffs: print(f'{ci:.20f},')
+    # Este último "for" usa um "print" de tal modo que a notação científica é suprimida.
+
+    p = build_poly(coeffs)
+
+    # Printando o erro absoluto para as coordenas em "values":
+    values = [3.511, 3.585]
+    for xi in values: 
+        diff = abs(g(xi)-p(xi))
+        print(f'{diff},')
+
+    # Cálculos de pontos xi em p(x):
+    # values = [0.036, 1.248, 1.434, 1.591]
+    # for xi in values: 
+    #    print(f'{p(xi)},')
+    #    plt.scatter([xi], [p(xi)], color = "purple")
+
+    t = np.linspace(min(X), max(X), 100)
+    pt = [p(ti) for ti in t]
+    gt = [g(ti) for ti in t]
+
+    plt.plot(t, pt, color = "red")
+    plt.plot(t, gt, color = "green")
+    plt.scatter(X, Y, color = "blue")
+    plt.savefig("Exemplo03.png")
+
