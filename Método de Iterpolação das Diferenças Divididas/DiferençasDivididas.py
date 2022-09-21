@@ -89,9 +89,9 @@ if __name__ == '__main__':
     # Exemplo 03 (código não fixo):
 
     def f(x):
-        return log(x, e)
+        return log(x**2 + 1, e)
 
-    X = [1.511, 1.693, 2.067, 2.23, 2.528, 2.653, 2.927, 3.203, 3.351, 3.7, 3.866, 4.125, 4.423, 4.698, 4.964]
+    X = [float(n) for n in range(-10, 11, 2)]
     Y = [f(xi) for xi in X]
 
     coeffs = diff_div(X,Y)
