@@ -569,6 +569,24 @@
         "documentation": {}
     },
     {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "description": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "description": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Método de Iterpolação das Diferenças Divididas.DiferençasDivididas",
+        "documentation": {}
+    },
+    {
         "label": "g",
         "kind": 2,
         "importPath": "Método do Ponto Fixo.pontoFixo",
