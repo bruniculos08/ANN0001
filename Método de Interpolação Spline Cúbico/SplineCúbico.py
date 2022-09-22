@@ -35,3 +35,57 @@
 # Sk(x) = ak + bk.(x-xk) + ck.(x-xk)² + dk.(x-xk)³ 
 #
 # Sk+1(x) = ak+1 + bk+1.(x-xk) + ck.(x-xk)² + dk.(x-xk)³
+#
+# Logo, calculando em x = xk+1, temos:
+# 
+# Sk(xk+1) = ak + bk.(xk+1-xk) + ck.(xk+1-xk)² + dk.(xk+1-xk)³ <=> Sk(x) = ak + bk.(hk) + ck.(hk)² + dk.(hk)³
+#
+# Sk+1(xk+1) = ak+1 + 0 + 0 + 0
+#
+# Portanto:
+#
+# ak+1 = ak + bk.(hk) + ck.(hk)² + dk.(hk)³
+#
+# Agora precisamos pedir que Sk'(xk+1) = Sk+1'(xk+1) ; calculando as derivadas temos:
+#
+# Sk'(x) = bk + 2.ck.(x-xk) + 3.dk.(x-xk)²
+#
+# Sk+1'(x) = bk+1 + 2.ck+1(x-xk+1) + 3.dk+1.(x-xk+1)²
+#
+# logo, calculando em x = xk+1, temos:
+# 
+# Sk'(xk+1) = bk + 2.ck.(xk+1-xk) + 3.dk.(xk+1-xk)² <=> Sk'(xk+1) = bk + 2.ck.(hk) + 3.dk.(hk)²
+#
+# Sk+1'(xk+1) = bk+1 + 0 + 0
+#
+# Portanto:
+#
+# bk+1 = bk + 2.ck.(hk) + 3.dk.(hk)²
+#
+# Agora precisamos pedir que Sk"(xk+1) = Sk+1"(xk+1) ; calculando as segundas derivadas temos:
+#
+# Sk"(x) = 2.ck + 6.dk.(x-xk)
+#
+# Sk+1"(x) = 2.ck+1 + 6.dk+1.(x-xk+1) 
+# 
+# logo, calculando em x = xk+1, temos:
+#
+# Sk"(xk+1) = 2.ck + 6.dk.(xk+1-xk) <=> Sk"(xk+1) = 2.ck + 6.dk.(hk)
+#
+# Sk+1"(xk+1) = 2.ck+1 + 0
+#
+# Portanto:
+# 
+# 2.ck+1 = 2.ck + 6.dk.(hk) <=> ck+1 = ck + 3.dk.(hk) <=> dk+1 = (ck+1-ck)/(3.hk)
+# 
+# Substituindo a equação (iii) na equação (i), obtemos:
+#
+# ak+1 = ak + bk.hk + ck.(hk)² + (ck+1-ck/(3.hk)).(hk)³ <=> ak+1 = ak + bk.hk + ((hk²)/3).(2.ck + ck+1)
+# 
+# Isolando bk obtemos:
+#
+# bk = (1/hk).(ak+1-ak) - (hk/3).(2.ck + ck+1)
+#
+# Substituindo a equação (iii) na equação (ii), obtemos:
+#
+# bk+1 = bk + 2.ck.hk + 3.((ck+1-ck)/(3.hk)).(hk)² <=> bk+1 = bk + hk.(ck+1-ck)
