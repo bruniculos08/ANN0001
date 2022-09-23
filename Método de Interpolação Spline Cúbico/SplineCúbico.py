@@ -78,7 +78,7 @@
 # 
 # 2.ck+1 = 2.ck + 6.dk.(hk) <=> ck+1 = ck + 3.dk.(hk) <=> dk+1 = (ck+1-ck)/(3.hk)
 # 
-# Substituindo a equação (iii) na equação (i), obtemos:
+# Substituindo a equação (3) na equação (1), obtemos:
 #
 # ak+1 = ak + bk.hk + ck.(hk)² + (ck+1-ck/(3.hk)).(hk)³ <=> ak+1 = ak + bk.hk + ((hk²)/3).(2.ck + ck+1)
 # 
@@ -86,6 +86,38 @@
 #
 # bk = (1/hk).(ak+1-ak) - (hk/3).(2.ck + ck+1)
 #
-# Substituindo a equação (iii) na equação (ii), obtemos:
+# Substituindo a equação (3) na equação (2), obtemos:
 #
 # bk+1 = bk + 2.ck.hk + 3.((ck+1-ck)/(3.hk)).(hk)² <=> bk+1 = bk + hk.(ck+1-ck)
+#
+# Agora, nas equações (4) e (5), substituindo k por k-1 (shif nos índices), sabendo que tais equações agora, ao invés de serem válidas...
+# ... para 0 ≤ k ≤ n-2, serão válidas para 1 ≤ k ≤ n-1, teremos:
+#
+# bk = bk-1 + (ck + ck-1).hk-1                                                      (6)
+# 
+# bk-1 = = (1/hk-1)(ak - ak-1) - [(hk-1)/3].(2.ck-1 + ck)                           (7)
+#
+# Substituindo as equações (4) e (7) na equação (6), obtemos:
+#
+# (1/hk).(ak-1 - ak) - (hk/3).(2.ck + ck+1) = (1/hk-1).(ak - ak-1) - [(hk-1)/3].(2.ck-1 + ck) + (ck - ck-1).hk-1
+#
+# Que é o mesmo que:
+#
+# hk-1 . ck-1 + 2.(hk-1 - hk).ck + hk . ck+1 = (3/hk).(ak+1 - ak) - (3/hk-1).(ak - ak-1)
+#
+# Sendo, assim, note que esta equação é valida para 1 ≤ k ≤ n-2, e definindo c0 = 0 e cn = 0, visto que tais valores podem aparecer...
+# ... na equação (dependendo do índice k escolhido), tem-se um sistema com n - 2 equações, porém se adicionamos as seguintes restrições:
+# 
+# S0"(x0) = 0 -> c0 = 0
+#
+# Sn-1"(xn) = 0 -> cn = 0
+#
+# Teremos n - 2 + 2 equações, ou seja, n equações, e além disso temos n variáveis, portanto resumindo:
+#
+# c0 = 0, cn = 0 e para cada k = 1, 2, 3, ..., n-2, n-1 tem se:
+# hk-1 . ck-1 + 2.(hk-1 - hk).ck + hk . ck+1 = (3/hk).(ak+1 - ak) - (3/hk-1).(ak - ak-1)
+#
+# Escrevendo tal sistema de equações na forma matricial, ou seja, A.X = B, teremos:
+#
+#
+#
