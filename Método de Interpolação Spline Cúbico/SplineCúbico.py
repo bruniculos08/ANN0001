@@ -1,3 +1,4 @@
+import numpy as np
 
 def spline(X, Y):
     n = len(X)
@@ -12,17 +13,15 @@ def spline(X, Y):
     # Matriz com os valores de cada hk para k = 0, 1, 2, ..., n-1
     H = []
     for i in range(n-1):
-        #print(i)
         hi = X[i+1] - X[i]
         H.append(hi)
-    print(H)
 
     C_coeffs = []
     # Inserir primeiro elemento da matriz:
     C_coeffs.append([1] + [0 for i in range(n-1)])
     # Montando os itens pela forma do termo hk-1 . ck-1 + 2.(hk-1 + hk).ck + hk . ck+1
     for i in range(1, n-1):
-        row = [0 for i in range(n)]
+        row = [0 for j in range(n)]
         row[i-1] = H[i-1]
         row[i] = 2*(H[i-1]+H[i])
         row[i+1] = H[i]
@@ -40,13 +39,44 @@ def spline(X, Y):
     # Inserir último elemento da matriz:
     C_ind.append(0)
 
-    return C_coeffs
+    # Resolvendo o sistema linear que dá como resultado a matriz coluna com os valores de cada ck:
+    C = np.linalg.solve(C_coeffs, C_ind)
+
+    # Matriz com os valores bk:
+    B = []
+    for i in range(n-1):
+        bi = (1/H[i])*(A[i+1]-A[i]) - (H[i]/3)*(2*C[i] + C[i+1])
+        B.append(bi)
+
+    # Matriz com os valores dk:
+    D = []
+    for i in range(n-1):
+        dk = (C[i+1] - C[i])/(3*H[i])
+        D.append(dk)
+
+    return A, B, C, D
+
+def build_poly_list(A, B, C, D, X):
+    poly_list = []
+    n = len(A)
+    for i in range(n-1):
+        def s(x):
+            return A[i] + B[i]*(x-X[i]) + C[i]*((x-X[i])**2) + D[i]*((x-X[i])**3)
+        poly_list.append(s)
+    return poly_list
 
 if __name__ == '__main__':
     X = [1, 2, 4, 5]
     Y = [1, 4, 2, 3]
 
-    print(spline(X, Y))
+    A, B, C, D = spline(X, Y)
+    S = build_poly_list(A, B, C, D, X)
+
+    import matplotlib.pyplot as plt
+    from math import *
+    
+
+
 # Dada a seguinte lista de pontos:
 #
 # (x0, y0), (x1, y1), ...,  (xn-1, yn-1), (xn, yn)
