@@ -1,3 +1,4 @@
+from cProfile import label
 import numpy as np
 
 def spline(X, Y):
@@ -56,25 +57,111 @@ def spline(X, Y):
 
     return A, B, C, D
 
-def build_poly_list(A, B, C, D, X):
-    poly_list = []
-    n = len(A)
+def build_poly_dict(A, B, C, D, X):
+    poly_dict = {}
+    n = len(X)
     for i in range(n-1):
-        def s(x):
-            return A[i] + B[i]*(x-X[i]) + C[i]*((x-X[i])**2) + D[i]*((x-X[i])**3)
-        poly_list.append(s)
-    return poly_list
+        eq = f'{A[i]}{B[i]:+}*(x-{X[i]}){C[i]:+}*(x-{X[i]})**2{D[i]:+}*(x-{X[i]})**3'
+        poly_dict[i] = {'eq': eq, 'domain': [X[i], X[i+1]]}
+    return poly_dict
 
 if __name__ == '__main__':
+
+    import matplotlib.pyplot as plt
+    from math import *
+
+    # Exemplo 01:
+
     X = [1, 2, 4, 5]
     Y = [1, 4, 2, 3]
 
     A, B, C, D = spline(X, Y)
-    S = build_poly_list(A, B, C, D, X)
-
-    import matplotlib.pyplot as plt
-    from math import *
+    S = build_poly_dict(A, B, C, D, X)
+    print(S)
     
+    for i, value in S.items():
+        def s(x):
+            return eval(value['eq'])
+        t = np.linspace(*value['domain'], 100)
+        plt.plot(t, s(t), label = f"$S_{i}(x)$")
+
+    plt.scatter(X, Y)
+    plt.legend()
+    plt.savefig("Exemplo01.png")
+    plt.close()
+
+    # Exemplo 02:
+
+    def f(x):
+        return cos(x)*(e**(-x**2))
+
+    X = [i for i in range(0, 21, 2)]
+    Y = [f(xi) for xi in X]
+
+    A, B, C, D = spline(X, Y)
+    S = build_poly_dict(A, B, C, D, X)
+
+    for i, value in S.items():
+        def s(x):
+            return eval(value['eq'])
+        t = np.linspace(*value['domain'], 100)
+        plt.plot(t, s(t), label = f"$S_{i}(x)$")
+
+    t = np.linspace(min(X), max(X), 101)
+    ft = [f(ti) for ti in t]
+    plt.plot(t, ft, label = f"$f(x)$")
+
+    plt.scatter(X, Y)
+    plt.legend()
+    plt.savefig("Exemplo02.png")
+    plt.close()
+
+    # Exemplo 03 (código não fixo):
+
+    def f(x):
+        return 1/(1+25*x**2)
+
+    X = [0.126, 0.854, 1.225, 2.005, 2.525, 3.056, 3.722, 4.187, 5.072, 5.407, 5.96, 6.875]
+
+    Y = [5.219, 4.376, 3.883, 3.365, 2.534, 2.235, 2.993, 2.884, 3.454, 3.665, 4.314, 4.607]
+    #Y = [f(xi) for xi in X]
+
+    valores = [1.268, 1.623, 2.226, 2.997, 5.019]
+
+    A, B, C, D = spline(X, Y)
+    S = build_poly_dict(A, B, C, D, X)
+
+    for i, value in S.items():
+        def s(x):
+            return eval(value['eq'])
+        t = np.linspace(*value['domain'], 100)
+        plt.plot(t, s(t), label = f"$S_{i}(x)$")
+
+    def sk(x):
+        for i, value in S.items():
+            if value['domain'][0] <= x <= value['domain'][1]:
+                return eval(value['eq'])
+
+    for valor in valores:
+        print('{:.16f},'.format(sk(valor)), end=" ")
+
+    #t = np.linspace(min(X), max(X), 101)
+    #ft = [f(ti) for ti in t]
+    #plt.plot(t, ft, label = f"$f(x)$")
+
+    plt.scatter(X, Y)
+    plt.legend()
+    plt.savefig("Exemplo03.png")
+    plt.close()
+
+    #for i in range(len(X)-1):
+    #    print(f'{A[i]}, {B[i]}, {C[i]}, {D[i]},')
+
+    #print(A)
+    #print(B)
+    #print(C)
+    #print(D)
+
 
 
 # Dada a seguinte lista de pontos:

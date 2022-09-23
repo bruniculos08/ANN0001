@@ -1,5 +1,13 @@
 [
     {
+        "label": "label",
+        "importPath": "cProfile",
+        "description": "cProfile",
+        "isExtraImport": true,
+        "detail": "cProfile",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -18,11 +26,11 @@
         "documentation": {}
     },
     {
-        "label": "build_poly_list",
+        "label": "build_poly_dict",
         "kind": 2,
         "importPath": "SplineCúbico",
         "description": "SplineCúbico",
-        "peekOfCode": "def build_poly_list(A, B, C, D, X):\n    poly_list = []\n    n = len(A)\n    for i in range(n-1):\n        def s(x):\n            return A[i] + B[i]*(x-X[i]) + C[i]*((x-X[i])**2) + D[i]*((x-X[i])**3)\n        poly_list.append(s)\n    return poly_list\nif __name__ == '__main__':\n    X = [1, 2, 4, 5]",
+        "peekOfCode": "def build_poly_dict(A, B, C, D, X):\n    poly_dict = {}\n    n = len(X)\n    for i in range(n-1):\n        eq = f'{A[i]}{B[i]:+}*(x-{X[i]}){C[i]:+}*(x-{X[i]})**2{D[i]:+}*(x-{X[i]})**3'\n        poly_dict[i] = {'eq': eq, 'domain': [X[i], X[i+1]]}\n    return poly_dict\nif __name__ == '__main__':\n    import matplotlib.pyplot as plt\n    from math import *",
         "detail": "SplineCúbico",
         "documentation": {}
     }
