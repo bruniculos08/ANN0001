@@ -1,9 +1,52 @@
 
+def spline(X, Y):
+    n = len(X)
 
+    """
+    Retorna todos os coeficiente de todos os polinômios, ou seja,
+    todos os ak, bk, ck, dk
+    """
+    # Matriz com os valores de cada ak
+    A = [yi for yi in Y]
+    
+    # Matriz com os valores de cada hk para k = 0, 1, 2, ..., n-1
+    H = []
+    for i in range(n-1):
+        #print(i)
+        hi = X[i+1] - X[i]
+        H.append(hi)
+    print(H)
 
+    C_coeffs = []
+    # Inserir primeiro elemento da matriz:
+    C_coeffs.append([1] + [0 for i in range(n-1)])
+    # Montando os itens pela forma do termo hk-1 . ck-1 + 2.(hk-1 + hk).ck + hk . ck+1
+    for i in range(1, n-1):
+        row = [0 for i in range(n)]
+        row[i-1] = H[i-1]
+        row[i] = 2*(H[i-1]+H[i])
+        row[i+1] = H[i]
+        C_coeffs.append(row)
+    # Inserir último elemento da matriz:
+    C_coeffs.append([0 for i in range(n-1)] + [1])
 
+    C_ind = []
+    # Inserir primeiro elemento da matriz:
+    C_ind.append(0)
+    # Montando os itens pela forma do termo (3/hk).(ak+1 - ak) - (3/hk-1).(ak - ak-1)
+    for i in range(1, n-1):
+        num = (3/H[i])*(A[i+1]-A[i]) - (3/H[i-1])*(A[i]-A[i-1])
+        C_ind.append(num)
+    # Inserir último elemento da matriz:
+    C_ind.append(0)
 
+    return C_coeffs
 
+if __name__ == '__main__':
+    X = [1, 2, 4, 5]
+    Y = [1, 4, 2, 3]
+
+    print(spline(X, Y))
 # Dada a seguinte lista de pontos:
 #
 # (x0, y0), (x1, y1), ...,  (xn-1, yn-1), (xn, yn)
