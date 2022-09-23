@@ -118,6 +118,12 @@
 # hk-1 . ck-1 + 2.(hk-1 - hk).ck + hk . ck+1 = (3/hk).(ak+1 - ak) - (3/hk-1).(ak - ak-1)
 #
 # Escrevendo tal sistema de equações na forma matricial, ou seja, A.X = B, teremos:
-#
-#
-#
+#  --                                                                         --      --  --
+# | 1       0           0           0      ...     0            0           0  |      | c0 |
+# | h0   2(h0+h1)      h1           0      ...     0            0           0  |      | c1 |
+# | .                                                           .           .  |      | c2 |
+# | .                                                           .           .  |  °   | .  |
+# | .                                                           .           .  |      | .  |
+# | 0       0           0          0      ...    hn-2     2(hn-2+hn-1)    hn-1 |      | .  |
+# | 0       0           0          0      ...      0            0           1  |      | cn |
+# --                                                                          --      --  --
