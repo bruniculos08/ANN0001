@@ -20,8 +20,8 @@ void divLine(float **matrix, int cols, int resultLine, float divisor){
     for(int i = 0; i < cols; i++) matrix[resultLine][i] = matrix[resultLine][i]/divisor; 
 }
 
-void addLine(float **matrix, int cols, int resultLine, int sumLine, float sumLineMul){
-    for(int i = 0; i < cols; i++) matrix[resultLine][i] = matrix[resultLine][i] + sumLineMul*matrix[sumLine][i];
+void addLine(float **matrix, int cols, int resultLine, int sumLine, float resultLineMul, float sumLineMul){
+    for(int i = 0; i < cols; i++) matrix[resultLine][i] = resultLineMul*matrix[resultLine][i] + sumLineMul*matrix[sumLine][i];
 }
 
 void swapLine(float **matrix, int cols, int Line1, int Line2){
@@ -61,30 +61,44 @@ int main(){
     rows = malloc(sizeof(int));
     int *cols;
     cols = malloc(sizeof(int));
-    
     float **matrix = createMatrix(rows, cols);
-
     printMatrix(matrix, *rows, *cols);
 
-    // Operação 1:
-    // 1/2⋅L1 + L2 → L2
-    addLine(matrix, *cols, 1, 0, 0.5);
+    int option = 0, line1, line2;
+    float mult1, mult2; 
+    while(option != 0){
+        scanf("%i", &option);
+        switch (option)
+        {
+        case 1:
+            printf("Digite a linha de resultado: ");
+            scanf("%i", &line1);
+            printf("Digite a linha a se somar: ");
+            scanf("%i", &line2);
+            printf("Digite o multiplicador da linha 1: ");
+            scanf("%f", &mult1);
+            printf("Digite o multiplicador da linha 2: ");
+            scanf("%f", &mult2);
+            addLine(matrix, *cols, line1-1, line2-1, mult1, mult2);
+            break;
+        case 2:
+            printf("Digite a linha a ser multiplicada: ");
+            scanf("%i", &line1);
+            printf("Digite o valor para se multiplicar a linha: ");
+            scanf("%f", &mult1);
+            mulLine(matrix, *cols, line1-1, mult1);
+            break;
+        case 3:
+            printf("Digite a linha a ser dividida: ");
+            scanf("%i", &line1);
+            printf("Digite o valor para se dividir a linha: ");
+            scanf("%f", &mult1);
+            divLine(matrix, *cols, line1-1, mult1);
+            break;
+        default:
+            break;
+        }
+        printMatrix(matrix, *rows, *cols);
+    }
 
-    printMatrix(matrix, *rows, *cols);
-    // Operação 2:
-    addLine(matrix, *cols, 2, 0, 1.75);
-
-    // Operação 3:
-    addLine(matrix, *cols, 3, 0, -1.5);
-
-    // Operação 4:
-    addLine(matrix, *cols, 2, 1, 1.25);
-
-    // Operação 5:
-    addLine(matrix, *cols, 3, 1, 0.83333333333333333);
-
-    // Operação 6:
-    addLine(matrix, *cols, 3, 2, 0.90909090909090909090909090909091);
-
-    printMatrix(matrix, *rows, *cols);
 }
