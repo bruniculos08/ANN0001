@@ -33,6 +33,20 @@ void swapLine(float **matrix, int cols, int Line1, int Line2){
     }
 }
 
+void saveMatrix(float **matrix, int rows, int cols){
+    remove("Matrix.txt");
+    FILE *filePointer;
+    filePointer = fopen("Matrix.txt", "w+");
+    fprintf(filePointer, "%i %i\n", rows, cols);
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            fprintf(filePointer, "%.17f ", matrix[i][j]);
+        }
+        fprintf(filePointer, "\n");
+    }
+    fclose(filePointer);
+}
+
 float **createMatrix(int *rows, int *cols){
 
     FILE *filePointer;
@@ -64,7 +78,7 @@ int main(){
     float **matrix = createMatrix(rows, cols);
     printMatrix(matrix, *rows, *cols);
 
-    int option = 0, line1, line2;
+    int option = -1, line1, line2;
     float mult1, mult2; 
     while(option != 0){
         scanf("%i", &option);
@@ -95,9 +109,14 @@ int main(){
             scanf("%f", &mult1);
             divLine(matrix, *cols, line1-1, mult1);
             break;
+        case 4:
+            saveMatrix(matrix, *rows, *cols);
+            printf("A matriz foi salva.\n");
+            break;
         default:
             break;
         }
+        printf("\n");
         printMatrix(matrix, *rows, *cols);
     }
 
