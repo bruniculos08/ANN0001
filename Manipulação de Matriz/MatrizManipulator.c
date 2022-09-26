@@ -40,7 +40,7 @@ void saveMatrix(float **matrix, int rows, int cols){
     fprintf(filePointer, "%i %i\n", rows, cols);
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < cols; j++){
-            fprintf(filePointer, "%.17f ", matrix[i][j]);
+            fprintf(filePointer, "%.17f, ", matrix[i][j]);
         }
         fprintf(filePointer, "\n");
     }
@@ -64,7 +64,7 @@ float **createMatrix(int *rows, int *cols){
         matrix[i] = (float *)malloc((*cols)*sizeof(float));
 
         // (2.1) Setando os elementos da matriz iguais à zero para inserção (por meio de adição) das arestas na função createGraph:
-        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%f ", &matrix[i][j]);
+        for(int j=0; j<(*cols); j++) fscanf(filePointer, "%f, ", &matrix[i][j]);
         //fscanf(filePointer, "\n");
     }
     return matrix;
@@ -81,6 +81,7 @@ int main(){
     int option = -1, line1, line2;
     float mult1, mult2; 
     while(option != 0){
+        printf("1-Somar linhas\n2-Multiplicar linha\n3-Dividir linha\n4-Trocar linhas\n5-Salvar matriz\n");
         scanf("%i", &option);
         switch (option)
         {
@@ -89,9 +90,9 @@ int main(){
             scanf("%i", &line1);
             printf("Digite a linha a se somar: ");
             scanf("%i", &line2);
-            printf("Digite o multiplicador da linha 1: ");
+            printf("Digite o multiplicador da linha %i: ", line1);
             scanf("%f", &mult1);
-            printf("Digite o multiplicador da linha 2: ");
+            printf("Digite o multiplicador da linha %i: ", line2);
             scanf("%f", &mult2);
             addLine(matrix, *cols, line1-1, line2-1, mult1, mult2);
             break;
@@ -110,6 +111,12 @@ int main(){
             divLine(matrix, *cols, line1-1, mult1);
             break;
         case 4:
+            printf("Digite a linha 1 a ser trocada: ");
+            scanf("%i", &line1);
+            printf("Digite a linha 2 a ser trocada: ");
+            scanf("%i", &line2);
+            swapLine(matrix, *rows, line1-1, line2-1);
+        case 5:
             saveMatrix(matrix, *rows, *cols);
             printf("A matriz foi salva.\n");
             break;
