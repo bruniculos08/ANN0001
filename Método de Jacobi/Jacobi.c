@@ -88,16 +88,21 @@ int main(){
 
     //for (int i = 0; i < *rows; i++) vetor[i] = 0;
     // Obs.: o vetor deveria ser resetado dentro do loop, por isso o exercício deu errado
-    vetor[0] = -3.55;
-    vetor[1] = 4.44;
-    vetor[2] =  -2.83;
-    vetor[3] = 2.72;
+    //vetor[0] = -0.95;
+    //vetor[1] = 1.09;
+    //vetor[2] = 3.46;
 
-    int rodadas[] = {2, 10, 11, 12, 13, 15, 17, 19, 20, 22, 24, 26};
+    int rodadas[] = {3 , 6, 8, 10, 11, 15, 16, 19, 23, 24, 26, 29 };
 
     printVetor(vetor, *rows);
     printMatrix(matrix, *rows, *cols);
-    for(int i = 0; i < sizeof(rodadas)/sizeof(int); i++) jacobi(matrix, *rows, *cols, vetor, rodadas[i]);
+    for(int i = 0; i < sizeof(rodadas)/sizeof(int); i++){ 
+        vetor[0] = -4.14;
+        vetor[1] = 0.89;
+        vetor[2] = -2.64;
+        vetor[3] = -1.23;
+        jacobi(matrix, *rows, *cols, vetor, rodadas[i]);
+    }
     //printVetor(vetor, *rows);
 
 }

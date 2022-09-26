@@ -120,6 +120,14 @@
         "documentation": {}
     },
     {
+        "label": "label",
+        "importPath": "cProfile",
+        "description": "cProfile",
+        "isExtraImport": true,
+        "detail": "cProfile",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -548,6 +556,24 @@
         "description": "Método de Interpolação de Lagrange.Langrange",
         "peekOfCode": "\tft = [f(ti) for ti in t]\n\tplt.plot(t, pt, color = \"red\")\n\tplt.plot(t, ft, color = \"green\")\n\tplt.scatter(X, Y, color = \"blue\")\n\tplt.savefig(\"Exemplo03.png\")\n\tplt.close()\n# Neste método de interpolação, para uma lista de pontos (geral): \n#\n# (x0, y0), (x1, y1), ..., (xn-1, yn-1)\n#",
         "detail": "Método de Interpolação de Lagrange.Langrange",
+        "documentation": {}
+    },
+    {
+        "label": "spline",
+        "kind": 2,
+        "importPath": "Método de Interpolação Spline Cúbico.SplineCúbico",
+        "description": "Método de Interpolação Spline Cúbico.SplineCúbico",
+        "peekOfCode": "def spline(X, Y):\n    n = len(X)\n    \"\"\"\n    Retorna todos os coeficiente de todos os polinômios, ou seja,\n    todos os ak, bk, ck, dk\n    \"\"\"\n    # Matriz com os valores de cada ak\n    A = [yi for yi in Y]\n    # Matriz com os valores de cada hk para k = 0, 1, 2, ..., n-1\n    H = []",
+        "detail": "Método de Interpolação Spline Cúbico.SplineCúbico",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly_dict",
+        "kind": 2,
+        "importPath": "Método de Interpolação Spline Cúbico.SplineCúbico",
+        "description": "Método de Interpolação Spline Cúbico.SplineCúbico",
+        "peekOfCode": "def build_poly_dict(A, B, C, D, X):\n    poly_dict = {}\n    n = len(X)\n    for i in range(n-1):\n        eq = f'{A[i]}{B[i]:+}*(x-{X[i]}){C[i]:+}*(x-{X[i]})**2{D[i]:+}*(x-{X[i]})**3'\n        poly_dict[i] = {'eq': eq, 'domain': [X[i], X[i+1]]}\n    return poly_dict\nif __name__ == '__main__':\n    import matplotlib.pyplot as plt\n    from math import *",
+        "detail": "Método de Interpolação Spline Cúbico.SplineCúbico",
         "documentation": {}
     },
     {
