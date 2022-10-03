@@ -613,6 +613,33 @@
         "documentation": {}
     },
     {
+        "label": "build_F",
+        "kind": 2,
+        "importPath": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "description": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "peekOfCode": "def build_F(functions, A):\n    F = []\n    for f in functions:\n        row = [f(A)]\n        F.append(row)\n    return F\n# Função que recebe lista de derivadas e valores e monta a matriz de derivadas F' (Jacobiano) invertida:\ndef build_J_inverse(derivatives, A):\n    J = []\n    for i, num in enumerate(derivatives):",
+        "detail": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "documentation": {}
+    },
+    {
+        "label": "build_J_inverse",
+        "kind": 2,
+        "importPath": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "description": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "peekOfCode": "def build_J_inverse(derivatives, A):\n    J = []\n    for i, num in enumerate(derivatives):\n        row = []\n        for d in derivatives[i]:\n            row.append(d(A))\n        J.append(row)\n    return np.linalg.inv(J)\ndef iterations(A, J_inverse, F):\n    B = -np.dot(J_inverse, F)",
+        "detail": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "documentation": {}
+    },
+    {
+        "label": "iterations",
+        "kind": 2,
+        "importPath": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "description": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "peekOfCode": "def iterations(A, J_inverse, F):\n    B = -np.dot(J_inverse, F)\n    X = A - B\n    return X\n# Note que A é a solução inicial:\nif __name__ == '__main__':\n    def f1(X):\n        return X[0]*X[0] + X[1]*X[1] - 5\n    def f1x0(X):\n        return 2*X[0]",
+        "detail": "Método de Newton para sistemas não-lineares.SystemNewton",
+        "documentation": {}
+    },
+    {
         "label": "g",
         "kind": 2,
         "importPath": "Método do Ponto Fixo.pontoFixo",
