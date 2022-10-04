@@ -1,16 +1,17 @@
 from cmath import *
 
-t = 1.08
 g = 9.81
-x = 2.29
+c = 23.93
+v = 39.05
+t = 8.33
 
 # x = lambda
-def f(w):
-    result = -g/(2*(w**2))*(sinh(w*t) - sin(w*t)) - x
+def f(m):
+    result = (g*m/c)*(1 - e**((-c/m)*t))
     return result.real
 
-def df(w):
-    result = (g/(w**3))*(sinh(w*t) - sin(w*t)) - (g/(2*(w**2)))*(t*cosh(w*t) - t*cos(w*t))
+def df(m):
+    result = 0
     return result.real
 
 def falsePositionAux(f, a, b):
@@ -65,27 +66,27 @@ def secante(f, x1, x0, n):
 
 print("\nPelo método da bisseção")
 # Pelo método da bisseção:
-a = -5.11
-b = 0.8
+a = -5.65
+b = 0.13
 vetor = [2, 4, 8, 12]
 for n in vetor: bisection(f, a, b, n)
 
-print("\nPelo método de Newton")
+#print("\nPelo método de Newton")
 # Pelo método de Newton:
-x_0 = -1.23
-vetor = [1, 3, 5]
-for n in vetor: newton(f, df, x_0, n)
+#x_0 = -1.51
+#vetor = [1, 3, 5]
+#for n in vetor: newton(f, df, x_0, n)
 
 print("\nPelo método da secante")
 # Pelo método da secante:
-x_0 = -4.43
-x_1 = -1.62
+x_0 = -4.73
+x_1 = -1.5
 vetor = [1, 2, 5]
 for n in vetor: secante(f, x_1, x_0, n)
 
 print("\nPelo método da posição falsa")
 # Pelo método da posição falsa:
-a = -5.87
-b = 0.47
+a = -5.88
+b = 0.8
 vetor = [2, 4, 7, 11]
 for n in vetor: falsePosition(f, a, b, n)

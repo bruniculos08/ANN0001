@@ -77,9 +77,9 @@ if __name__ == "__main__":
 	# Exemplo 03 (código não fixo):
 
 	def f(x):
-		return e**(-x**2) + cos(x) + 3
+		return cos(x + sqrt(log(x**2, e)))
 
-	X = [0.154, 0.671, 1.247, 1.927, 2.316, 3.167, 3.693, 4.054, 4.665, 5.023, 5.628, 6.13, 6.792]
+	X = [1.493, 1.665, 1.875, 2.035, 2.141, 2.283, 2.456, 2.641, 2.825, 3.023, 3.268, 3.363, 3.561, 3.728, 3.861, 4.104, 4.256, 4.383, 4.533, 4.682, 4.935]
 	Y = [f(xi) for xi in X]
 
 	coeffs = lagrange(X, Y)
@@ -90,10 +90,10 @@ if __name__ == "__main__":
 
 	t = np.linspace(min(X), max(X), 100)
 	pt = [p(ti) for ti in t]
-	ft = [f(ti) for ti in t]
+	#ft = [f(ti) for ti in t]
 
 	plt.plot(t, pt, color = "red")
-	plt.plot(t, ft, color = "green")
+	#plt.plot(t, ft, color = "green")
 	plt.scatter(X, Y, color = "blue")
 	plt.savefig("Exemplo03.png")
 	plt.close()
