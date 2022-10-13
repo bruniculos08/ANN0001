@@ -3,14 +3,14 @@ from math import *
 import matplotlib.pyplot as plt
 import numpy as np
 
-
-def calc_coeffs(X, Y):
+def calc_coeffs(X, Y, degree):
+    degree += 1
 
     # (1) Cria a matriz do lado esquerdo da equação:
     X_matrix = []
-    for i in range(2):
+    for i in range(degree):
         row = []
-        for j in range(2):
+        for j in range(degree):
             sum = 0
             for xi in X: 
                 sum += xi ** (i + j)
@@ -19,7 +19,7 @@ def calc_coeffs(X, Y):
 
     # (2) Cria a matriz do lado direito da equação:
     Y_matrix = []
-    for i in range(2):
+    for i in range(degree):
         sum = 0
         for xi, yi in zip(X, Y):
             sum += yi*(xi**i)
@@ -36,10 +36,11 @@ def build_poly(coeffs):
     return func
 
 if __name__ == '__main__':
-    X = [x for x in range(0, 100)]
-    Y = [random.random()*xi for xi in X]
-    coeffs = calc_coeffs(X, Y)
+    X = [float(x) for x in range(0, 200)]
+    Y = [xi**2 for xi in X]
+    coeffs = calc_coeffs(X, Y, 5)
     f = build_poly(coeffs)
+    print(coeffs)
 
     t = np.linspace(0, max(X), 100)
     ft = [f(ti) for ti in t]
