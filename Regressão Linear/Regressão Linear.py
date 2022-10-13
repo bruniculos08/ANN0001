@@ -27,4 +27,24 @@
 #   ∑yi = a0.n + a1.∑xi
 # e de (ii) temos a seguinte equação:
 #   0 = d∑ [yi - a0 - a1.xi]²
-#       da0                     
+#       da1                     
+#   0 = ∑ d[yi - a0 - a1.xi]²
+#         da1
+#   0 = ∑ 2[yi - a0 - a1.xi].d(yi - a0 - a1.xi)
+#                            da1
+#   0 = ∑ 2[yi - a0 - a1.xi].(-xi)
+#   0 = ∑ 2[a0 + a1.xi - yi].(xi)
+#   0 = ∑ [a0 + a1.xi - yi].(xi)
+#   0 = ∑ [a0.xi + a1.xi² - yi.xi]
+#   0 = ∑a0.xi + ∑a1.xi² - ∑yi.xi
+#   0 = a0.∑xi + a1.∑xi² - ∑yi.xi
+#   ∑yi.xi = a0.∑xi + a1.∑xi²
+# logo temos de resolver o seguinte sistema de equações:
+#   ∑yi = a0.n + a1.∑xi
+#   ∑yi.xi = a0.∑xi + a1.∑xi²
+# escrevendo na forma matricial temos:
+#   --                  --    --  --    --      --
+#   |  a0.n     a1.∑xi   | . | x1  |    | ∑yi    |
+#   |  a0.∑xi   a1.∑xi²  |   | ... |  = | ∑yi.xi |
+#   --                  --   | xn  |    --      --
+#                            --  --     
