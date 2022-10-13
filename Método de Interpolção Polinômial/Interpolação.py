@@ -1,5 +1,6 @@
 import numpy as np
 
+
 # Função que gera a matriz de Vandermonde do sistema linear...
 # ... do método de interpolação polinômial
 def vandermonde(coords_X, coords_Y):
@@ -62,6 +63,7 @@ if __name__ == '__main__':
 
     # Para visualização:
     import matplotlib.pyplot as plt
+
     # Esta biblioteca para plotar o gráfico pede um domínio (uma lista coordenadas X),...
     # ... uma divisão para o intervalo, e uma lista de coordenadas Y, e usando isso irá...
     # ... ligar os pontos vias seguimentos de reta para formar o gráfico:
