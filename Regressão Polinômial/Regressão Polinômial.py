@@ -36,10 +36,17 @@ def build_poly(coeffs):
     return func
 
 if __name__ == '__main__':
-    X = [float(x) for x in range(0, 200)]
+    # Note: o número de pontos do polinômio deve ser estritamente maior que o grau do polinômio, caso contrário...
+    # ... haverão infinitas soluções
+
+    # Exemplo 01:
+    X = [float(x) for x in range(0, 3)]
     Y = [xi**2 for xi in X]
+
     coeffs = calc_coeffs(X, Y, 5)
+    
     f = build_poly(coeffs)
+    
     print(coeffs)
 
     t = np.linspace(0, max(X), 100)
@@ -49,53 +56,84 @@ if __name__ == '__main__':
     plt.scatter(X, Y, label = "blue")
     plt.savefig("Exemplo01.png")
 
-
 # Para uma determinada lista de pontos:
+#
 # (x1, y1), (x2, y2), ..., (xn, yn)
+#
 # queremos uma reta, ou seja, uma função da forma:
-# p(x) = a0 + a1.x
+#
+# p(x) = a0 + a1.x + a2.x² + ... + ak.x^k
+#
 # que se aproxime ao máximo dos pontos dados, assim note que, o erro da reta em relação aos pontos é dado por:
+#
 # E(a0, a1) = d1² + d2² + ... + dn-1² + dn²
+#
 # onde, para i > 0 e i <= n:
+#
 # di = yi - p(xi)
+#
 # sendo assim, temos:
-# E(a0, a1) = ∑ [yi - p(xi)]²
-# E(a0, a1) = ∑ [yi - a0 - a1.xi]²
-# para diminuir tal erro note que devemos ter que
-#  (i) dE  = 0   e  (ii) dE  = 0 
-#      da0               da1
-# de (i) teremos a seguinte equação:
-#   0 = d∑ [yi - a0 - a1.xi]²
-#       da0
-#   0 = ∑ d[yi - a0 - a1.xi]²
-#         da0
-#   0 = ∑ 2[yi - a0 - a1.xi].d(yi - a0 - a1.xi)
-#                           da0
-#   0 = ∑ 2[yi - a0 - a1.xi].(-1)
-#   0 = ∑ 2[a0 + a1.xi - yi]
-#   0 = ∑ [a0 + a1.xi - yi]
-#   0 = ∑a0 + ∑a1.xi - ∑yi
-#   ∑yi = ∑a0 + ∑a1.xi   
-#   ∑yi = a0.n + a1.∑xi
-# e de (ii) temos a seguinte equação:
-#   0 = d∑ [yi - a0 - a1.xi]²
-#       da1                     
-#   0 = ∑ d[yi - a0 - a1.xi]²
-#         da1
-#   0 = ∑ 2[yi - a0 - a1.xi].d(yi - a0 - a1.xi)
-#                            da1
-#   0 = ∑ 2[yi - a0 - a1.xi].(-xi)
-#   0 = ∑ 2[a0 + a1.xi - yi].(xi)
-#   0 = ∑ [a0 + a1.xi - yi].(xi)
-#   0 = ∑ [a0.xi + a1.xi² - yi.xi]
-#   0 = ∑a0.xi + ∑a1.xi² - ∑yi.xi
-#   0 = a0.∑xi + a1.∑xi² - ∑yi.xi
-#   ∑yi.xi = a0.∑xi + a1.∑xi²
-# logo temos de resolver o seguinte sistema de equações:
-#   ∑yi = a0.n + a1.∑xi
-#   ∑yi.xi = a0.∑xi + a1.∑xi²
-# escrevendo na forma matricial temos:
-#   --                  -- --    --      --
-#   |  n     ∑xi   | . | a0 |    | ∑yi    |
-#   |  ∑xi   ∑xi²  |   | a1 |  = | ∑yi.xi |
-#   --                 -- --     --      --  
+#
+# E(a0, ..., ak) = ∑ [yi - p(xi)]²
+# E(a0, ..., ak) = ∑ (yi - a0 - a1.xi - a2.xi² - ... - ak.xi^k)²
+# E(a0, ..., ak) = ∑ (yi - ∑ aj.xi^j)²
+#
+# para diminuir tal erro note que devemos ter que:
+#
+#  dE  = 0 , dE  = 0, ... , dE = 0 
+#  da0       da1            dak
+#
+# Note que para tal ponto crítico existem k+1 equações, então, calculando dE/dal = 0, onde 0 <= l <= k, temos:
+#
+#  dE  =  d[∑ (yi - ∑ aj.xi^j)²]
+#  dal    dal
+    
+#  dE  =  ∑d(yi - ∑ aj.xi^j)²]
+#  dal     dal
+    
+#  dE  =  ∑[2.(yi - ∑ aj.xi^j).d(yi - ∑ aj.xi^j)]
+#  dal                         dal
+    
+#  dE  =  ∑2.[yi - ∑(aj.xi^j)].[-∑d(aj.xi^j)]
+#  dal                           dal
+    
+#  dE  =  ∑2.[yi - ∑(aj.xi^j)].[-∑d(aj.xi^j)]
+#  dal                           dal
+
+#  dE  =  ∑2.[yi - ∑(aj.xi^j)].(-xi^l)
+#  dal                           
+
+#  0  =  ∑2.[yi - ∑(aj.xi^j)].(-xi^l) 
+
+#  0  =  ∑[yi - ∑(aj.xi^j)].(-xi^l)
+
+#  0  =  (∑yi.-xi^l) + ∑(∑aj.xi^(j+l))
+
+# (∑yi.xi^l) = ∑(∑aj.xi^(j+l))
+
+# (∑yi.xi^l) = ∑a0.xi^l + ∑a1.xi^(l+1) + ... + ∑ak.xi^(l+k)
+    
+# (∑yi.xi^l) = a0.∑xi^l + a1.∑xi^(l+1) + ... + ak.∑xi^(l+k)
+    
+# Note que, por este resultado, dado que l = 0, 1, 2, ..., k-1, k, temos k equações da forma:
+#
+#    l = 0 -> a0.n + a1.(∑xi¹) + a2.(∑xi²) + ... + ak.(∑xi^k) = ∑yi
+#    l = 1 -> a0.(∑xi¹) + a1.(∑xi²) + a2.(∑xi³) + ... + ak.(∑xi^(k+1)) = (∑yi.xi¹)
+#    .
+#    .
+#    . 
+#    l = k -> a0.(∑xi^k) + a1.(∑xi^(k+1)) + a2.(∑xi^(k+2)) + ... + ak.(∑xi^(2.k)) = (∑yi.xi^k) 
+#
+# Escrevendo o sistema de equações na forma matricial:
+#    ____                                             ____       __    __      __            __
+#   |   n         ∑xi        ∑xi²      ...     ∑xi^k     |      |   a0  |     |   ∑yi         |
+#   |   ∑xi       ∑xi²       ∑xi³      ...     ∑xi^(k+1) |      |   a1  |     |   ∑yi.xi¹     |
+#   |   ∑xi²      ∑xi³       ∑xi^4     ...     ∑xi^(k+2) |      |   .   |     |     .         |
+#   |   .                                           .    |   °  |   .   |  =  |     .         |
+#   |   .                                           .    |      |   .   |     |     .         |
+#   |   .                                           .    |      |  ak-1 |     |  ∑yi.xi^(k-1) |   
+#   |   ∑xi^k  ∑xi^(k+1)    ∑xi^(k+2)  ...     ∑xi^(2.k) |      |  ak   |     |  ∑yi.xi^k     |
+#   |____                                            ____|      |__   __|     |__           __|
+#
+# Resolvendo tal sistema obtemos os resultado para os coeficientes a0, a1, ..., ak, e então temos o polinômio que...
+# ... mais se aproxima dos pontos

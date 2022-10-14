@@ -750,7 +750,7 @@
         "kind": 2,
         "importPath": "Regressão Polinômial.Regressão Polinômial",
         "description": "Regressão Polinômial.Regressão Polinômial",
-        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    X = [float(x) for x in range(0, 200)]\n    Y = [xi**2 for xi in X]",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Note: o número de pontos do polinômio deve ser estritamente maior que o grau do polinômio, caso contrário...\n    # ... haverão infinitas soluções",
         "detail": "Regressão Polinômial.Regressão Polinômial",
         "documentation": {}
     },
