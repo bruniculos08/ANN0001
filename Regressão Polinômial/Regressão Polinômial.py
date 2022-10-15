@@ -40,10 +40,10 @@ if __name__ == '__main__':
     # ... haverão infinitas soluções
 
     # Exemplo 01:
-    X = [float(x) for x in range(0, 3)]
-    Y = [xi**2 for xi in X]
+    X = [float(x) for x in range(0, 5)]
+    Y = [random.random()*xi**2 for xi in X]
 
-    coeffs = calc_coeffs(X, Y, 5)
+    coeffs = calc_coeffs(X, Y, 2)
     
     f = build_poly(coeffs)
     
