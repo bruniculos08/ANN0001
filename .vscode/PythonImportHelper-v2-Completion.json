@@ -41,6 +41,14 @@
     },
     {
         "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "cmath",
         "description": "cmath",
         "isExtraImport": true,
@@ -716,6 +724,24 @@
         "description": "Método do Ponto Fixo.pontoFixo",
         "peekOfCode": "vetor = [1, 2, 3, 4, 5, 6, 7, 8]\nfor i in vetor:\n    pontoFixo(g, x_0, i)",
         "detail": "Método do Ponto Fixo.pontoFixo",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Exponencial.Regressão Exponencial",
+        "description": "Regressão Exponencial.Regressão Exponencial",
+        "peekOfCode": "def calc_coeffs(X, Y):\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(2):\n        row = []\n        for j in range(2):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)\n            row.append(sum)",
+        "detail": "Regressão Exponencial.Regressão Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Regressão Exponencial.Regressão Exponencial",
+        "description": "Regressão Exponencial.Regressão Exponencial",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [x for x in range(0, 100)]",
+        "detail": "Regressão Exponencial.Regressão Exponencial",
         "documentation": {}
     },
     {
