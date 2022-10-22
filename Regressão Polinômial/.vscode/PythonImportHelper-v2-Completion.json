@@ -1,0 +1,55 @@
+[
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Polinômial",
+        "description": "Regressão Polinômial",
+        "peekOfCode": "def calc_coeffs(X, Y, degree):\n    degree += 1\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(degree):\n        row = []\n        for j in range(degree):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)",
+        "detail": "Regressão Polinômial",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Regressão Polinômial",
+        "description": "Regressão Polinômial",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Note: o número de pontos do polinômio deve ser estritamente maior que o grau do polinômio, caso contrário...\n    # ... haverão infinitas soluções",
+        "detail": "Regressão Polinômial",
+        "documentation": {}
+    }
+]

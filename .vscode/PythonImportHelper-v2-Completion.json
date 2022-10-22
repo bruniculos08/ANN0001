@@ -732,7 +732,7 @@
         "kind": 2,
         "importPath": "Regressão Linear.Regressão Linear",
         "description": "Regressão Linear.Regressão Linear",
-        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    X = [x for x in range(0, 100)]\n    Y = [random.random()*xi for xi in X]",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [x for x in range(0, 100)]",
         "detail": "Regressão Linear.Regressão Linear",
         "documentation": {}
     },

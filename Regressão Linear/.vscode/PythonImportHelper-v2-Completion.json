@@ -1,0 +1,55 @@
+[
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Linear",
+        "description": "Regressão Linear",
+        "peekOfCode": "def calc_coeffs(X, Y):\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(2):\n        row = []\n        for j in range(2):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)\n            row.append(sum)",
+        "detail": "Regressão Linear",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Regressão Linear",
+        "description": "Regressão Linear",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [x for x in range(0, 100)]",
+        "detail": "Regressão Linear",
+        "documentation": {}
+    }
+]
