@@ -37,7 +37,33 @@ def build_poly(coeffs):
         return result
     return func
 
-def calc_non_linear_coeffs(X, Y):
+# def calc_non_linear_coeffs(X, Y):
+#     const_Y= min(Y)
+#     if(const_Y <= 0):
+#         const_Y = abs(const_Y) + 1
+#     else:
+#         const_Y = 0
+
+#     const_X = min(X)
+#     if(const_X <= 0):
+#         const_X = abs(const_X) + 1
+#     else:
+#         const_X = 0
+
+#     linearized_X = [1/(const_X + xi) for xi in X]
+#     linearized_Y = [1/(const_Y + yi) for yi in Y]
+
+#     coeffs = calc_coeffs(linearized_X, linearized_Y)
+
+#     # Considerando a equação exponencial na forma y = a.k^(b.x) - c
+#     a = 1/(coeffs[0])
+#     b = coeffs[1]/coeffs[0]
+#     c = const_Y
+#     k = const_X
+
+#     return {'a' : a, 'b' : b, 'k' : k, 'c' : c}
+
+def calc_non_linear_coeffs_pow_x(X, Y, pot=1):
     const_Y= min(Y)
     if(const_Y <= 0):
         const_Y = abs(const_Y) + 1
@@ -50,8 +76,8 @@ def calc_non_linear_coeffs(X, Y):
     else:
         const_X = 0
 
-    linearized_X = [1/(const_X + xi) for xi in X]
-    linearized_Y = [1/(const_Y + yi) for yi in Y]
+    linearized_X = [1/((xi + const_X)**pot) for xi in X]
+    linearized_Y = [1/(yi - const_Y) for yi in Y]
 
     coeffs = calc_coeffs(linearized_X, linearized_Y)
 
@@ -61,12 +87,12 @@ def calc_non_linear_coeffs(X, Y):
     c = const_Y
     k = const_X
 
-    return {'a' : a, 'b' : b, 'k' : k, 'c' : c}
+    return {'a' : a, 'b' : b, 'k' : k, 'c' : c, 'pot' : pot}
     
 def build_non_linear(coeffs):
     def f(x):
         # y = (a.(x+k))/((x+k)+b) - c
-        return coeffs['a']*(x+coeffs['k'])/((x+coeffs['k']) + coeffs['b']) - coeffs['c']
+        return coeffs['a']*(x+coeffs['k'])**coeffs['pot']/((x+coeffs['k'])**coeffs['pot'] + coeffs['b']) - coeffs['c']
     return f
 
 if __name__ == '__main__':
@@ -76,7 +102,7 @@ if __name__ == '__main__':
     Y = [0.7456, 0.8493, 0.9207, 1.003, 1.0894, 1.1599, 1.2507, 1.3055, 1.3711, 1.3712, 1.3721, 1.4181, 1.4854, 1.5204, 1.5009, 1.5196, 1.574, 1.5769, 1.5932, 1.6087, 1.655, 1.6485, 1.6935, 1.6596, 1.6944, 1.7204, 1.7011, 1.7408, 1.7502, 1.7778, 1.7451, 1.7755, 1.7659, 1.7831, 1.8648, 1.7744, 1.8255, 1.752, 1.8105, 1.8518, 1.8329, 1.7588]
     values = [1.6152, 5.3589, 6.1014, 9.253, 9.4466]
 
-    coeffs = calc_non_linear_coeffs(X, Y)     
+    coeffs = calc_non_linear_coeffs_pow_x(X, Y)     
     f = build_non_linear(coeffs)
 
     t = np.linspace(min(X)-1, max(X)+1, 100)
@@ -94,11 +120,11 @@ if __name__ == '__main__':
     plt.close()
 
     # Exemplo 02:
-    X = [0.6677, 1.3409, 2.1838, 2.8401, 3.7912, 4.9754, 5.4732, 6.4723, 7.1895, 7.5852, 8.4085, 9.5665]
-    Y = [2.7073, 4.5889, 5.8075, 6.0639, 6.1689, 5.6897, 5.4297, 4.7768, 4.3444, 4.082, 3.5569, 2.8946]
-    values = [3.4593, 5.7745, 8.2495]
+    X = [1.6374, 2.0354, 3.6063, 4.5715, 5.0462, 5.7868, 6.6008, 8.3248, 9.2032, 9.8237, 10.596, 11.3267]
+    Y = [0.9977, 1.3019, 2.1175, 2.3617, 2.4739, 2.5782, 2.6436, 2.8851, 2.8856, 2.9274, 2.8937, 2.9073]
+    values = [4.1468, 6.1112, 8.9627]
 
-    coeffs = calc_non_linear_coeffs(X, Y)     
+    coeffs = calc_non_linear_coeffs_pow_x(X, Y, 2)     
     f = build_non_linear(coeffs)
 
     t = np.linspace(min(X)-1, max(X)+1, 100)

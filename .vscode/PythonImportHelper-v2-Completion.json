@@ -73,6 +73,14 @@
     },
     {
         "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "cmath",
         "description": "cmath",
         "isExtraImport": true,
@@ -782,7 +790,25 @@
         "kind": 2,
         "importPath": "Regressão Exponencial.Regressão Exponencial",
         "description": "Regressão Exponencial.Regressão Exponencial",
-        "peekOfCode": "def build_exp(coeffs):\n    def f(x):\n        return coeffs['a']*coeffs['k']**(coeffs['b']*x) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.0202, 0.0914, 0.1416, 0.1667, 0.2266, 0.3154, 0.335, 0.4089, 0.4679, 0.5171, 0.5905, 0.6387, 0.7131, 0.7527, 0.8102, 0.8425, 0.8921, 0.9473, 1.0221, 1.0796, 1.1121, 1.1826, 1.2454, 1.3067, 1.3656, 1.4166, 1.4982, 1.5326, 1.5562, 1.6396, 1.7149, 1.7656, 1.8161, 1.8879, 1.9055, 1.9838]\n    Y = [4.397, 5.1077, 6.5344, 7.5504, 4.8005, 5.7035, 5.1387, 5.9875, 6.831, 7.3067, 7.7048, 7.2332, 8.953, 9.0576, 10.0124, 9.405, 11.3052, 12.3553, 13.0991, 12.6969, 13.5873, 15.7953, 15.1653, 16.9946, 18.6564, 18.8157, 21.0904, 21.7505, 22.4597, 24.6642, 25.8545, 27.892, 30.2306, 34.2837, 33.172, 36.0403]\n    values = [0.2608, 0.3236, 0.5979, 1.9546, 1.96]\n    expoent = 2",
+        "peekOfCode": "def build_exp(coeffs):\n    def f(x):\n        return coeffs['a']*coeffs['k']**(coeffs['b']*x) - coeffs['c']\n    return f\ndef calc_exp_coeffs_inverse(X, Y, expoent):\n    const = min(X)\n    if(const <= 0):\n        const = abs(const) + 1\n    else:\n        const = 0",
+        "detail": "Regressão Exponencial.Regressão Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "calc_exp_coeffs_inverse",
+        "kind": 2,
+        "importPath": "Regressão Exponencial.Regressão Exponencial",
+        "description": "Regressão Exponencial.Regressão Exponencial",
+        "peekOfCode": "def calc_exp_coeffs_inverse(X, Y, expoent):\n    const = min(X)\n    if(const <= 0):\n        const = abs(const) + 1\n    else:\n        const = 0\n    linearized_X = [log(xi + const, expoent) for xi in X]\n    coeffs = calc_coeffs(linearized_X, Y)\n    b = coeffs[0]\n    a = coeffs[1]",
+        "detail": "Regressão Exponencial.Regressão Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "build_exp_inverse",
+        "kind": 2,
+        "importPath": "Regressão Exponencial.Regressão Exponencial",
+        "description": "Regressão Exponencial.Regressão Exponencial",
+        "peekOfCode": "def build_exp_inverse(coeffs):\n    def f(x):\n        return coeffs['b'] + coeffs['a']*log(x+coeffs['k'], coeffs['m'])\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.0202, 0.0914, 0.1416, 0.1667, 0.2266, 0.3154, 0.335, 0.4089, 0.4679, 0.5171, 0.5905, 0.6387, 0.7131, 0.7527, 0.8102, 0.8425, 0.8921, 0.9473, 1.0221, 1.0796, 1.1121, 1.1826, 1.2454, 1.3067, 1.3656, 1.4166, 1.4982, 1.5326, 1.5562, 1.6396, 1.7149, 1.7656, 1.8161, 1.8879, 1.9055, 1.9838]\n    Y = [4.397, 5.1077, 6.5344, 7.5504, 4.8005, 5.7035, 5.1387, 5.9875, 6.831, 7.3067, 7.7048, 7.2332, 8.953, 9.0576, 10.0124, 9.405, 11.3052, 12.3553, 13.0991, 12.6969, 13.5873, 15.7953, 15.1653, 16.9946, 18.6564, 18.8157, 21.0904, 21.7505, 22.4597, 24.6642, 25.8545, 27.892, 30.2306, 34.2837, 33.172, 36.0403]\n    values = [0.2608, 0.3236, 0.5979, 1.9546, 1.96]\n    expoent = 2",
         "detail": "Regressão Exponencial.Regressão Exponencial",
         "documentation": {}
     },
@@ -802,6 +828,42 @@
         "description": "Regressão Linear.Regressão Linear",
         "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [x for x in range(0, 100)]",
         "detail": "Regressão Linear.Regressão Linear",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "peekOfCode": "def calc_coeffs(X, Y, degree):\n    degree += 1\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(degree):\n        row = []\n        for j in range(degree):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)",
+        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "documentation": {}
+    },
+    {
+        "label": "build_non_linear",
+        "kind": 2,
+        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
+        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "documentation": {}
+    },
+    {
+        "label": "calc_non_linear_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "peekOfCode": "def calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
+        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "documentation": {}
+    },
+    {
+        "label": "build_non_linear",
+        "kind": 2,
+        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        return 1/(coeffs['b']**2) + (2*coeffs['a']/(coeffs['b']**2))*(1/sqrt(x)) + ((coeffs['a']/coeffs['b'])**2)*(1/(x+coeffs['k'])) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [1.2344, 1.8352, 2.8172, 3.3047, 4.3307, 4.6138, 5.7554, 6.7814, 7.3019, 8.22, 8.6513, 9.5628]\n    Y = [3.6058, 2.6568, 1.8888, 1.7045, 1.5097, 1.3403, 1.2485, 0.9653, 1.0778, 0.9625, 0.9523, 0.8582]\n    values = [1.5708, 4.7588, 8.9571]\n    coeffs = calc_non_linear_coeffs(X, Y)     ",
+        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
         "documentation": {}
     },
     {
@@ -872,16 +934,16 @@
         "kind": 2,
         "importPath": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "description": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\n# def calc_non_linear_coeffs(X, Y):\n#     const_Y= min(Y)\n#     if(const_Y <= 0):",
         "detail": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "documentation": {}
     },
     {
-        "label": "calc_non_linear_coeffs",
+        "label": "calc_non_linear_coeffs_pow_x",
         "kind": 2,
         "importPath": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "description": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
+        "peekOfCode": "def calc_non_linear_coeffs_pow_x(X, Y, pot=1):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
         "detail": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "documentation": {}
     },
@@ -890,7 +952,7 @@
         "kind": 2,
         "importPath": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "description": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = (a.(x+k))/((x+k)+b) - c\n        return coeffs['a']*(x+coeffs['k'])/((x+coeffs['k']) + coeffs['b']) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [1.3312, 1.7481, 2.1012, 2.5289, 3.0234, 3.3364, 3.9986, 4.3035, 4.9369, 5.4698, 5.693, 6.1623, 6.6749, 6.9567, 7.4203, 7.9901, 8.5101, 8.8578, 9.4592, 10.027, 10.0991, 10.7873, 11.1146, 11.5225, 12.0229, 12.4454, 12.9252, 13.4199, 13.9274, 14.4862, 15.0232, 15.3362, 15.4886, 16.0153, 16.401, 17.0037, 17.2934, 17.815, 18.6172, 19.0669, 19.1108, 19.5719]\n    Y = [0.7456, 0.8493, 0.9207, 1.003, 1.0894, 1.1599, 1.2507, 1.3055, 1.3711, 1.3712, 1.3721, 1.4181, 1.4854, 1.5204, 1.5009, 1.5196, 1.574, 1.5769, 1.5932, 1.6087, 1.655, 1.6485, 1.6935, 1.6596, 1.6944, 1.7204, 1.7011, 1.7408, 1.7502, 1.7778, 1.7451, 1.7755, 1.7659, 1.7831, 1.8648, 1.7744, 1.8255, 1.752, 1.8105, 1.8518, 1.8329, 1.7588]\n    values = [1.6152, 5.3589, 6.1014, 9.253, 9.4466]",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = (a.(x+k))/((x+k)+b) - c\n        return coeffs['a']*(x+coeffs['k'])**coeffs['pot']/((x+coeffs['k'])**coeffs['pot'] + coeffs['b']) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [1.3312, 1.7481, 2.1012, 2.5289, 3.0234, 3.3364, 3.9986, 4.3035, 4.9369, 5.4698, 5.693, 6.1623, 6.6749, 6.9567, 7.4203, 7.9901, 8.5101, 8.8578, 9.4592, 10.027, 10.0991, 10.7873, 11.1146, 11.5225, 12.0229, 12.4454, 12.9252, 13.4199, 13.9274, 14.4862, 15.0232, 15.3362, 15.4886, 16.0153, 16.401, 17.0037, 17.2934, 17.815, 18.6172, 19.0669, 19.1108, 19.5719]\n    Y = [0.7456, 0.8493, 0.9207, 1.003, 1.0894, 1.1599, 1.2507, 1.3055, 1.3711, 1.3712, 1.3721, 1.4181, 1.4854, 1.5204, 1.5009, 1.5196, 1.574, 1.5769, 1.5932, 1.6087, 1.655, 1.6485, 1.6935, 1.6596, 1.6944, 1.7204, 1.7011, 1.7408, 1.7502, 1.7778, 1.7451, 1.7755, 1.7659, 1.7831, 1.8648, 1.7744, 1.8255, 1.752, 1.8105, 1.8518, 1.8329, 1.7588]\n    values = [1.6152, 5.3589, 6.1014, 9.253, 9.4466]",
         "detail": "Regressão Potêncial de Expoente Negativo.Regressão Potêncial de Expoente Negativo",
         "documentation": {}
     },
@@ -908,7 +970,7 @@
         "kind": 2,
         "importPath": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "description": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
-        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y, base):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
         "detail": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "documentation": {}
     },
@@ -917,7 +979,7 @@
         "kind": 2,
         "importPath": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "description": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
-        "peekOfCode": "def calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
+        "peekOfCode": "def calc_non_linear_coeffs(X, Y, base):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = -1*(abs(const_Y) + 1)\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
         "detail": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "documentation": {}
     },
@@ -926,7 +988,7 @@
         "kind": 2,
         "importPath": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "description": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
-        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = (a.(x+k))/((x+k)+b) - c\n        return coeffs['a']*(x+coeffs['k'])/((x+coeffs['k']) + coeffs['b']) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [1.3312, 1.7481, 2.1012, 2.5289, 3.0234, 3.3364, 3.9986, 4.3035, 4.9369, 5.4698, 5.693, 6.1623, 6.6749, 6.9567, 7.4203, 7.9901, 8.5101, 8.8578, 9.4592, 10.027, 10.0991, 10.7873, 11.1146, 11.5225, 12.0229, 12.4454, 12.9252, 13.4199, 13.9274, 14.4862, 15.0232, 15.3362, 15.4886, 16.0153, 16.401, 17.0037, 17.2934, 17.815, 18.6172, 19.0669, 19.1108, 19.5719]\n    Y = [0.7456, 0.8493, 0.9207, 1.003, 1.0894, 1.1599, 1.2507, 1.3055, 1.3711, 1.3712, 1.3721, 1.4181, 1.4854, 1.5204, 1.5009, 1.5196, 1.574, 1.5769, 1.5932, 1.6087, 1.655, 1.6485, 1.6935, 1.6596, 1.6944, 1.7204, 1.7011, 1.7408, 1.7502, 1.7778, 1.7451, 1.7755, 1.7659, 1.7831, 1.8648, 1.7744, 1.8255, 1.752, 1.8105, 1.8518, 1.8329, 1.7588]\n    values = [1.6152, 5.3589, 6.1014, 9.253, 9.4466]",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = a.(x+k).[m^(b.x)]\n        return coeffs['a']*(x+coeffs['k'])*(coeffs['m'])**(coeffs['b']*x)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.133, 1.1277, 1.8076, 2.7734, 3.9582, 4.3861, 5.8489, 6.6472, 7.4997, 7.6521, 8.6918, 9.5471]\n    Y = [0.6338, 4.0986, 5.5934, 6.7477, 7.2089, 7.1567, 6.6551, 6.2211, 5.7261, 5.5752, 4.9273, 4.367]\n    values = [1.528, 8.3326, 8.454]",
         "detail": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "documentation": {}
     },

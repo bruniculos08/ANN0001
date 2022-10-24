@@ -54,10 +54,32 @@ def calc_exp_coeffs(X, Y, expoent):
     c = const
 
     return {'a' : a, 'b' : b, 'k' : k, 'c' : c}
-    
+
 def build_exp(coeffs):
     def f(x):
         return coeffs['a']*coeffs['k']**(coeffs['b']*x) - coeffs['c']
+    return f
+
+def calc_exp_coeffs_inverse(X, Y, expoent):
+    const = min(X)
+    if(const <= 0):
+        const = abs(const) + 1
+    else:
+        const = 0
+
+    linearized_X = [log(xi + const, expoent) for xi in X]
+    coeffs = calc_coeffs(linearized_X, Y)
+
+    b = coeffs[0]
+    a = coeffs[1]
+    m = expoent
+    k = const
+
+    return {'a' : a, 'b' : b, 'm' : m, 'k' : k}
+
+def build_exp_inverse(coeffs):
+    def f(x):
+        return coeffs['b'] + coeffs['a']*log(x+coeffs['k'], coeffs['m'])
     return f
 
 if __name__ == '__main__':
@@ -74,12 +96,32 @@ if __name__ == '__main__':
     t = np.linspace(min(X), max(X), 100)
     ft = [f(ti) for ti in t]
 
+    #print(f"function f aplied in the choosen values: {[f(value) for value in values]}")
+    #print(f"coeffs = {coeffs}")    
+
+    plt.plot(t, ft, color = "green")
+    plt.scatter(X, Y, label = "blue")
+    plt.savefig("Exemplo01.png")
+    plt.close()
+
+    # Exemplo 02:
+    X = [1.3496, 1.9498, 3.1147, 3.6402, 4.66, 5.3863, 5.5916, 6.5049, 7.6301, 8.0992, 8.5171, 9.6802]
+    Y = [5.4398, 6.3005, 7.3701, 7.692, 8.4826, 8.6278, 8.7415, 9.0914, 9.3739, 9.5324, 9.7319, 10.0403]
+    values = [2.847, 4.2114, 7.6937]
+    expoent = e
+
+    coeffs = calc_exp_coeffs_inverse(X, Y, expoent)     
+    f = build_exp_inverse(coeffs)
+
+    t = np.linspace(min(X), max(X), 100)
+    ft = [f(ti) for ti in t]
+
     print(f"function f aplied in the choosen values: {[f(value) for value in values]}")
     print(f"coeffs = {coeffs}")    
 
     plt.plot(t, ft, color = "green")
     plt.scatter(X, Y, label = "blue")
-    plt.savefig("Exemplo01.png")
+    plt.savefig("Exemplo02.png")
     plt.close()
 
     pass

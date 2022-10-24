@@ -1,0 +1,73 @@
+[
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Potêncial e Exponencial",
+        "description": "Regressão Potêncial e Exponencial",
+        "peekOfCode": "def calc_coeffs(X, Y):\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(2):\n        row = []\n        for j in range(2):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)\n            row.append(sum)",
+        "detail": "Regressão Potêncial e Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Regressão Potêncial e Exponencial",
+        "description": "Regressão Potêncial e Exponencial",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y, base):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
+        "detail": "Regressão Potêncial e Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "calc_non_linear_coeffs",
+        "kind": 2,
+        "importPath": "Regressão Potêncial e Exponencial",
+        "description": "Regressão Potêncial e Exponencial",
+        "peekOfCode": "def calc_non_linear_coeffs(X, Y, base):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = -1*(abs(const_Y) + 1)\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
+        "detail": "Regressão Potêncial e Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "build_non_linear",
+        "kind": 2,
+        "importPath": "Regressão Potêncial e Exponencial",
+        "description": "Regressão Potêncial e Exponencial",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = a.(x+k).[m^(b.x)]\n        return coeffs['a']*(x+coeffs['k'])*(coeffs['m'])**(coeffs['b']*x)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.133, 1.1277, 1.8076, 2.7734, 3.9582, 4.3861, 5.8489, 6.6472, 7.4997, 7.6521, 8.6918, 9.5471]\n    Y = [0.6338, 4.0986, 5.5934, 6.7477, 7.2089, 7.1567, 6.6551, 6.2211, 5.7261, 5.5752, 4.9273, 4.367]\n    values = [1.528, 8.3326, 8.454]",
+        "detail": "Regressão Potêncial e Exponencial",
+        "documentation": {}
+    }
+]
