@@ -133,8 +133,6 @@ if __name__ == '__main__':
 # 
 #       log(y+c) = log(a) + log(x+k) + b.log(m^x)
 #
-#       log(y+c) = log(a) + b.[log((x+k))/b + log(m^x)]
-#
 # Note portanto que somando c à todos os valores da lista de coordenadas Y e aplicando o logaritmos nos elementos da lista resultante...
 # ... teremos uma lista na qual poderemos aplicar uma regressão linear, porém, qual valor de c devemos utilizar?
 # - Visto que nos valores da lista de coordenadas será aplicado logaritimo de base k e o argumento de um logaritimo não pode ser negativo...
@@ -142,10 +140,43 @@ if __name__ == '__main__':
 #
 #       (i) c = 0, se min(coordenadas y) > 0;
 #
-#       (i) c = min(coordenadas y) + h, onde h > 0, se min(coordenadas y) <= 0;
+#       (ii) c = min(coordenadas y) + h, onde h > 0, se min(coordenadas y) <= 0;
 #
-# E assim, sendo v = log(y+c) e u = log((x+k))/b + log(m^x), a função f dada pela regressão deve ser do tipo:
+# O mesmo ocorre para a lista de coordenadas X; devemos somar k a tais coordenas e então aplicar o logaritmo nos elementos da lista resultante...
+# ... para termo uma lista sobre a qual podemos aplicar uma regrassão linear junto a nova lista de coordenadas Y. Portanto devido a...
+# ... aplicação do logaritmo devemos selecionar k tal que:
+#
+#       (i) k = 0, se min(coordenadas x) > 0;
+#
+#       (ii) k = min(coordenadas x) + p, onde p > 0, se min(coordenadas x) <= 0;
+#
+# E assim, sendo v = log(y+c) e u = log(x+k) + b.log(m^x), a função f dada pela regressão deve ser do tipo:
 #
 #       f(u) = log(a) + b.u
 #
-# Assim para realizar tal linearização devemos aplicar 
+# Assim para realizar tal linearização devemos aplicar log(y+c) em cada elemento da lista de coordenadas Y e aplicar u = log((x+k))/b + log(m^x) em...
+# ... cada um dos elementos da lista de coordenadas X ; a equação que queremos:
+#
+#       f(u) = a0 + a1.u 
+#
+#       log(y+c) = a0 + a1.u
+#
+# Substituindo u par obter y teremos:
+#
+#       log(y+c) = a0 + a1.[log(x+k) + b.log(m^x)]
+#
+# Aplicando ambos os lados como expoentes de m teremos:
+#
+#       m^[log(y+c)] = m^{a0 + a1.[log(x+k) + b.log(m^x)]}
+#
+#       y + c = (m^a0).m^{a1.[log(x+k) + b.log(m^x)]}
+#
+#       y + c = (m^a0).m^[log((x+k)^a1) + b.log(m^(x.a1))]
+#
+#       y + c = (m^a0).m^[log((x+k)^a1) + b.log(m^(x.a1))]
+#
+#       y + c = (m^a0).m^[log((x+k)^a1)].m^[b.log(m^(x.a1))]
+#
+#       y + c = (m^a0).[(x+k)^a1].(m^b).m^(x.a1)
+#
+#       y + c = (m^a0).[(x+k)^a1].(m^b).m^(x.a1)
