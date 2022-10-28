@@ -40,6 +40,8 @@ if __name__ == '__main__':
     # Exemplo 01:
     X = [x for x in range(0, 100)]
     Y = [random.random()*xi for xi in X]
+    values = []
+
     coeffs = calc_coeffs(X, Y)
     f = build_poly(coeffs)
 
@@ -51,12 +53,34 @@ if __name__ == '__main__':
     plt.savefig("Exemplo01.png")
     plt.close()
 
+    # print("coeffs: ")
+    # for i, coeff in enumerate(coeffs):
+    #     print(f"a{i} = {coeff}")
+    # print("values: ")
+    # for value in values:
+    #     print(f"f({value}) = {f(value)}")
+
     # Exemplo 02:
-    X = [0.0472, 0.588, 0.8306, 0.9416, 1.3687, 1.6071, 2.1113, 2.3487, 2.6205, 2.8916, 3.3605, 3.5383, 4.0572, 4.0883, 4.6103, 4.8969, 5.3019, 5.5072, 5.7727, 5.9827, 6.4492, 6.6631, 6.9284, 7.4766, 7.5325, 7.9474, 8.3881, 8.4975, 8.9937, 9.1914, 9.59, 9.8857]
-    Y = [1.6419, 2.8969, 3.8245, 4.2689, 5.4957, 6.0326, 7.4508, 8.565, 8.9236, 9.6319, 11.0012, 11.4891, 13.0284, 13.0854, 14.4487, 15.273, 16.4422, 17.0173, 17.74, 17.4706, 19.6981, 20.0275, 21.0917, 22.5734, 22.8609, 23.2017, 25.3521, 25.6713, 27.3512, 27.6621, 28.707, 29.5817]
-    values = [1.4212, 1.6509, 3.8148, 7.0385, 8.1816]
+    X = [0.1502, 0.1874, 0.3551, 0.5194, 0.7072, 0.922, 1.1303, 1.1872, 1.4117, 1.6165, 1.7129, 1.8782]
+    Y = [5.6131, 5.4874, 7.2501, 10.9598, 13.2359, 20.2362, 29.286, 34.0887, 47.7891, 68.2312, 80.6315, 107.1187]
+
+    
+    log_Y = [log(yi, e) for yi in Y]
+    
+
+    values = [0.4917, 0.9672, 1.16]
+
     coeffs = calc_coeffs(X, Y)
-    f = build_poly(coeffs)
+    #f = build_poly(coeffs)
+
+    # a0 = log(a, e) <=> e^a0 = a 
+    a = e**coeffs[0]
+    b = coeffs[1]
+
+    def f(x): 
+        return a*e**(b*x)
+
+    print("a = {a}, b = {b}")
 
     t = np.linspace(0, max(X), 100)
     ft = [f(ti) for ti in t]
@@ -66,12 +90,6 @@ if __name__ == '__main__':
     plt.savefig("Exemplo02.png")
     plt.close()
 
-    print("coeffs: ")
-    for i, coeff in enumerate(coeffs):
-        print(f"a{i} = {coeff}")
-    print("values: ")
-    for value in values:
-        print(f"f({value}) = {f(value)}")
     pass
 
 # Para uma determinada lista de pontos:

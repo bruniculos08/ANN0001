@@ -1,0 +1,46 @@
+[
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "diff_fin",
+        "kind": 2,
+        "importPath": "Diferenças Finitas",
+        "description": "Diferenças Finitas",
+        "peekOfCode": "def diff_fin(X, x0, k):\n    n = len(X)\n    A = []\n    B = []\n    for i in range(n):\n        row = []\n        for xi in X:\n            row.append(xi**i)\n        A.append(row)\n        if i < k:",
+        "detail": "Diferenças Finitas",
+        "documentation": {}
+    },
+    {
+        "label": "get_aprox",
+        "kind": 2,
+        "importPath": "Diferenças Finitas",
+        "description": "Diferenças Finitas",
+        "peekOfCode": "def get_aprox(X, coeffs, f):\n    sum = 0\n    for xi, ci in zip(X, coeffs):\n        sum += ci*f(xi)\n    return sum\ndef build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)",
+        "detail": "Diferenças Finitas",
+        "documentation": {}
+    },
+    {
+        "label": "build_taylor",
+        "kind": 2,
+        "importPath": "Diferenças Finitas",
+        "description": "Diferenças Finitas",
+        "peekOfCode": "def build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)\n            poly += get_aprox(X, coeffs, f) * (x - x0)**(i+1) / factorial(i+1)\n        return poly\n    return p\nif __name__ == '__main__':\n    # Exemplo 01:",
+        "detail": "Diferenças Finitas",
+        "documentation": {}
+    }
+]

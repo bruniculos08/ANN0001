@@ -81,6 +81,14 @@
     },
     {
         "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "cmath",
         "description": "cmath",
         "isExtraImport": true,
@@ -759,6 +767,33 @@
         "documentation": {}
     },
     {
+        "label": "diff_fin",
+        "kind": 2,
+        "importPath": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "description": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "peekOfCode": "def diff_fin(X, x0, k):\n    n = len(X)\n    A = []\n    B = []\n    for i in range(n):\n        row = []\n        for xi in X:\n            row.append(xi**i)\n        A.append(row)\n        if i < k:",
+        "detail": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "documentation": {}
+    },
+    {
+        "label": "get_aprox",
+        "kind": 2,
+        "importPath": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "description": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "peekOfCode": "def get_aprox(X, coeffs, f):\n    sum = 0\n    for xi, ci in zip(X, coeffs):\n        sum += ci*f(xi)\n    return sum\ndef build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)",
+        "detail": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "documentation": {}
+    },
+    {
+        "label": "build_taylor",
+        "kind": 2,
+        "importPath": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "description": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "peekOfCode": "def build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)\n            poly += get_aprox(X, coeffs, f) * (x - x0)**(i+1) / factorial(i+1)\n        return poly\n    return p\nif __name__ == '__main__':\n    # Exemplo 01:",
+        "detail": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "documentation": {}
+    },
+    {
         "label": "calc_coeffs",
         "kind": 2,
         "importPath": "Regressão Exponencial.Regressão Exponencial",
@@ -833,37 +868,28 @@
     {
         "label": "calc_coeffs",
         "kind": 2,
-        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def calc_coeffs(X, Y, degree):\n    degree += 1\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(degree):\n        row = []\n        for j in range(degree):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)",
-        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "documentation": {}
-    },
-    {
-        "label": "build_non_linear",
-        "kind": 2,
-        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def build_non_linear(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):",
-        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "importPath": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
+        "description": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
+        "peekOfCode": "def calc_coeffs(X, Y, degree = 1):\n    degree += 1\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(degree):\n        row = []\n        for j in range(degree):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)",
+        "detail": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
         "documentation": {}
     },
     {
         "label": "calc_non_linear_coeffs",
         "kind": 2,
-        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "importPath": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
+        "description": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
         "peekOfCode": "def calc_non_linear_coeffs(X, Y):\n    const_Y= min(Y)\n    if(const_Y <= 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    const_X = min(X)\n    if(const_X <= 0):\n        const_X = abs(const_X) + 1\n    else:",
-        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "detail": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
         "documentation": {}
     },
     {
         "label": "build_non_linear",
         "kind": 2,
-        "importPath": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "description": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
-        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        return 1/(coeffs['b']**2) + (2*coeffs['a']/(coeffs['b']**2))*(1/sqrt(x)) + ((coeffs['a']/coeffs['b'])**2)*(1/(x+coeffs['k'])) - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [1.2344, 1.8352, 2.8172, 3.3047, 4.3307, 4.6138, 5.7554, 6.7814, 7.3019, 8.22, 8.6513, 9.5628]\n    Y = [3.6058, 2.6568, 1.8888, 1.7045, 1.5097, 1.3403, 1.2485, 0.9653, 1.0778, 0.9625, 0.9523, 0.8582]\n    values = [1.5708, 4.7588, 8.9571]\n    coeffs = calc_non_linear_coeffs(X, Y)     ",
-        "detail": "Regressão Não Linear Aleatória.Regressão Potêncial de Expoente Negativo",
+        "importPath": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
+        "description": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        return ((coeffs['a'] + sqrt(x+coeffs['k']))/(coeffs['b']*sqrt(x+coeffs['k'])))**2 - coeffs['c']\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.7708, 1.6674, 2.3526, 2.9878, 4.1301, 4.6131, 5.6179, 6.3146, 7.0627, 8.0253, 8.8753, 9.421]\n    Y = [6.6604, 3.6621, 2.7577, 2.3334, 1.8311, 1.6729, 1.4886, 1.3931, 1.2011, 1.2012, 1.206, 1.0941]\n    values = [1.1859, 4.6267, 5.8824]\n    coeffs = calc_non_linear_coeffs(X, Y)     ",
+        "detail": "Regressão Não Linear Aleatória.Regressão Não Linear Aleatória",
         "documentation": {}
     },
     {
