@@ -34,8 +34,9 @@
 #
 # e que o erro nessa aproximação é O(h³). Repetindo esse procedimento k vezes obtemos:
 #
-#   Fk+1(h) = (2^k).(Fk(h/2) - Fk(h))/[(2^k) - 1]
+#   Fk+1(h) = (2^k).(Fk(h/2) - Fk(h))/[(2^k) - 1] :. k > 0 e k ∈ N
 #
+# Essa fórmula pode ser usada para aproximar M e o erro nessa aproximação é de O(h^k+1).
 
 from math import *
 import numpy as np
