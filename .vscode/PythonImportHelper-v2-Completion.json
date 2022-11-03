@@ -89,6 +89,23 @@
     },
     {
         "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "*",
         "importPath": "cmath",
         "description": "cmath",
         "isExtraImport": true,
@@ -189,15 +206,6 @@
         "description": "cProfile",
         "isExtraImport": true,
         "detail": "cProfile",
-        "documentation": {}
-    },
-    {
-        "label": "numpy",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -305,6 +313,15 @@
         "description": "Método da Secante.secante",
         "peekOfCode": "x1 = 2.05516\nfor n in vetor:\n    secante(x1, x0, n)",
         "detail": "Método da Secante.secante",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Método de Extrapolação de Richardson.Richardson",
+        "description": "Método de Extrapolação de Richardson.Richardson",
+        "peekOfCode": "def richardson():\n    return\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [7.1146, 7.1457, 7.3827]\n    x0 = 7.223\n    k = 2\n    def f(x): \n        return exp(cos(x)**2) + exp(-x**2) + log(x)\n    string = \"'\"*k",
+        "detail": "Método de Extrapolação de Richardson.Richardson",
         "documentation": {}
     },
     {

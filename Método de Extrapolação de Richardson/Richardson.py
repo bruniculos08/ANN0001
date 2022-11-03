@@ -34,27 +34,64 @@
 #
 # e que o erro nessa aproximação é O(h³). Repetindo esse procedimento k vezes obtemos:
 #
-#   Fk+1(h) = (2^k).(Fk(h/2) - Fk(h))/[(2^k) - 1] :. k > 0 e k ∈ N
+#   (viii) Fk+1(h) = (2^k).(Fk(h/2) - Fk(h))/[(2^k) - 1] :. k > 0 e k ∈ N
 #
 # Essa fórmula pode ser usada para aproximar M e o erro nessa aproximação é de O(h^k+1).
+#
+# A expressão (viii) é a expressão que caracteriza o método de Extrapolação de Richardson.
+#
+# Para não ter que se utilizar o método de maneira recursiva (o que é computacionalmente...
+# ... custoso) podemos utilizar uma tabela:
 
 from math import *
 import numpy as np
 
-def richardson():
-    return
+def richardson(f, x0, h, k):
+    table = []
+    for i in range(k):
+        item = F1(f, x0, h/(2**i))
+        table.append(item)
 
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0] 
+
+def F1(f, x0, h):
+    return (f(x0+h) - f(x0))/h
+
+def richardson_alternative(approximations, k):
+    table = []
+    for i in range(k):
+        item = approximations[i]
+        table.append(item)
+
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0]
 
 if __name__ == '__main__':
 
     # Exemplo 01:
-    X = [7.1146, 7.1457, 7.3827]
-    x0 = 7.223
-    k = 2
+    x0 = 1.43264
+    h = 0.36328
+    orders = [4, 5, 6, 7, 8]
     def f(x): 
-        return exp(cos(x)**2) + exp(-x**2) + log(x)
+        return x**(x**(-x))   
     
-    string = "'"*k
-    #print(f"f{string}({x0}) ~ {get_aprox(X, coeffs, f)}")
-
-    pass
+    for k in orders:
+        print(f"F{k}(h) = {richardson(f, x0, h, k)}")
+    
+    # Exemplo 02:
+    x0 = 2.86789
+    approximations = [-0.04249709218965991, -0.015945425841985106, -0.002944796743266309, 0.0034766767766925, 0.006666521347625576, 0.008256077439526166]
+    k = 6
+    def f(x): 
+        return (x**2)*(e**(-x))*cos(x) + 1 
+    
+    print(f"F{k}(h) = {richardson_alternative(approximations, k)}") 

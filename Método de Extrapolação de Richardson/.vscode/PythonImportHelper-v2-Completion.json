@@ -1,0 +1,46 @@
+[
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Richardson",
+        "description": "Richardson",
+        "peekOfCode": "def richardson(f, x0, h, k):\n    table = []\n    for i in range(k):\n        item = F1(f, x0, h/(2**i))\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)\n            table[j] = new_item\n    return table[0] ",
+        "detail": "Richardson",
+        "documentation": {}
+    },
+    {
+        "label": "F1",
+        "kind": 2,
+        "importPath": "Richardson",
+        "description": "Richardson",
+        "peekOfCode": "def F1(f, x0, h):\n    return (f(x0+h) - f(x0))/h\ndef richardson_alternative(approximations, k):\n    table = []\n    for i in range(k):\n        item = approximations[i]\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)",
+        "detail": "Richardson",
+        "documentation": {}
+    },
+    {
+        "label": "richardson_alternative",
+        "kind": 2,
+        "importPath": "Richardson",
+        "description": "Richardson",
+        "peekOfCode": "def richardson_alternative(approximations, k):\n    table = []\n    for i in range(k):\n        item = approximations[i]\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)\n            table[j] = new_item\n    return table[0]",
+        "detail": "Richardson",
+        "documentation": {}
+    }
+]
