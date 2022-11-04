@@ -757,6 +757,24 @@
         "documentation": {}
     },
     {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Método de Simpson.Simpson",
+        "description": "Método de Simpson.Simpson",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Método de Simpson.Simpson",
+        "documentation": {}
+    },
+    {
+        "label": "simpson_alternative",
+        "kind": 2,
+        "importPath": "Método de Simpson.Simpson",
+        "description": "Método de Simpson.Simpson",
+        "peekOfCode": "def simpson_alternative(X, Y):\n    n = len(X)\n    sum = 0\n    for k in range(2, n, 2):\n        sum += (X[k-1] - X[k-2])/3 * (Y[k-2] + 4*Y[k-1] + Y[k])\n    return sum\nif __name__ == '__main__':\n    from math import *\n    # Exemplo 01:\n    a = -1.078",
+        "detail": "Método de Simpson.Simpson",
+        "documentation": {}
+    },
+    {
         "label": "g",
         "kind": 2,
         "importPath": "Método do Ponto Fixo.pontoFixo",
