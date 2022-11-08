@@ -17,8 +17,7 @@
 #
 #   f'k(x0) ~ c1.f(x1) + c2.f(x2) + ... + cn.f(xn)
 #   
-# tal que essa expressão seja exata em polinômios de grau menor igual à n-1
-
+# tal que essa expressão seja exata em polinômios de grau menor igual à n-1. Em particular essa fórmula será exata
 
 from math import *
 import numpy as np

@@ -92,8 +92,10 @@ if __name__ == '__main__':
 
     # (3) Usando o método de Romberg:
     a, b = 0, 12
-    # h = (b-a)/n -> n = 10
+    # h = (b-a)/n -> n = 10 (note que n é o número de subintervalos no método dos...
+    # trapézios usado no método de Romberg)
     n = 10 
+    # k é o expoente da função de erro O(h^(2*k))
     k = 8
     print(f"Método de Romberg: Resultado = {richardson(f, a, b, n, k)}")
 

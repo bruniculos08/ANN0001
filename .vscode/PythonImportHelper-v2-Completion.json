@@ -152,6 +152,22 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -3712,6 +3728,96 @@
         "description": "Trabalho 01.Q5",
         "peekOfCode": "vetor = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195]\nfor iterations in vetor:\n    newton(f, df, c, iterations)",
         "detail": "Trabalho 01.Q5",
+        "documentation": {}
+    },
+    {
+        "label": "calc_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 02.CurveFitMethods01",
+        "description": "Trabalho 02.CurveFitMethods01",
+        "peekOfCode": "def calc_coeffs(X, Y, degree = 1):\n    degree += 1\n    # (1) Cria a matriz do lado esquerdo da equação:\n    X_matrix = []\n    for i in range(degree):\n        row = []\n        for j in range(degree):\n            sum = 0\n            for xi in X: \n                sum += xi ** (i + j)",
+        "detail": "Trabalho 02.CurveFitMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Trabalho 02.CurveFitMethods01",
+        "description": "Trabalho 02.CurveFitMethods01",
+        "peekOfCode": "def build_poly(coeffs):\n    def func(x):\n        result = 0\n        for i, ci in enumerate(coeffs):\n            result += ci*(x**i)\n        return result\n    return func\ndef calc_non_linear_coeffs(X, Y):\n    # Traslação do gráfico sobre o eixo Y:\n    const_Y = min(Y)",
+        "detail": "Trabalho 02.CurveFitMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "calc_non_linear_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 02.CurveFitMethods01",
+        "description": "Trabalho 02.CurveFitMethods01",
+        "peekOfCode": "def calc_non_linear_coeffs(X, Y):\n    # Traslação do gráfico sobre o eixo Y:\n    const_Y = min(Y)\n    if(const_Y < 0):\n        const_Y = abs(const_Y) + 1\n    else:\n        const_Y = 0\n    # Traslação do gráfico sobre o eixo X:\n    const_X = min(X)\n    if(const_X < 0):",
+        "detail": "Trabalho 02.CurveFitMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "build_non_linear",
+        "kind": 2,
+        "importPath": "Trabalho 02.CurveFitMethods01",
+        "description": "Trabalho 02.CurveFitMethods01",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def func(x):\n        return ((coeffs['a']/coeffs['b'])*(1/sqrt(x + coeffs['k'])) +  1/coeffs['b'])**2 - coeffs['c']\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.7708, 1.6674, 2.3526, 2.9878, 4.1301, 4.6131, 5.6179, 6.3146, 7.0627, 8.0253, 8.8753, 9.421]\n    Y = [6.6604, 3.6621, 2.7577, 2.3334, 1.8311, 1.6729, 1.4886, 1.3931, 1.2011, 1.2012, 1.206, 1.0941]\n    values = [1.1859, 4.6267, 5.8824]\n    coeffs = calc_non_linear_coeffs(X, Y)",
+        "detail": "Trabalho 02.CurveFitMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "diff_fin",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def diff_fin(X, x0, k):\n    n = len(X)\n    A = []\n    B = []\n    for i in range(n):\n        row = []\n        for xi in X:\n            row.append(xi**i)\n        A.append(row)\n        if i < k:",
+        "detail": "Trabalho 02.DeritvativesMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "get_aprox",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def get_aprox(X, coeffs, f):\n    sum = 0\n    for xi, ci in zip(X, coeffs):\n        sum += ci*f(xi)\n    return sum\n# Contrução da fórmula de Taylor para n:\ndef build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):",
+        "detail": "Trabalho 02.DeritvativesMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "build_taylor",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)\n            poly += get_aprox(X, coeffs, f) * (x - x0)**(i+1) / factorial(i+1)\n        return poly\n    return p\n# Método de extrapolação de Richardson:\ndef richardson(f, x0, h, k):",
+        "detail": "Trabalho 02.DeritvativesMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def richardson(f, x0, h, k):\n    table = []\n    for i in range(k):\n        item = F1(f, x0, h/(2**i))\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)\n            table[j] = new_item\n    return table[0]",
+        "detail": "Trabalho 02.DeritvativesMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "F1",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def F1(f, x0, h):\n    return (f(x0+h) - f(x0))/h\n# Método de extrapolação de Richardson usando:\ndef richardson_alternative(approximations, k):\n    # Note que aproximantion[i] é a função F1 calculada na linha i do método, ou seja, com F1(h/2**i):\n    table = []\n    for i in range(k):\n        item = approximations[i]\n        table.append(item)\n    for i in range(k):",
+        "detail": "Trabalho 02.DeritvativesMethods01",
+        "documentation": {}
+    },
+    {
+        "label": "richardson_alternative",
+        "kind": 2,
+        "importPath": "Trabalho 02.DeritvativesMethods01",
+        "description": "Trabalho 02.DeritvativesMethods01",
+        "peekOfCode": "def richardson_alternative(approximations, k):\n    # Note que aproximantion[i] é a função F1 calculada na linha i do método, ou seja, com F1(h/2**i):\n    table = []\n    for i in range(k):\n        item = approximations[i]\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((2**(i+1))*table[j+1] - table[j])/(2**(i+1) - 1)\n            table[j] = new_item",
+        "detail": "Trabalho 02.DeritvativesMethods01",
         "documentation": {}
     },
     {
