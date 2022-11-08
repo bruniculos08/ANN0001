@@ -1,7 +1,7 @@
 # Métodos de ajuste de curvas para regressão linear e linearização:
 import matplotlib.pyplot as plt
 import numpy as np
-import math as math
+from math import *
 
 # Obs.: se nenhum grau for passado à função, o grau padrão será 1, ou seja, se terá uma reta e portanto...
 # ... uma regressão linear.
@@ -54,16 +54,20 @@ def calc_non_linear_coeffs(X, Y):
     else:
         const_X = 0
 
-    linearized_X = [xi for xi in X]    
-    linearized_Y = [yi for yi in Y]
+    linearized_X = [1/sqrt(xi + const_X) for xi in X]    
+    linearized_Y = [sqrt(yi + const_Y) for yi in Y]
     coeffs = calc_coeffs(linearized_X, linearized_Y)
 
-    return coeffs
+    a = coeffs[1]/coeffs[0]
+    b = 1/coeffs[0]
+    c = const_Y
+    k = const_X
+    return {'a' : a, 'b' : b, 'k' : k, 'c' : c}
     
 # Função que constrói a função de regressão considerando que esta não será um polinômio:
 def build_non_linear(coeffs):
     def func(x):
-        return x
+        return ((coeffs['a']/coeffs['b'])*(1/sqrt(x + coeffs['k'])) +  1/coeffs['b'])**2 - coeffs['c']
     return func
 
 if __name__ == '__main__':
@@ -76,6 +80,14 @@ if __name__ == '__main__':
     coeffs = calc_non_linear_coeffs(X, Y)
     f = build_non_linear(coeffs)
 
+    print(coeffs)
 
+    t = np.linspace(min(X), max(X)+1, 100)
+    ft = [f(ti) for ti in t]
+
+    plt.plot(t, ft, color = "green")
+    plt.scatter(X, Y, label = "blue")
+    plt.savefig("Exemplo01 - CurveFitMethods.png")
+    plt.close()
 
     pass

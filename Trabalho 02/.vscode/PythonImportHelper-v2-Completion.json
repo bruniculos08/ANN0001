@@ -18,11 +18,10 @@
         "documentation": {}
     },
     {
-        "label": "math",
-        "kind": 6,
-        "isExtraImport": true,
+        "label": "*",
         "importPath": "math",
         "description": "math",
+        "isExtraImport": true,
         "detail": "math",
         "documentation": {}
     },
@@ -138,7 +137,7 @@
         "kind": 2,
         "importPath": "CurveFitMethods01",
         "description": "CurveFitMethods01",
-        "peekOfCode": "def build_non_linear(coeffs):\n    def func(x):\n        return x\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.7708, 1.6674, 2.3526, 2.9878, 4.1301, 4.6131, 5.6179, 6.3146, 7.0627, 8.0253, 8.8753, 9.421]\n    Y = [6.6604, 3.6621, 2.7577, 2.3334, 1.8311, 1.6729, 1.4886, 1.3931, 1.2011, 1.2012, 1.206, 1.0941]\n    values = [1.1859, 4.6267, 5.8824]\n    coeffs = calc_non_linear_coeffs(X, Y)",
+        "peekOfCode": "def build_non_linear(coeffs):\n    def func(x):\n        return ((coeffs['a']/coeffs['b'])*(1/sqrt(x + coeffs['k'])) +  1/coeffs['b'])**2 - coeffs['c']\n    return func\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.7708, 1.6674, 2.3526, 2.9878, 4.1301, 4.6131, 5.6179, 6.3146, 7.0627, 8.0253, 8.8753, 9.421]\n    Y = [6.6604, 3.6621, 2.7577, 2.3334, 1.8311, 1.6729, 1.4886, 1.3931, 1.2011, 1.2012, 1.206, 1.0941]\n    values = [1.1859, 4.6267, 5.8824]\n    coeffs = calc_non_linear_coeffs(X, Y)",
         "detail": "CurveFitMethods01",
         "documentation": {}
     },
