@@ -809,7 +809,7 @@
         "kind": 2,
         "importPath": "Método de Euler para ED's.EulerFirstOrder",
         "description": "Método de Euler para ED's.EulerFirstOrder",
-        "peekOfCode": "def euler(f, x0, y0, h, n):\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        x = x0 + k*h\n        y_k = Y[k-1] + f(X[k-1], Y[k-1])*h\n        X.append(x)\n        Y.append(y_k)\n    return X, Y\nif __name__ == '__main__':",
+        "peekOfCode": "def euler(f, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        # Calculando x_k+1:\n        x = x0 + k*h\n        # Calculando y_k:\n        y_k = Y[k-1] + f(X[k-1], Y[k-1])*h\n        X.append(x)",
         "detail": "Método de Euler para ED's.EulerFirstOrder",
         "documentation": {}
     },
