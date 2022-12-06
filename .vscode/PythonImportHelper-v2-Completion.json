@@ -176,6 +176,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -1270,6 +1278,15 @@
         "description": "Método de Romberg.Romberg",
         "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\nif __name__ == '__main__':\n    from math import *",
         "detail": "Método de Romberg.Romberg",
+        "documentation": {}
+    },
+    {
+        "label": "rungeKutta",
+        "kind": 2,
+        "importPath": "Método de Runge-Kutta.RungeKutta",
+        "description": "Método de Runge-Kutta.RungeKutta",
+        "peekOfCode": "def rungeKutta(df, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        m1 = df(x0, y0)\n        m2 = df(x0 + k*h/2, y0 + m1*k*h/2)\n        m3 = df(x0 + k*h/2, y0 + m2*k*h/2)\n        m4 = df(x0 + k*h, y0 + m3*k*h)\n        y0 = y0 + (1/6)*(m1 + 2*m2 + 2*m3 + m4)*h  ",
+        "detail": "Método de Runge-Kutta.RungeKutta",
         "documentation": {}
     },
     {
