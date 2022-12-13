@@ -35,19 +35,19 @@ def build_aprox_func(func_list, coeffs):
 if __name__ == '__main__':
     
     # Exemplo 01:
-    func_list = [lambda x : x**2 + 1, lambda x : e**x, lambda x : 1/(x**2 + 1), lambda x: 1/x]
+    func_list = [lambda x: sin(x), lambda x: cos(x), lambda x: e**x, lambda x: x]
 
     def f(x):
-        return log(x, e) + cos(x)
+        return log(x, e) + cos(x) + x
 
     a = 1
-    b = 8
-    n = 100
+    b = 6
+    n = 256
 
     coeffs = aprox_coeffs(func_list, f, a, b, n)
     g = build_aprox_func(func_list, coeffs)
 
-    t = np.linspace(1, 8, 200)
+    t = np.linspace(a, b, 200)
     ft = [f(ti) for ti in t]
     gt = [g(ti) for ti in t]
 
