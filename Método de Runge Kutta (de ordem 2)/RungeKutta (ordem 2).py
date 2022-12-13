@@ -29,25 +29,32 @@ def rungeKutta(df, x0, y0, h, n, b = 1):
 if __name__ == '__main__':
     
 
-    # Exemplo 01 para y'(x) = e**x:
+    # Exemplo 01:
 
     # Equação obtida para a derivada primeira de y na equação diferencial:
+    a = 9.94668
+    
     def df(x, y):
-        return e**x
+        return -y/sqrt(a**2 - y**2)
     
     # Restrição de valor inicial: 
-    x0, y0 = 0, 1
+    x0 = 1.02787
+    y0 = 4.8879
     # Número de iterações(passos):
-    n = 700
+    n = 101
     # Tamanho de cada passo:
-    h = 0.1
+    h = 0.06334
+    # Peso:
+    b = 0.96169
         
-    X, Y = rungeKutta(df, x0, y0, h, n)
+    X, Y = rungeKutta(df, x0, y0, h, n, b)
     # t = np.linspace(x0, n*h, 200)
     # ft = [f(ti) for ti in t]
 
+    print(Y)
+
     # plt.plot(t, ft, color = "green")
-    plt.scatter(X, Y, label = "blue")
+    # plt.scatter(X, Y, label = "blue")
     # plt.savefig("Exemplo01.png")
     # plt.close()
 
