@@ -344,6 +344,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -1951,6 +1959,15 @@
         "description": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
         "peekOfCode": "def build_non_linear(coeffs):\n    def f(x):\n        # y = a.(x+k).[m^(b.x)]\n        return coeffs['a']*(x+coeffs['k'])*(coeffs['m'])**(coeffs['b']*x)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    X = [0.133, 1.1277, 1.8076, 2.7734, 3.9582, 4.3861, 5.8489, 6.6472, 7.4997, 7.6521, 8.6918, 9.5471]\n    Y = [0.6338, 4.0986, 5.5934, 6.7477, 7.2089, 7.1567, 6.6551, 6.2211, 5.7261, 5.5752, 4.9273, 4.367]\n    values = [1.528, 8.3326, 8.454]",
         "detail": "Regressão Potêncial e Exponencial.Regressão Potêncial e Exponencial",
+        "documentation": {}
+    },
+    {
+        "label": "fourier_coeffs",
+        "kind": 2,
+        "importPath": "Séries de Fourier.Fourier",
+        "description": "Séries de Fourier.Fourier",
+        "peekOfCode": "def fourier_coeffs(f, n):\n    a, b = -pi, pi\nif __name__ == \"__main__\":\n    pass",
+        "detail": "Séries de Fourier.Fourier",
         "documentation": {}
     },
     {

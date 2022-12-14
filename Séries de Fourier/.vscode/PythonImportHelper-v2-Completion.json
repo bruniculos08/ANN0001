@@ -1,0 +1,55 @@
+[
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Fourier",
+        "description": "Fourier",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"",
+        "detail": "Fourier",
+        "documentation": {}
+    },
+    {
+        "label": "fourier_coeffs",
+        "kind": 2,
+        "importPath": "Fourier",
+        "description": "Fourier",
+        "peekOfCode": "def fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    a = -pi\n    b = pi\n    A = []\n    B = []\n    c = (1/(2*pi))*trapeze_sum(f, a, b, num_intervals)",
+        "detail": "Fourier",
+        "documentation": {}
+    },
+    {
+        "label": "build_fourier",
+        "kind": 2,
+        "importPath": "Fourier",
+        "description": "Fourier",
+        "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
+        "detail": "Fourier",
+        "documentation": {}
+    }
+]
