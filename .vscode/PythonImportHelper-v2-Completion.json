@@ -352,6 +352,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -1962,11 +1970,29 @@
         "documentation": {}
     },
     {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Séries de Fourier.Fourier",
+        "description": "Séries de Fourier.Fourier",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"",
+        "detail": "Séries de Fourier.Fourier",
+        "documentation": {}
+    },
+    {
         "label": "fourier_coeffs",
         "kind": 2,
         "importPath": "Séries de Fourier.Fourier",
         "description": "Séries de Fourier.Fourier",
-        "peekOfCode": "def fourier_coeffs(f, n):\n    a, b = -pi, pi\nif __name__ == \"__main__\":\n    pass",
+        "peekOfCode": "def fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    a = -pi\n    b = pi\n    A = []\n    B = []\n    c = (1/(2*pi))*trapeze_sum(f, a, b, num_intervals)",
+        "detail": "Séries de Fourier.Fourier",
+        "documentation": {}
+    },
+    {
+        "label": "build_fourier",
+        "kind": 2,
+        "importPath": "Séries de Fourier.Fourier",
+        "description": "Séries de Fourier.Fourier",
+        "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
         "detail": "Séries de Fourier.Fourier",
         "documentation": {}
     },
@@ -4929,6 +4955,33 @@
         "description": "Trabalho 03.edoRungeKutta (ordem 4) - 02",
         "peekOfCode": "def rungeKutta(df, x0, y0, X):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0] + X\n    Y = [y0]\n    n = len(X)\n    for k in range(1, n):\n        h = X[k] - X[k-1]\n        m1 = df(X[k-1], Y[k-1])\n        m2 = df(X[k-1] + h/2, Y[k-1] + m1*h/2)\n        m3 = df(X[k-1] + h/2, Y[k-1] + m2*h/2)",
         "detail": "Trabalho 03.edoRungeKutta (ordem 4) - 02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier01",
+        "description": "Trabalho 03.fourier01",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"",
+        "detail": "Trabalho 03.fourier01",
+        "documentation": {}
+    },
+    {
+        "label": "fourier_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier01",
+        "description": "Trabalho 03.fourier01",
+        "peekOfCode": "def fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    a = -pi\n    b = pi\n    A = []\n    B = []\n    c = (1/(2*pi))*trapeze_sum(f, a, b, num_intervals)",
+        "detail": "Trabalho 03.fourier01",
+        "documentation": {}
+    },
+    {
+        "label": "build_fourier",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier01",
+        "description": "Trabalho 03.fourier01",
+        "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
+        "detail": "Trabalho 03.fourier01",
         "documentation": {}
     },
     {
