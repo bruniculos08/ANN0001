@@ -72,7 +72,7 @@ def proj(f, g, a, b, n):
     return proj
 
 # Função que retorna o resultado a constante k da projeção de f(x) em g(x):
-def proj_k(f, g, a, b, n):
+def proj_k(f, g, a, b, n) -> float:
     return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))
 
 # Função para ortogonalizar uma lista de funções (Gran Schimidt):
@@ -91,12 +91,43 @@ def ortog_funcs(func_list, a, b, n):
 if __name__ == '__main__':
     
     # Exemplo 01:
+    a = -1
+    b = 1
+    n = 256
+
     def f1(x): return 1
     def f2(x): return x
     def f3(x): return x**2
     def f4(x): return x**3
 
     def g1(x): return f1(x)
-    def g2(x): return f2(x) - proj_k(f2, g1)
-    def g3(x): return f3(x) - proj_k(f3, g1)*g1(x) - proj_k(f3, g2)*g2(x)
-    def g4(x): return f4(x) - proj_k(f4, g1)*g1(x) - proj_k(f4, g2)*g2(x) - proj_k(f4, g3)*g3(x)
+
+    a_21 =  proj_k(f2, g1, a, b, n)
+    def g2(x): return f2(x) - a_21*g1(x)
+    
+    a_31 = proj_k(f3, g1, a, b, n)
+    a_32 = proj_k(f3, g2, a, b, n)
+    def g3(x): return f3(x) - a_31*g1(x) - a_32*g2(x)
+    
+    a_41 = proj_k(f4, g1, a, b, n)
+    a_42 = proj_k(f4, g2, a, b, n)
+    a_43 = proj_k(f4, g3, a, b, n)
+    def g4(x): return f4(x) - a_41*g1(x) - a_42*g2(x) - a_43*g3(x)
+
+    func_list = [g1, g2, g3, g4]
+
+    # Função para aproximar g(x):
+    def f(x): 
+        return log(x+5, e)
+
+    coeffs = aprox_coeffs_ort(func_list, f, a, b, n)
+    g = build_aprox_func(func_list, coeffs)
+
+    t = np.linspace(a, b, 200)
+    ft = [f(ti) for ti in t]
+    gt = [g(ti) for ti in t]
+
+    plt.plot(t, ft, label = 'function', color = "red")
+    plt.plot(t, gt, label = 'aproximation', color = "green")
+    plt.legend()
+    plt.savefig("Exemplo01.png")
