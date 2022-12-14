@@ -360,6 +360,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -4958,11 +4966,20 @@
         "documentation": {}
     },
     {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier01",
+        "description": "Trabalho 03.fourier01",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.fourier01",
+        "documentation": {}
+    },
+    {
         "label": "trapeze_sum",
         "kind": 2,
         "importPath": "Trabalho 03.fourier01",
         "description": "Trabalho 03.fourier01",
-        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, a, b, num_coeffs, num_intervals):\n    \"\"\"",
         "detail": "Trabalho 03.fourier01",
         "documentation": {}
     },
@@ -4971,7 +4988,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.fourier01",
         "description": "Trabalho 03.fourier01",
-        "peekOfCode": "def fourier_coeffs(f, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    a = -pi\n    b = pi\n    A = []\n    B = []\n    c = (1/(2*pi))*trapeze_sum(f, a, b, num_intervals)",
+        "peekOfCode": "def fourier_coeffs(f, a, b, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    A = []\n    B = []\n    c = (1/(2*pi))*trapeze_sum(f, a, b, num_intervals)\n    for m in range(1, num_coeffs+1):\n        a_m = (1/pi)*trapeze_sum(lambda x: f(x)*cos(m*x), a, b, num_intervals)",
         "detail": "Trabalho 03.fourier01",
         "documentation": {}
     },
@@ -4982,6 +4999,78 @@
         "description": "Trabalho 03.fourier01",
         "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
         "detail": "Trabalho 03.fourier01",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef fourier_coeffs(f, a, b, num_coeffs, num_intervals):\n    \"\"\"",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "fourier_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def fourier_coeffs(f, a, b, num_coeffs, num_intervals):\n    \"\"\"\n    Retorna os coeficientes a_n's, b_n's e c da série de fourier \n    para uma determinada função f(x)\n    \"\"\"   \n    A = []\n    B = []\n    c = (1/(2*pi))*simpson(f, a, b, num_intervals)\n    for m in range(1, num_coeffs+1):\n        a_m = (1/pi)*simpson(lambda x: f(x)*cos(m*x), a, b, num_intervals)",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def quadrature(f, a, b, cord, coeffs):\n    g = change(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord, coeffs):\n        sum += ci*g(xi)\n    return sum\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n# Mudança de variável na função f para se encaixar nos limites de integração [-1, 1]:\ndef change(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\ndef build_fourier(A, B, c):",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "change",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def change(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\ndef build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):",
+        "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "build_fourier",
+        "kind": 2,
+        "importPath": "Trabalho 03.fourier02",
+        "description": "Trabalho 03.fourier02",
+        "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
+        "detail": "Trabalho 03.fourier02",
         "documentation": {}
     },
     {
