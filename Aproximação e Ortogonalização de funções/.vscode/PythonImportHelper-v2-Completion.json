@@ -1,0 +1,100 @@
+[
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    coeffs = []\n    for fi in func_list:\n        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\n\"\"\"\nObserve que nesta outra função, dado que estamos considerando que 'func_list' é uma lista de funções duas à duas ortogonais, precisamos apenas\ncalcular os n elementos da diagonal da matriz A + os n elementos da matriz coluna B, assim temos que calcular 2n integrais apenas, e portanto,\nagora temos um problema de complexidade O(n).",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Função que retorna o produto escalar entre duas funções f(x) e g(x):\ndef prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n# Função que retorna o resultado da projeção de f(x) em g(x):\ndef proj(f, g, a, b, n):\n    def proj(x):",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n# Função que retorna o resultado da projeção de f(x) em g(x):\ndef proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n# Função que retorna o resultado a constante k da projeção de f(x) em g(x):\ndef proj_k(f, g, a, b, n):\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "proj",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n# Função que retorna o resultado a constante k da projeção de f(x) em g(x):\ndef proj_k(f, g, a, b, n):\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n# Função para ortogonalizar uma lista de funções (Gran Schimidt):\ndef ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "proj_k",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def proj_k(f, g, a, b, n):\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n# Função para ortogonalizar uma lista de funções (Gran Schimidt):\ndef ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    for fi in func_list[1:]:\n        def gi(x):\n            sum = 0\n            for gj in G:\n                sum -= proj_k(fi, gj, a, b, n)*gj(x)",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "ortog_funcs",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    for fi in func_list[1:]:\n        def gi(x):\n            sum = 0\n            for gj in G:\n                sum -= proj_k(fi, gj, a, b, n)*gj(x)\n            return fi(x) + sum\n        G.append(gi)\n    return G",
+        "detail": "Aprox",
+        "documentation": {}
+    }
+]
