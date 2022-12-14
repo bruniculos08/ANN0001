@@ -1,0 +1,55 @@
+[
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Aprox",
+        "description": "Aprox",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\nif __name__ == '__main__':\n    # Exemplo 01:\n    func_list = [lambda x: sin(x), lambda x: cos(x), lambda x: sin(3*x), lambda x: cos(3*x), lambda x: sin(5*x), lambda x: cos(5*x), lambda x: 1]\n    def f(x):\n        if int(x%2) == 0: return 0\n        else: return 1",
+        "detail": "Aprox",
+        "documentation": {}
+    }
+]
