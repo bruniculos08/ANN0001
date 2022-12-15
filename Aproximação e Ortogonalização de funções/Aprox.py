@@ -1,6 +1,7 @@
 from math import *
 import numpy as np
 import matplotlib.pyplot as plt
+from sympy import symbols, simplify
 
 # Métodos de integração (necessários para solução do sistema de equações):
 def trapeze_sum(f, a, b, n):
@@ -75,18 +76,38 @@ def proj(f, g, a, b, n):
 def proj_k(f, g, a, b, n) -> float:
     return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))
 
-# Função para ortogonalizar uma lista de funções (Gran Schimidt):
+
+"""
+Função para ortogonalizar uma lista de funções (Gran Schimidt):
+Nota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova
+função h(x) tal que:
+
+    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<f(x), g(x)>, 
+
+o que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).
+"""
 def ortog_funcs(func_list, a, b, n):
     G = [func_list[0]]
+    G_func_list = [symbolToFunc(func_list[0])]
     for fi in func_list[1:]:
-        def gi(x):
-            sum = 0
-            for gj in G:
-                sum -= proj_k(fi, gj, a, b, n)*gj(x)
-            return fi(x) + sum
+        gi = fi - sum(proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n)*gj for gj in G)
+        gi = simplify(gi)
         G.append(gi)
-    return G
-# Obs.: essa função resulta em erro de recursão.
+        G_func_list.append(symbolToFunc(gi))
+    return G_func_list
+"""
+Obs: a função acima ('ortog_funcs') não resulta mais em erro de recursão pois agora utiliza a biblioteca sympy
+na construção das funções, e portanto visto que agora tais funções são construídas algebricamente e não por meio de chamadas
+de outras funções, as mesmas são agora funções folha (logo não fazem recursão ou chamada de outras funções)
+"""
+
+def stringToFunc(string):
+    def f(x):
+        return eval(string)
+    return f
+
+def symbolToFunc(expr):
+    return stringToFunc(str(expr))
 
 if __name__ == '__main__':
     
@@ -118,7 +139,7 @@ if __name__ == '__main__':
 
     # Função para aproximar g(x):
     def f(x): 
-        return log(x+5, e)
+        return log(x+5, e) + cos(x)*x**2
 
     coeffs = aprox_coeffs_ort(func_list, f, a, b, n)
     g = build_aprox_func(func_list, coeffs)
@@ -131,3 +152,28 @@ if __name__ == '__main__':
     plt.plot(t, gt, label = 'aproximation', color = "green")
     plt.legend()
     plt.savefig("Exemplo01.png")
+
+    # Exemplo 02:
+    a = -1
+    b = 1
+    n = 256
+
+    x = symbols('x')
+    func_list = [1, x, x**2, x**3]
+    orto_func_list = ortog_funcs(func_list, a, b, n)
+
+    # Função para aproximar g(x):
+    def f(x): 
+        return log(x+5, e) + cos(x)*x**2
+
+    coeffs = aprox_coeffs_ort(orto_func_list, f, a, b, n)
+    g = build_aprox_func(orto_func_list, coeffs)
+
+    t = np.linspace(a, b, 200)
+    ft = [f(ti) for ti in t]
+    gt = [g(ti) for ti in t]
+
+    plt.plot(t, ft, label = 'function', color = "red")
+    plt.plot(t, gt, label = 'aproximation', color = "green")
+    plt.legend()
+    plt.savefig("Exemplo02.png")
