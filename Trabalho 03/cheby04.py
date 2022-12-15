@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sympy import symbols, simplify
 from math import *
+from NodesAndWeights import *
 
 """
 Método de interpolação para ser usado nas raízes do polinômio de Chebyshev:
@@ -56,13 +57,64 @@ def trapeze_sum(f, a, b, n):
     area = base*sum
     return area
 
-def aprox_coeffs(func_list, f, a, b, n):
+def simpson(f, a, b, num_subintervals):
+
+    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.
+    h = (b-a)/num_subintervals
+    sum = f(a) + f(b)
+
+    # k varia até 2n
+    for k in range(2, num_subintervals, 2):
+        sum += 2*f(a + k*h)
+
+    # k varia até 2n-1 (quando k = 2n+1 o loop para)
+    for k in range(1, num_subintervals, 2):
+        sum += 4*f(a + k*h)
+
+    sum = (h/3)*sum        
+    return sum
+
+def richardson(f, a, b, n, k):
+    table = []
+    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))
+    k = int(k/2)
+
+    for i in range(k):
+        item = trapeze_sum(f, a, b, (2**i)*n)
+        table.append(item)
+
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0]
+
+def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):
+
+    g = changeToQuadratureInterval(f, a, b)
+    sum = 0
+    for xi, ci in zip(cord_quadrature, coeffs_quadrature):
+        sum += ci*g(xi)
+    return sum
+
+def changeToQuadratureInterval(f, a, b):
+    """
+    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].
+    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no
+    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.
+    """
+    def g(u):
+        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2
+    return g
+
+def aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
     A = []
     B = []
     # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais
     for i, fi in enumerate(func_list):
         row = []
-        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)
+        b_i = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)
         for j, fj in enumerate(func_list):
             """
             Note que:
@@ -71,7 +123,7 @@ def aprox_coeffs(func_list, f, a, b, n):
             não é necessário calcular os elementos em que i > j.
             """
             if(i <= j):
-                a_ij = trapeze_sum(lambda x: fi(x)*fj(x), a, b, n)
+                a_ij = quadrature(lambda x: fi(x)*fj(x), a, b, cord_quadrature, coeffs_quadrature)
                 row.append(a_ij)
             else:
                 row.append(A[j][i])
@@ -157,18 +209,26 @@ if __name__ == '__main__':
     # Exemplo 01:
 
     def f(x):
-        return x * sin(-6 * x**2)
+        return log(1 + x**2, e)*sin(10*x)
 
     a = -1
     b = 1
-    n = 8192
-    num_of_polys = 21
+    exact_for_degree_less_than = 26
+    last_poly_num = 21
 
-    f_cheby = changeToChebyInterval(f, a, b)
-    cheby_polynomials = getChebyPolyList(num_of_polys+1)
-    coeffs = aprox_coeffs(cheby_polynomials, f_cheby, a, b, n)
+    order = str(int(exact_for_degree_less_than/2))    
+    lists_names = ['raiz'+order, 'peso'+order]
+    cord_quadrature = locals()[lists_names[0]]
+    coeffs_quadrature= locals()[lists_names[1]]
+    print(cord_quadrature, coeffs_quadrature)
+
+    # f_cheby = changeToChebyInterval(f, a, b)
+    f_cheby = f
+    cheby_polynomials = getChebyPolyList(last_poly_num+1)
+    coeffs = aprox_coeffs(cheby_polynomials, f_cheby, a, b, cord_quadrature, coeffs_quadrature)
     p = build_aprox_func(cheby_polynomials, coeffs)
-    g = changeFromChebyInterval(p, a, b)
+    # g = changeFromChebyInterval(p, a, b)
+    g = p
 
     """
     Printando as respostas:
@@ -176,11 +236,11 @@ if __name__ == '__main__':
     for ci in coeffs:
         print(f"{ci},")
 
-    values = [-0.775, 0.202, 0.58]
+    values = [-0.581, -0.152, 0.734]
     for i, x_i in enumerate(values):
         print(f"g(x_{i}) = {g(x_i)},")
 
-    n = 512
+    n = 4096
     erro = trapeze_sum(lambda x: (f(x)-g(x))**2, a, b, n)
     print(erro)
 
@@ -195,5 +255,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend()
-    plt.savefig("cheby01.png")
+    # plt.savefig("cheby04.png")
     plt.close()

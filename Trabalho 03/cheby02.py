@@ -56,13 +56,46 @@ def trapeze_sum(f, a, b, n):
     area = base*sum
     return area
 
+def simpson(f, a, b, num_subintervals):
+
+    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.
+    h = (b-a)/num_subintervals
+    sum = f(a) + f(b)
+
+    # k varia até 2n
+    for k in range(2, num_subintervals, 2):
+        sum += 2*f(a + k*h)
+
+    # k varia até 2n-1 (quando k = 2n+1 o loop para)
+    for k in range(1, num_subintervals, 2):
+        sum += 4*f(a + k*h)
+
+    sum = (h/3)*sum        
+    return sum
+
+def richardson(f, a, b, n, k):
+    table = []
+    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))
+    k = int(k/2)
+
+    for i in range(k):
+        item = trapeze_sum(f, a, b, (2**i)*n)
+        table.append(item)
+
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0]
+
 def aprox_coeffs(func_list, f, a, b, n):
     A = []
     B = []
     # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais
     for i, fi in enumerate(func_list):
         row = []
-        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)
+        b_i = simpson(lambda x: f(x)*fi(x), a, b, n)
         for j, fj in enumerate(func_list):
             """
             Note que:
@@ -71,7 +104,7 @@ def aprox_coeffs(func_list, f, a, b, n):
             não é necessário calcular os elementos em que i > j.
             """
             if(i <= j):
-                a_ij = trapeze_sum(lambda x: fi(x)*fj(x), a, b, n)
+                a_ij = simpson(lambda x: fi(x)*fj(x), a, b, n)
                 row.append(a_ij)
             else:
                 row.append(A[j][i])
@@ -157,12 +190,12 @@ if __name__ == '__main__':
     # Exemplo 01:
 
     def f(x):
-        return x * sin(-6 * x**2)
+        return x * cos(10*(x**2)*(e**(-x**2)))
 
     a = -1
     b = 1
-    n = 8192
-    num_of_polys = 21
+    n = 4096
+    num_of_polys = 9
 
     f_cheby = changeToChebyInterval(f, a, b)
     cheby_polynomials = getChebyPolyList(num_of_polys+1)
@@ -176,12 +209,13 @@ if __name__ == '__main__':
     for ci in coeffs:
         print(f"{ci},")
 
-    values = [-0.775, 0.202, 0.58]
+    values = [-0.691, 0.236, 0.846]
     for i, x_i in enumerate(values):
         print(f"g(x_{i}) = {g(x_i)},")
 
-    n = 512
-    erro = trapeze_sum(lambda x: (f(x)-g(x))**2, a, b, n)
+    n = 10
+    k = 8
+    erro = richardson(lambda x: (f(x)-g(x))**2, a, b, n, k)
     print(erro)
 
     """
@@ -195,5 +229,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend()
-    plt.savefig("cheby01.png")
+    plt.savefig("cheby02.png")
     plt.close()

@@ -1,5 +1,38 @@
 [
     {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "math",
         "description": "math",
@@ -458,6 +491,14 @@
         "documentation": {}
     },
     {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
         "label": "symbols",
         "importPath": "sympy",
         "description": "sympy",
@@ -475,6 +516,62 @@
     },
     {
         "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
         "importPath": "sympy",
         "description": "sympy",
         "isExtraImport": true,
@@ -640,6 +737,14 @@
         "description": "hashlib",
         "isExtraImport": true,
         "detail": "hashlib",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "isExtraImport": true,
+        "detail": "NodesAndWeights",
         "documentation": {}
     },
     {
@@ -1934,20 +2039,20 @@
         "documentation": {}
     },
     {
-        "label": "changeToCheby",
+        "label": "changeToChebyInterval",
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def changeToCheby(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
     {
-        "label": "changeFromCheby",
+        "label": "changeFromChebyInterval",
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -5264,20 +5369,20 @@
         "documentation": {}
     },
     {
-        "label": "changeToCheby",
+        "label": "changeToChebyInterval",
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
         "description": "Trabalho 03.cheby01",
-        "peekOfCode": "def changeToCheby(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
         "detail": "Trabalho 03.cheby01",
         "documentation": {}
     },
     {
-        "label": "changeFromCheby",
+        "label": "changeFromChebyInterval",
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
         "description": "Trabalho 03.cheby01",
-        "peekOfCode": "def changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
         "detail": "Trabalho 03.cheby01",
         "documentation": {}
     },
@@ -5295,7 +5400,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
         "description": "Trabalho 03.cheby01",
-        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for i in range(2, n):\n        t_n = 2*T[i-1]*x - T[i-2]",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n (note que começa do 0-ésimo e vai até o (n-1)-ésimo) primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    T_func_list = [lambda x: 1, lambda x: x] \n    for i in range(2, n):",
         "detail": "Trabalho 03.cheby01",
         "documentation": {}
     },
@@ -5313,8 +5418,494 @@
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
         "description": "Trabalho 03.cheby01",
-        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # # Exemplo 01:\n    # def f(x):\n    #     return x * sin(-6 * x**2)\n    # a = -1\n    # b = 1",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)",
         "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -1\n    b = 1\n    n = 8192\n    num_of_polys = 21",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = simpson(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nDentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],\naquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),\nou seja, esse polinômio minimiza a seguinte função erro:\n    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio\n\"\"\"",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "changeToChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "changeFromChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPolyList",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n (note que começa do 0-ésimo e vai até o (n-1)-ésimo) primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    T_func_list = [lambda x: 1, lambda x: x] \n    for i in range(2, n):",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * cos(10*(x**2)*(e**(-x**2)))",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby02",
+        "description": "Trabalho 03.cheby02",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * cos(10*(x**2)*(e**(-x**2)))\n    a = -1\n    b = 1\n    n = 4096\n    num_of_polys = 9",
+        "detail": "Trabalho 03.cheby02",
+        "documentation": {}
+    },
+    {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n, k):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = richardson(lambda x: f(x)*fi(x), a, b, n, k)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nDentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],\naquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),\nou seja, esse polinômio minimiza a seguinte função erro:\n    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio\n\"\"\"",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "changeToChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "changeFromChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPolyList",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n (note que começa do 0-ésimo e vai até o (n-1)-ésimo) primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    T_func_list = [lambda x: 1, lambda x: x] \n    for i in range(2, n):",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return tanh(3*x)*cos(3*x)",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby03",
+        "description": "Trabalho 03.cheby03",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return tanh(3*x)*cos(3*x)\n    a = -1\n    b = 1\n    n = 10\n    k = 8",
+        "detail": "Trabalho 03.cheby03",
+        "documentation": {}
+    },
+    {
+        "label": "trapz",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def trapz(f, a, b, n):\n    h = abs(b - a) / n\n    sum_fx = 0\n    for i in range(1, n):\n        sum_fx += f(a + i * h)\n    return (f(a) + 2 * sum_fx + f(b)) * (h / 2)\ndef simps(f, a, b, n):\n    if n % 2 != 0:\n        print('O valor n deve ser par')\n        return None",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "simps",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def simps(f, a, b, n):\n    if n % 2 != 0:\n        print('O valor n deve ser par')\n        return None\n    num_parabolas = n / 2\n    soma = 0\n    h = (b - a) / n\n    for i in range(int(num_parabolas)):\n        x0 = a + (2 * i) * h\n        x1 = a + (2 * i + 1) * h",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "trapz_romberg",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def trapz_romberg(f, a, b, h):\n    n = int((b - a) / h)\n    soma = 0\n    for k in range(1, n):\n        soma += f(a + k * h)\n    return (h / 2) * (f(a) + 2 * soma + f(b))\ndef romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "romberg",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):\n        temp_col = [0] * (n - 1 - j)\n        for i in range(n - 1 - j):\n            power = j + 1\n            temp_col[i] = (4 ** power * coluna_f1[i + 1] - coluna_f1[i]) / (4 ** power - 1)\n        coluna_f1[:n - 1 - j] = temp_col\n        # print(f'F_{j+2} = {temp_col}')",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "best_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def best_func(f, funcs, a, b, method: ['trapz', 256]):\n    k = len(funcs)\n    A = [[0 for _ in range(k)] for _ in range(k)]\n    B = []\n    for i in range(k):\n        for j in range(k):\n            if j >= i:\n                def f_ij(x):\n                    return  funcs[j](x) * funcs[i](x)\n                if method[0] == 'trapz':",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "quadratura",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def quadratura(funcao, pontos, pesos):\n    soma = 0\n    for xk, ck in zip(pontos, pesos):\n        soma += ck * funcao(xk)\n    return soma\ndef change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef chebyshev(x, n):",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "change",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef chebyshev(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "chebyshev",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def chebyshev(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:\n      return 1.0\n    elif n == 1:\n      return x\n    else:",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "build_chebyshev_polynomial",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04 (bidin version)",
+        "description": "Trabalho 03.cheby04 (bidin version)",
+        "peekOfCode": "def build_chebyshev_polynomial(n):\n    def temp(t):\n        return chebyshev(t, n)\n    return temp\nif __name__ == '__main__':\n    raiz2 = [-0.5773502691896257, 0.5773502691896257]\n    peso2 = [1.0, 1.0]\n    raiz3 = [0, -0.7745966692414834, 0.7745966692414834]\n    peso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\n    raiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]",
+        "detail": "Trabalho 03.cheby04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no\n    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.\n    \"\"\"\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\ndef aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nDentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],\naquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),\nou seja, esse polinômio minimiza a seguinte função erro:\n    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio\n\"\"\"",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "changeToChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "changeFromChebyInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPolyList",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n (note que começa do 0-ésimo e vai até o (n-1)-ésimo) primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    T_func_list = [lambda x: 1, lambda x: x] \n    for i in range(2, n):",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return log(1 + x**2, e)*sin(10*x)",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return log(1 + x**2, e)*sin(10*x)\n    a = -1\n    b = 1\n    exact_for_degree_less_than = 26\n    last_poly_num = 21",
+        "detail": "Trabalho 03.cheby04",
         "documentation": {}
     },
     {

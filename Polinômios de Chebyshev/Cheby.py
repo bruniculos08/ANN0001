@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sympy import symbols
+from sympy import symbols, simplify
 from math import *
 
 """
@@ -94,12 +94,12 @@ ou seja, esse polinômio minimiza a seguinte função erro:
 
 """
 
-def changeToCheby(f, a, b):
+def changeToChebyInterval(f, a, b):
     def F(u):
         return f(((b-a)/2) * u + (a+b)/2)
     return F
 
-def changeFromCheby(g, a, b):
+def changeFromChebyInterval(g, a, b):
     def G(u):
         return g((2/(b-a)) * u - (a+b)/(a-b))
     return G
@@ -128,6 +128,7 @@ def getChebyPolyList(n):
     T = [1, x]
     for i in range(2, n):
         t_n = 2*T[i-1]*x - T[i-2]
+        t_n = simplify(t_n)
         T.append(t_n)
     return T
 
@@ -210,7 +211,7 @@ if __name__ == '__main__':
     a = -2
     b = 2
 
-    f_cheby = changeToCheby(f, a, b)
+    f_cheby = changeToChebyInterval(f, a, b)
 
     n = 4
     X = chebyRoots(n+1)
@@ -219,7 +220,7 @@ if __name__ == '__main__':
     coeffs = diff_div(X,Y)
     p = build_poly(X, coeffs)
 
-    g = changeFromCheby(p, -2, 2)
+    g = changeFromChebyInterval(p, -2, 2)
 
     t = np.linspace(-2, 2, 200)
     ft = [f(ti) for ti in t]
