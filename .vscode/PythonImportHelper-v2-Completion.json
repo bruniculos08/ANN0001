@@ -449,6 +449,30 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -6932,6 +6956,96 @@
         "description": "Trabalho 03.otimização04",
         "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\nif __name__ == '__main__':\n    # Listas de pontos e pesos para quadratura gaussiana:\n    from NodesAndWeights import *\n    exact_for_degree_less_than = 24\n    order = str(int(exact_for_degree_less_than/2))    \n    lists_names = ['raiz'+order, 'peso'+order]",
         "detail": "Trabalho 03.otimização04",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc01",
+        "description": "Trabalho 03.prodesc01",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que ",
+        "detail": "Trabalho 03.prodesc01",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc01",
+        "description": "Trabalho 03.prodesc01",
+        "peekOfCode": "def prod_esc(w, f, g, a, b, n):\n    return trapeze_sum(lambda x: w(x)*f(x)*g(x), a, b, n)\nif __name__ == '__main__':\n    w = lambda x: e**(-x)\n    f1 = lambda x: x**3 + 1\n    f2 = lambda x: 1 + sin(3*x - 1)\n    a, b = [1.494,1.255]\n    n = 256\n    result = prod_esc(w, f1, f2, a, b, n)\n    print(result)",
+        "detail": "Trabalho 03.prodesc01",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc02",
+        "description": "Trabalho 03.prodesc02",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)",
+        "detail": "Trabalho 03.prodesc02",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc02",
+        "description": "Trabalho 03.prodesc02",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g",
+        "detail": "Trabalho 03.prodesc02",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc02",
+        "description": "Trabalho 03.prodesc02",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)",
+        "detail": "Trabalho 03.prodesc02",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc02",
+        "description": "Trabalho 03.prodesc02",
+        "peekOfCode": "def prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)\nif __name__ == '__main__':\n    w = lambda x: e**(-x)\n    f1 = lambda x: x**3 + 1\n    f2 = lambda x: 1 + sin(3*x - 1)\n    from NodesAndWeights import *\n    exact_for_degree_less_than = 16\n    order = str(int(exact_for_degree_less_than/2))    \n    lists_names = ['raiz'+order, 'peso'+order]",
+        "detail": "Trabalho 03.prodesc02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc03",
+        "description": "Trabalho 03.prodesc03",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)",
+        "detail": "Trabalho 03.prodesc03",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc03",
+        "description": "Trabalho 03.prodesc03",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g",
+        "detail": "Trabalho 03.prodesc03",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc03",
+        "description": "Trabalho 03.prodesc03",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)",
+        "detail": "Trabalho 03.prodesc03",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "Trabalho 03.prodesc03",
+        "description": "Trabalho 03.prodesc03",
+        "peekOfCode": "def prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)\nif __name__ == '__main__':\n    w = lambda x: 1\n    f1 = lambda x: x**3 + 1\n    f2 = lambda x: 1 + sin(3*x - 1)\n    from NodesAndWeights import *\n    exact_for_degree_less_than = 16\n    order = str(int(exact_for_degree_less_than/2))    \n    lists_names = ['raiz'+order, 'peso'+order]",
+        "detail": "Trabalho 03.prodesc03",
         "documentation": {}
     }
 ]

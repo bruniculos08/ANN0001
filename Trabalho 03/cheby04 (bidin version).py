@@ -299,7 +299,7 @@ if __name__ == '__main__':
     subintervalo_para_erro = 4096
     funcs = [build_chebyshev_polynomial(i) for i in range(grau)]
 
-    values = [-0.493, -0.1, 0.816]
+    values = [-0.677, -0.076, 0.478]
     coefs = best_func(f, funcs, a, b, method)
 
     coefs = [ci for ci in coefs]
