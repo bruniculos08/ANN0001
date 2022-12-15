@@ -408,6 +408,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -423,6 +431,94 @@
         "importPath": "matplotlib.pyplot",
         "description": "matplotlib.pyplot",
         "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
         "documentation": {}
     },
     {
@@ -527,70 +623,6 @@
         "description": "cProfile",
         "isExtraImport": true,
         "detail": "cProfile",
-        "documentation": {}
-    },
-    {
-        "label": "symbols",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "symbols",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "simplify",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "symbols",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "symbols",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "simplify",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "symbols",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
-        "documentation": {}
-    },
-    {
-        "label": "simplify",
-        "importPath": "sympy",
-        "description": "sympy",
-        "isExtraImport": true,
-        "detail": "sympy",
         "documentation": {}
     },
     {
@@ -709,7 +741,7 @@
         "kind": 2,
         "importPath": "Aproximação e Ortogonalização de funções.Aprox",
         "description": "Aproximação e Ortogonalização de funções.Aprox",
-        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Função que retorna o produto escalar entre duas funções f(x) e g(x):\ndef prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n# Função que retorna o resultado da projeção de f(x) em g(x):\ndef proj(f, g, a, b, n):\n    def proj(x):",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)",
         "detail": "Aproximação e Ortogonalização de funções.Aprox",
         "documentation": {}
     },
@@ -718,7 +750,7 @@
         "kind": 2,
         "importPath": "Aproximação e Ortogonalização de funções.Aprox",
         "description": "Aproximação e Ortogonalização de funções.Aprox",
-        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n# Função que retorna o resultado da projeção de f(x) em g(x):\ndef proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n# Função que retorna o resultado a constante k da projeção de f(x) em g(x):\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna (<f(x), g(x)>/<g(x), g(x)>).g(x), ou seja, o resultado da projeção de f(x) em g(x):\n\"\"\"\ndef proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n\"\"\"",
         "detail": "Aproximação e Ortogonalização de funções.Aprox",
         "documentation": {}
     },
@@ -727,7 +759,7 @@
         "kind": 2,
         "importPath": "Aproximação e Ortogonalização de funções.Aprox",
         "description": "Aproximação e Ortogonalização de funções.Aprox",
-        "peekOfCode": "def proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n# Função que retorna o resultado a constante k da projeção de f(x) em g(x):\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n# Função para ortogonalizar uma lista de funções (Gran Schimidt):\ndef ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]",
+        "peekOfCode": "def proj(f, g, a, b, n):\n    def proj(x):\n        return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)\n    return proj\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))",
         "detail": "Aproximação e Ortogonalização de funções.Aprox",
         "documentation": {}
     },
@@ -736,7 +768,7 @@
         "kind": 2,
         "importPath": "Aproximação e Ortogonalização de funções.Aprox",
         "description": "Aproximação e Ortogonalização de funções.Aprox",
-        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n# Função para ortogonalizar uma lista de funções (Gran Schimidt):\ndef ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    for fi in func_list[1:]:\n        def gi(x):\n            sum = 0\n            for gj in G:\n                sum -= proj_k(fi, gj, a, b, n)*gj(x)",
+        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n\"\"\"\nFunção para ortogonalizar uma lista de funções (Gran Schimidt):\nNota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova\nfunção h(x) tal que:\n    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<g(x), g(x)>, \no que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).\n\"\"\"\ndef ortog_funcs(func_list, a, b, n):",
         "detail": "Aproximação e Ortogonalização de funções.Aprox",
         "documentation": {}
     },
@@ -745,7 +777,34 @@
         "kind": 2,
         "importPath": "Aproximação e Ortogonalização de funções.Aprox",
         "description": "Aproximação e Ortogonalização de funções.Aprox",
-        "peekOfCode": "def ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    for fi in func_list[1:]:\n        def gi(x):\n            sum = 0\n            for gj in G:\n                sum -= proj_k(fi, gj, a, b, n)*gj(x)\n            return fi(x) + sum\n        G.append(gi)\n    return G",
+        "peekOfCode": "def ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    G_func_list = [symbolToFunc(func_list[0])]\n    for fi in func_list[1:]:\n        gi = fi - sum(proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n)*gj for gj in G)\n        gi = simplify(gi)\n        G.append(gi)\n        G_func_list.append(symbolToFunc(gi))\n    return G_func_list\n\"\"\"",
+        "detail": "Aproximação e Ortogonalização de funções.Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Aproximação e Ortogonalização de funções.Aprox",
+        "description": "Aproximação e Ortogonalização de funções.Aprox",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    a = -1\n    b = 1",
+        "detail": "Aproximação e Ortogonalização de funções.Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Aproximação e Ortogonalização de funções.Aprox",
+        "description": "Aproximação e Ortogonalização de funções.Aprox",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    a = -1\n    b = 1\n    n = 256\n    def f1(x): return 1\n    def f2(x): return x\n    def f3(x): return x**2",
+        "detail": "Aproximação e Ortogonalização de funções.Aprox",
+        "documentation": {}
+    },
+    {
+        "label": "k",
+        "kind": 5,
+        "importPath": "Aproximação e Ortogonalização de funções.Aprox",
+        "description": "Aproximação e Ortogonalização de funções.Aprox",
+        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\n\"\"\"\nFunção para ortogonalizar uma lista de funções (Gran Schimidt):\nNota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova\nfunção h(x) tal que:\n    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<g(x), g(x)>, \no que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).",
         "detail": "Aproximação e Ortogonalização de funções.Aprox",
         "documentation": {}
     },
@@ -5157,6 +5216,105 @@
         "description": "Trabalho 02.NodesAndWeights",
         "peekOfCode": "peso20 = [0.15275338713072584, 0.15275338713072584, 0.14917298647260374, 0.14917298647260374, 0.14209610931838204,\n            0.14209610931838204, 0.13168863844917664, 0.13168863844917664, 0.11819453196151841, 0.11819453196151841,\n            0.10193011981724044, 0.10193011981724044, 0.08327674157670475, 0.08327674157670475, 0.06267204833410907,\n            0.06267204833410907, 0.04060142980038694, 0.04060142980038694, 0.017614007139152118, 0.017614007139152118]",
         "detail": "Trabalho 02.NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nDentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],\naquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),\nou seja, esse polinômio minimiza a seguinte função erro:\n    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio\n\"\"\"",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "changeToCheby",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def changeToCheby(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "changeFromCheby",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPolyList",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for i in range(2, n):\n        t_n = 2*T[i-1]*x - T[i-2]",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # # Exemplo 01:\n    # def f(x):\n    #     return x * sin(-6 * x**2)\n    # a = -1\n    # b = 1",
+        "detail": "Trabalho 03.cheby01",
         "documentation": {}
     },
     {
