@@ -1,0 +1,99 @@
+[
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    coeffs = []\n    for fi in func_list:\n        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n\"\"\"",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)",
+        "detail": "Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "Legendre",
+        "description": "Legendre",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return  x * sin(-6 * x**2)\n    a = -1\n    b = 1",
+        "detail": "Legendre",
+        "documentation": {}
+    }
+]
