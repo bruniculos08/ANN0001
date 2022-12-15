@@ -376,6 +376,38 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -499,6 +531,62 @@
     },
     {
         "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
         "importPath": "sympy",
         "description": "sympy",
         "isExtraImport": true,
@@ -1841,11 +1929,74 @@
         "documentation": {}
     },
     {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    coeffs = []\n    for fi in func_list:\n        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n# Transforma expressões com símbolos em funções:",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n# Transforma expressões com símbolos em funções:\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):\n    if n == 0:\n        return 1",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
         "label": "legendre",
         "kind": 2,
         "importPath": "Polinômios de Legendre.Legendre",
         "description": "Polinômios de Legendre.Legendre",
-        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef build_legendre_polynomial(n):\n    def p(t):\n        return p(t, n)",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa",
+        "detail": "Polinômios de Legendre.Legendre",
+        "documentation": {}
+    },
+    {
+        "label": "optimized_legendre",
+        "kind": 2,
+        "importPath": "Polinômios de Legendre.Legendre",
+        "description": "Polinômios de Legendre.Legendre",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
         "detail": "Polinômios de Legendre.Legendre",
         "documentation": {}
     },
@@ -1854,7 +2005,7 @@
         "kind": 2,
         "importPath": "Polinômios de Legendre.Legendre",
         "description": "Polinômios de Legendre.Legendre",
-        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(t):\n        return p(t, n)\n    return p\nif __name__ == '__main__':\n    pass",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return  x * sin(-6 * x**2)\n    a = -1\n    b = 1",
         "detail": "Polinômios de Legendre.Legendre",
         "documentation": {}
     },
@@ -5204,6 +5355,303 @@
         "description": "Trabalho 03.fourier02",
         "peekOfCode": "def build_fourier(A, B, c):\n    \"\"\"\n    Monta a série de fourier a partir dos coeficientes a_n's, b_n's e c\n    calculados para um determinada função f(x)\n    \"\"\"\n    def f(x):\n        return c + sum(a_n*cos(n*x) + b_n*sin(n*x) for n, (a_n, b_n) in enumerate(zip(A, B), 1))\n    return f\nif __name__ == \"__main__\":\n    def f(x):",
         "detail": "Trabalho 03.fourier02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    coeffs = []\n    for fi in func_list:\n        ck = simpson(lambda x: f(x)*fi(x), a, b, n)/simpson(lambda x: fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n\"\"\"",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre02",
+        "description": "Trabalho 03.legendre02",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    # Exemplo 02:\n    def f(x):\n        return  x * cos(10 * x**2 * exp(-x**2))\n    a = -1\n    b = 1",
+        "detail": "Trabalho 03.legendre02",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    coeffs = []\n    for fi in func_list:\n        k = 8\n        ci = richardson(lambda x: f(x)*fi(x), a, b, n, k)/richardson(lambda x: fi(x)*fi(x), a, b, n, k)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):\n    if n == 0:\n        return 1",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "optimized_legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre03",
+        "description": "Trabalho 03.legendre03",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    # Exemplo 02:\n    def f(x):\n        return tanh(3 * x) * cos(3 * x)\n    a = -1\n    b = 1",
+        "detail": "Trabalho 03.legendre03",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no\n    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.\n    \"\"\"\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\ndef aprox_coeffs(func_list, f, a, b, n):",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):\n    if n == 0:\n        return 1",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "optimized_legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
+        "detail": "Trabalho 03.legendre04",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04",
+        "description": "Trabalho 03.legendre04",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    \"\"\"\n    Exemplo 02:\n    Não está funcionando (nota 7,71 na questão 10)\n    \"\"\"\n    def f(x):",
+        "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
     {

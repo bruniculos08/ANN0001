@@ -17,6 +17,39 @@ def trapeze_sum(f, a, b, n):
     area = base*sum
     return area
 
+def simpson(f, a, b, num_subintervals):
+
+    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.
+    h = (b-a)/num_subintervals
+    sum = f(a) + f(b)
+
+    # k varia até 2n
+    for k in range(2, num_subintervals, 2):
+        sum += 2*f(a + k*h)
+
+    # k varia até 2n-1 (quando k = 2n+1 o loop para)
+    for k in range(1, num_subintervals, 2):
+        sum += 4*f(a + k*h)
+
+    sum = (h/3)*sum        
+    return sum
+
+def richardson(f, a, b, n, k):
+    table = []
+    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))
+    k = int(k/2)
+
+    for i in range(k):
+        item = trapeze_sum(f, a, b, (2**i)*n)
+        table.append(item)
+
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0]
+
 def aprox_coeffs(func_list, f, a, b, n):
     A = []
     B = []
@@ -43,8 +76,9 @@ def aprox_coeffs(func_list, f, a, b, n):
 def aprox_coeffs_ort(func_list, f, a, b, n):
     coeffs = []
     for fi in func_list:
-        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)
-        coeffs.append(ck)
+        k = 8
+        ci = richardson(lambda x: f(x)*fi(x), a, b, n, k)/richardson(lambda x: fi(x)*fi(x), a, b, n, k)
+        coeffs.append(ci)
     return coeffs
 
 def build_aprox_func(func_list, coeffs):
@@ -58,10 +92,10 @@ def stringToFunc(string):
         return eval(string)
     return f
 
-# Transforma expressões com símbolos em funções:
 def symbolToFunc(expr):
     return stringToFunc(str(expr))
     
+
 """
 Funções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,
 portanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):
@@ -101,20 +135,21 @@ def build_legendre_polynomial(n):
 
 if __name__ == '__main__':
 
-    # Exemplo 01:
+    # Exemplo 02:
 
     def f(x):
-        return  x * sin(-6 * x**2)
+        return tanh(3 * x) * cos(3 * x)
 
     a = -1
     b = 1
-    num_of_polys = 5
-    n = 256
+    num_of_polys = 30
+    n = 10
 
-    P = []
-    for i in range(0, num_of_polys+1):
-        p_n = build_legendre_polynomial(i)
-        P.append(p_n)
+    P = optimized_legendre(num_of_polys)
+    # P = []
+    # for i in range(0, num_of_polys+1):
+    #     p_n = build_legendre_polynomial(i)
+    #     P.append(p_n)
 
     coeffs = aprox_coeffs_ort(P, f, a, b, n)
     g = build_aprox_func(P, coeffs)
@@ -122,12 +157,12 @@ if __name__ == '__main__':
     for ck in coeffs:
         print(f"{ck},")
 
-    values = [-0.911, -0.247, 0.916]
+    values = [-0.446, -0.247, 0.778]
     for i, xi in enumerate(values):
         print(f"g(x_{i+1}) = {g(xi)},")
 
-    n = 512
-    erro = trapeze_sum(lambda x: (f(x)-g(x))**2, a, b, n)
+    n = 256
+    erro = simpson(lambda x: (f(x)-g(x))**2, a, b, n)
     print(erro)
 
     t = np.linspace(a, b, 200)
@@ -137,5 +172,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend(loc="upper left")
-    plt.savefig("Exemplo01.png")
+    # plt.savefig("legendre03.png")
     plt.close()

@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from sympy import symbols, simplify
 from math import *
 
-
 """
 Métodos de integração e método do de aproximação de Funções:
 """
@@ -16,6 +15,56 @@ def trapeze_sum(f, a, b, n):
         sum += f(a + k*base)
     area = base*sum
     return area
+
+def simpson(f, a, b, num_subintervals):
+
+    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.
+    h = (b-a)/num_subintervals
+    sum = f(a) + f(b)
+
+    # k varia até 2n
+    for k in range(2, num_subintervals, 2):
+        sum += 2*f(a + k*h)
+
+    # k varia até 2n-1 (quando k = 2n+1 o loop para)
+    for k in range(1, num_subintervals, 2):
+        sum += 4*f(a + k*h)
+
+    sum = (h/3)*sum        
+    return sum
+
+def richardson(f, a, b, n, k):
+    table = []
+    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))
+    k = int(k/2)
+
+    for i in range(k):
+        item = trapeze_sum(f, a, b, (2**i)*n)
+        table.append(item)
+
+    for i in range(k):
+        for j in range(k-i-1):
+            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)
+            table[j] = new_item
+
+    return table[0]
+
+def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):
+    g = changeToQuadratureInterval(f, a, b)
+    sum = 0
+    for xi, ci in zip(cord_quadrature, coeffs_quadrature):
+        sum += ci*g(xi)
+    return sum
+
+def changeToQuadratureInterval(f, a, b):
+    """
+    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].
+    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no
+    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.
+    """
+    def g(u):
+        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2
+    return g
 
 def aprox_coeffs(func_list, f, a, b, n):
     A = []
@@ -40,11 +89,11 @@ def aprox_coeffs(func_list, f, a, b, n):
         A.append(row)
     return np.linalg.solve(A, B)
 
-def aprox_coeffs_ort(func_list, f, a, b, n):
+def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
     coeffs = []
     for fi in func_list:
-        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)
-        coeffs.append(ck)
+        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)
+        coeffs.append(ci)
     return coeffs
 
 def build_aprox_func(func_list, coeffs):
@@ -58,10 +107,10 @@ def stringToFunc(string):
         return eval(string)
     return f
 
-# Transforma expressões com símbolos em funções:
 def symbolToFunc(expr):
     return stringToFunc(str(expr))
     
+
 """
 Funções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,
 portanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):
@@ -88,7 +137,7 @@ def optimized_legendre(n):
         p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i
         p_i = simplify(p_i)
         P.pop(0)
-        print(p_i, "\n\n")
+        # print(p_i, "\n\n")
         P.append(p_i)
         P_func_list.append(symbolToFunc(p_i))
     return P_func_list
@@ -101,32 +150,38 @@ def build_legendre_polynomial(n):
 
 if __name__ == '__main__':
 
-    # Exemplo 01:
+    """
+    Exemplo 02:
+    Não está funcionando (nota 7,71 na questão 10)
+    """
 
     def f(x):
-        return  x * sin(-6 * x**2)
+        return log(1 + x**2) * sin(10 * x)
 
     a = -1
     b = 1
-    num_of_polys = 5
-    n = 256
+    num_of_polys = 50
+    exact_for_degree_less_than = 24
 
-    P = []
-    for i in range(0, num_of_polys+1):
-        p_n = build_legendre_polynomial(i)
-        P.append(p_n)
+    P = optimized_legendre(num_of_polys)
 
-    coeffs = aprox_coeffs_ort(P, f, a, b, n)
+    from NodesAndWeights import *
+    order = str(int(exact_for_degree_less_than/2))    
+    lists_names = ['raiz'+order, 'peso'+order]
+    cord_quadrature = locals()[lists_names[0]]
+    coeffs_quadrature= locals()[lists_names[1]]
+
+    coeffs = aprox_coeffs_ort(P, f, a, b, cord_quadrature, coeffs_quadrature)
     g = build_aprox_func(P, coeffs)
 
     for ck in coeffs:
         print(f"{ck},")
 
-    values = [-0.911, -0.247, 0.916]
+    values = [-0.837, 0.254, 0.915]
     for i, xi in enumerate(values):
         print(f"g(x_{i+1}) = {g(xi)},")
 
-    n = 512
+    n = 1024
     erro = trapeze_sum(lambda x: (f(x)-g(x))**2, a, b, n)
     print(erro)
 
@@ -137,5 +192,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend(loc="upper left")
-    plt.savefig("Exemplo01.png")
+    plt.savefig("legendre04.png")
     plt.close()
