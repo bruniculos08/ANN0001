@@ -1,0 +1,117 @@
+[
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nDentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],\naquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),\nou seja, esse polinômio minimiza a seguinte função erro:\n    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio\n\"\"\"",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPolyList",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def getChebyPolyList(n):\n    \"\"\"\n    Retorna a lista do n primeiros polinômios de chebyshev como objetos de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for i in range(2, n):\n        t_n = 2*T[i-1]*x - T[i-2]",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    # def f(x):\n    #     return x * sin(-6 * x**2)\n    # n = 4\n    # X = chebyRoots(n+1)",
+        "detail": "Cheby",
+        "documentation": {}
+    }
+]

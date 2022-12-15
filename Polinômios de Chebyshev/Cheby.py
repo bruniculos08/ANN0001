@@ -1,6 +1,98 @@
+import matplotlib.pyplot as plt
+import numpy as np
 from sympy import symbols
 from math import *
 
+"""
+Método de interpolação para ser usado nas raízes do polinômio de Chebyshev:
+"""
+def diff_div(X, Y):
+    # Esta cópia de Y irá mudar a cada iteração:
+    Y_table = [yi for yi in Y]  
+
+    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:
+    coeffs = [Y[0]] + [0 for yi in Y[1:]]   
+    
+    n = len(coeffs)
+    
+    # Para cada coluna (lembrando que a 1º coluna já é dada):
+    for i in range(n-1):
+
+        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):
+        for j in range(n - i - 1):
+            num = Y_table[j+1] - Y_table[j]
+            denom = X[j+1+i] - X[j]
+            Y_table[j] = num/denom
+
+        # Como Y_table a cada "for" se torna outra coluna da tabela, lembre-se...
+        # ... que sempre o primeiro elemento de uma coluna k equivale ao coeficiente ak:
+        coeffs[i+1] = Y_table[0]
+
+    return coeffs
+
+def build_poly(X, coeffs):
+    def func(x):
+        sum = 0
+        for i, ci in enumerate(coeffs):
+            prod = ci
+            # Se i = 0 o loop não itera:
+            for j in range(i):
+                prod *= (x - X[j])
+            sum += prod
+        return sum
+    return func
+
+"""
+Métodos de integração e de aproximação de funções para serem utilizados em conjunco com polinômios 
+de Chebyshev:
+"""
+
+def trapeze_sum(f, a, b, n):
+    sum = f(a)/2 + f(b)/2
+    base = (b-a)/n
+    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:
+    for k in range(1, n):
+        sum += f(a + k*base)
+    area = base*sum
+    return area
+
+def aprox_coeffs(func_list, f, a, b, n):
+    A = []
+    B = []
+    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais
+    for i, fi in enumerate(func_list):
+        row = []
+        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)
+        for j, fj in enumerate(func_list):
+            """
+            Note que:
+            (1) a_ij = ∫ fj(x)*fi(x) dx;
+            (2) visto que a matriz A é simétrica e a parte acima da diagonal é calculada primeiro,
+            não é necessário calcular os elementos em que i > j.
+            """
+            if(i <= j):
+                a_ij = trapeze_sum(lambda x: fi(x)*fj(x), a, b, n)
+                row.append(a_ij)
+            else:
+                row.append(A[j][i])
+                
+        B.append(b_i)
+        A.append(row)
+    return np.linalg.solve(A, B)
+
+def build_aprox_func(func_list, coeffs):
+    def g(x):
+        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
+    return g
+
+"""
+Dentre todos os polinômios de grau n que interpolam y = f(x) numa lista de n+1 pontos no intervalo [-1, 1],
+aquele que interpola nas raízes do polinômio T_n+1(x) é o polinômio que melhor se aproxima da função y = f(x),
+ou seja, esse polinômio minimiza a seguinte função erro:
+
+    erro(P) = max|f(x)-P(x)| para -1 <= x <= 1, sendo P um polinômio
+
+"""
 
 def getChebyPoly(n):
     """
@@ -16,9 +108,23 @@ def getChebyPoly(n):
         T = [T[1], t_n]
     return t_n
 
+def getChebyPolyList(n):
+    """
+    Retorna a lista do n primeiros polinômios de chebyshev como objetos de expressão
+    da biblioteca sympy (o que é diferente e melhor que um função recursiva com complexidade O(2^n)).
+    """
+    x = symbols('x')
+    t_n = 1
+    T = [1, x]
+    for i in range(2, n):
+        t_n = 2*T[i-1]*x - T[i-2]
+        T.append(t_n)
+    return T
+
+
 def chebyRoots(n):
     """
-    Retorna as n raízes do enésimo polinômio de chebyshev.
+    Retorna as n raízes do e-nésimo polinômio de chebyshev.
     """
     roots = []
     for k in range(1, n+1):
@@ -26,12 +132,52 @@ def chebyRoots(n):
         roots.append(x_k)
     return roots
 
+def stringToFunc(string):
+    def f(x):
+        return eval(string)
+    return f
+
+
 if __name__ == '__main__':
 
-    x = symbols('x')
-    poly = getChebyPoly(3)
-    rs = chebyRoots(3)
-    print(rs)
+    # Exemplo 01:
 
-    for root in rs:
-        print(poly.subs(x, root))
+    # def f(x):
+    #     return x * sin(-6 * x**2)
+
+    # n = 4
+    # X = chebyRoots(n+1)
+    # Y = [f(xi) for xi in X]
+
+    # coeffs = diff_div(X,Y)
+    # p = build_poly(X, coeffs)
+
+    # t = np.linspace(-1, 1, 200)
+    # ft = [f(ti) for ti in t]
+    # pt = [p(ti) for ti in t]
+
+    # plt.plot(t, ft, color = "green", label = "f(x)")
+    # plt.plot(t, pt, color = "blue", label = "p(x)")
+    # plt.legend()
+    # plt.savefig("Exemplo01.png")
+
+    # Exemplo 02:
+
+    def f(x):
+        return x * sin(-6 * x**2)
+
+    a = -1
+    b = 1
+    n = 256
+    num_poly_cheb = 5
+
+
+    x = symbols('x')
+    T = getChebyPolyList(num_poly_cheb)
+    for i in range(0, len(T)):
+        T[i] = stringToFunc(str(T[i]))
+
+    coeffs = aprox_coeffs(T, f, a, b, n)
+    g = build_aprox_func(T, coeffs)
+
+    

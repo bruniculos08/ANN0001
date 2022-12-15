@@ -1742,6 +1742,24 @@
         "documentation": {}
     },
     {
+        "label": "diff_div",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def diff_div(X, Y):\n    # Esta cópia de Y irá mudar a cada iteração:\n    Y_table = [yi for yi in Y]  \n    # Sabemos que o primeiro coeficiente, a0, é sempre igual a y0, assim temos:\n    coeffs = [Y[0]] + [0 for yi in Y[1:]]   \n    n = len(coeffs)\n    # Para cada coluna (lembrando que a 1º coluna já é dada):\n    for i in range(n-1):\n        # Para cada elemento da coluna (lembrando que a0 já foi calculcado):\n        for j in range(n - i - 1):",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "build_poly",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def build_poly(X, coeffs):\n    def func(x):\n        sum = 0\n        for i, ci in enumerate(coeffs):\n            prod = ci\n            # Se i = 0 o loop não itera:\n            for j in range(i):\n                prod *= (x - X[j])\n            sum += prod\n        return sum",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
         "label": "getChebyPoly",
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
@@ -1755,7 +1773,7 @@
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do enésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\nif __name__ == '__main__':",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\nif __name__ == '__main__':",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
