@@ -79,6 +79,24 @@
         "documentation": {}
     },
     {
+        "label": "changeToCheby",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def changeToCheby(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "changeFromCheby",
+        "kind": 2,
+        "importPath": "Cheby",
+        "description": "Cheby",
+        "peekOfCode": "def changeFromCheby(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "detail": "Cheby",
+        "documentation": {}
+    },
+    {
         "label": "getChebyPoly",
         "kind": 2,
         "importPath": "Cheby",
@@ -110,7 +128,7 @@
         "kind": 2,
         "importPath": "Cheby",
         "description": "Cheby",
-        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    # def f(x):\n    #     return x * sin(-6 * x**2)\n    # n = 4\n    # X = chebyRoots(n+1)",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -1\n    b = 1",
         "detail": "Cheby",
         "documentation": {}
     }

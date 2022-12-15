@@ -94,6 +94,16 @@ ou seja, esse polinômio minimiza a seguinte função erro:
 
 """
 
+def changeToCheby(f, a, b):
+    def F(u):
+        return f(((b-a)/2) * u + (a+b)/2)
+    return F
+
+def changeFromCheby(g, a, b):
+    def G(u):
+        return g((2/(b-a)) * u - (a+b)/(a-b))
+    return G
+
 def getChebyPoly(n):
     """
     Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão
@@ -121,7 +131,6 @@ def getChebyPolyList(n):
         T.append(t_n)
     return T
 
-
 def chebyRoots(n):
     """
     Retorna as n raízes do e-nésimo polinômio de chebyshev.
@@ -142,42 +151,82 @@ if __name__ == '__main__':
 
     # Exemplo 01:
 
-    # def f(x):
-    #     return x * sin(-6 * x**2)
-
-    # n = 4
-    # X = chebyRoots(n+1)
-    # Y = [f(xi) for xi in X]
-
-    # coeffs = diff_div(X,Y)
-    # p = build_poly(X, coeffs)
-
-    # t = np.linspace(-1, 1, 200)
-    # ft = [f(ti) for ti in t]
-    # pt = [p(ti) for ti in t]
-
-    # plt.plot(t, ft, color = "green", label = "f(x)")
-    # plt.plot(t, pt, color = "blue", label = "p(x)")
-    # plt.legend()
-    # plt.savefig("Exemplo01.png")
-
-    # Exemplo 02:
-
     def f(x):
         return x * sin(-6 * x**2)
 
     a = -1
     b = 1
-    n = 256
-    num_poly_cheb = 5
 
+    n = 4
+    X = chebyRoots(n+1)
+    Y = [f(xi) for xi in X]
 
-    x = symbols('x')
-    T = getChebyPolyList(num_poly_cheb)
-    for i in range(0, len(T)):
-        T[i] = stringToFunc(str(T[i]))
+    coeffs = diff_div(X,Y)
+    p = build_poly(X, coeffs)
 
-    coeffs = aprox_coeffs(T, f, a, b, n)
-    g = build_aprox_func(T, coeffs)
+    t = np.linspace(-1, 1, 200)
+    ft = [f(ti) for ti in t]
+    pt = [p(ti) for ti in t]
 
-    
+    plt.plot(t, ft, color = "green", label = "f(x)")
+    plt.plot(t, pt, color = "blue", label = "g(x)")
+    plt.legend()
+    plt.savefig("Exemplo01.png")
+    plt.close()
+
+    # Exemplo 02:
+
+    # def f(x):
+    #     return x * sin(-6 * x**2)
+
+    # a = -1
+    # b = 1
+    # n = 256
+    # num_poly_cheb = 6
+
+    # x = symbols('x')
+    # T = getChebyPolyList(num_poly_cheb)
+    # for i in range(0, len(T)):
+    #     T[i] = stringToFunc(str(T[i]))
+
+    # coeffs = aprox_coeffs(T, f, a, b, n)
+    # for ck in coeffs: 
+    #     print(f"{ck},")
+
+    # g = build_aprox_func(T, coeffs)
+    # values = [-0.448, 0.205, 0.518]
+
+    # for xi in values:
+    #     print(f"{g(xi)},")
+
+    # n = 512
+    # print(trapeze_sum(lambda x: (f(x)-g(x))**2, a, b, n))
+
+    # Exemplo03 (tentanto fazer mudança de variável):
+
+    def f(x):
+        return x * sin(-6 * x**2)
+
+    a = -2
+    b = 2
+
+    f_cheby = changeToCheby(f, a, b)
+
+    n = 4
+    X = chebyRoots(n+1)
+    Y = [f_cheby(xi) for xi in X]
+
+    coeffs = diff_div(X,Y)
+    p = build_poly(X, coeffs)
+
+    g = changeFromCheby(p, -2, 2)
+
+    t = np.linspace(-2, 2, 200)
+    ft = [f(ti) for ti in t]
+    gt = [g(ti) for ti in t]
+
+    plt.plot(t, ft, color = "green", label = "f(x)")
+    plt.plot(t, gt, color = "blue", label = "g(x)")
+    plt.legend()
+    plt.savefig("Exemplo03.png")
+    plt.close()
