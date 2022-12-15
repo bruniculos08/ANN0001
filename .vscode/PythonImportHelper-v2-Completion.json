@@ -368,6 +368,14 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
         "label": "numpy",
         "kind": 6,
         "isExtraImport": true,
@@ -487,6 +495,14 @@
         "description": "cProfile",
         "isExtraImport": true,
         "detail": "cProfile",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
         "documentation": {}
     },
     {
@@ -1723,6 +1739,24 @@
         "description": "Métodos das Diferenças Finitas.Diferenças Finitas",
         "peekOfCode": "def build_taylor(X, x0, f, n):\n    def p(x):\n        poly = f(x0)\n        for i in range(n):\n            coeffs = diff_fin(X, x0, i+1)\n            poly += get_aprox(X, coeffs, f) * (x - x0)**(i+1) / factorial(i+1)\n        return poly\n    return p\nif __name__ == '__main__':\n    # Exemplo 01:",
         "detail": "Métodos das Diferenças Finitas.Diferenças Finitas",
+        "documentation": {}
+    },
+    {
+        "label": "getChebyPoly",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"\n    x = symbols('x')\n    t_n = 1\n    T = [1, x]\n    for _ in range(1, n):",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "chebyRoots",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do enésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\nif __name__ == '__main__':",
+        "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
     {
