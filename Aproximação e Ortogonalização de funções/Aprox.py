@@ -62,17 +62,25 @@ def build_aprox_func(func_list, coeffs):
         return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
     return g
 
-# Função que retorna o produto escalar entre duas funções f(x) e g(x):
+"""
+Função que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que 
+retorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:
+"""
 def prod_esc(f, g, a, b, n):
     return trapeze_sum(lambda x: f(x)*g(x), a, b, n)
 
-# Função que retorna o resultado da projeção de f(x) em g(x):
+"""
+Função que retorna (<f(x), g(x)>/<g(x), g(x)>).g(x), ou seja, o resultado da projeção de f(x) em g(x):
+"""
 def proj(f, g, a, b, n):
     def proj(x):
         return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))*g(x)
     return proj
 
-# Função que retorna o resultado a constante k da projeção de f(x) em g(x):
+"""
+Função que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,
+k = <f(x), g(x)>/<g(x), g(x)>:
+"""
 def proj_k(f, g, a, b, n) -> float:
     return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))
 
@@ -82,7 +90,7 @@ Função para ortogonalizar uma lista de funções (Gran Schimidt):
 Nota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova
 função h(x) tal que:
 
-    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<f(x), g(x)>, 
+    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<g(x), g(x)>, 
 
 o que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).
 """
