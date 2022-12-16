@@ -768,7 +768,7 @@
         "kind": 2,
         "importPath": "ortogonalização01",
         "description": "ortogonalização01",
-        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return simpson(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return simpson(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.16104, 1.14094]",
         "detail": "ortogonalização01",
         "documentation": {}
     },
@@ -777,7 +777,7 @@
         "kind": 2,
         "importPath": "ortogonalização01",
         "description": "ortogonalização01",
-        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        # print(row)",
+        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.16104, 1.14094]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        # print(row)",
         "detail": "ortogonalização01",
         "documentation": {}
     },
@@ -786,7 +786,7 @@
         "kind": 5,
         "importPath": "ortogonalização01",
         "description": "ortogonalização01",
-        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)",
+        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.16104, 1.14094]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)",
         "detail": "ortogonalização01",
         "documentation": {}
     }

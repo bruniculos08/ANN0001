@@ -292,7 +292,7 @@ if __name__ == '__main__':
     funcs = [build_legendre_polynomial(i) for i in range(grau)]
     a = -1
     b = 1
-    values = [-0.741, 0.056, 0.907]
+    values = [-0.558, -0.04, 0.841]
     # quadratura gaussina
     exact_for_degree_less_than = 24
     order = str(int(exact_for_degree_less_than / 2))

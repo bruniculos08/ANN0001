@@ -168,10 +168,10 @@ if __name__ == '__main__':
 
     a = -1
     b = 1
-    num_of_polys = 50
+    last_poly_num = 50
     exact_for_degree_less_than = 24
 
-    P = optimized_legendre(num_of_polys+1)
+    P = optimized_legendre(last_poly_num+1)
 
     from NodesAndWeights import *
     order = str(int(exact_for_degree_less_than/2))    
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     for ck in coeffs:
         print(f"{ck},")
 
-    values = [-0.741, 0.056, 0.907]
+    values = [-0.558, -0.04, 0.841]
     for i, xi in enumerate(values):
         print(f"g(x_{i+1}) = {g(xi)},")
 

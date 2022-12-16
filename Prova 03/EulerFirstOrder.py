@@ -24,16 +24,16 @@ if __name__ == '__main__':
     # Exemplo 01 para y'(x) = e**x:
 
     # Equação obtida para a derivada primeira de y na equação diferencial:
-    a = 8.78623
+    a = 9.92863
     def df(x, y):
         return -y/sqrt(a**2 -y**2)
     
     # Restrição de valor inicial: 
-    x0, y0 = 1.99943, 5.90312
+    x0, y0 = 1.24309, 4.03811
     # Número de iterações(passos):
     n = 101
     # Tamanho de cada passo:
-    h = 0.08774
+    h = 0.1689
         
     X, Y = euler(df, x0, y0, h, n)
     t = np.linspace(x0, n*h, 200)

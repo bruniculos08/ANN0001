@@ -99,7 +99,7 @@ def proj_k(f, g, a, b, n) -> float:
 
 if __name__ == '__main__':
 
-    a, b = [-1.00088, 1.30114]
+    a, b = [-1.16104, 1.14094]
     n = 500
     x = symbols('x')
     func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]

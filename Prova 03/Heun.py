@@ -22,14 +22,14 @@ if __name__ == '__main__':
     # Exemplo 01:
 
     # Equação obtida para a derivada primeira de y na equação diferencial:
-    v = 35621
-    λ = 0.0119
+    v = 31347
+    λ = 0.08955
     def df(x, y):
         return λ*y - v
     
     # Restrição de valor inicial: 
     x0 = 0
-    y0 = 1988046
+    y0 = 1020560
     # Número de iterações(passos; para encontrar o e-nésimo valor de y deve-se fazer n+1 iterações):
     n = int(1/0.0625) + 1
     # Tamanho de cada passo:

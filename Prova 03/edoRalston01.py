@@ -38,20 +38,20 @@ if __name__ == '__main__':
 
     # Equação obtida para a derivada primeira de y na equação diferencial:
 
-    k = 0.0607*pi
+    k = 0.0618*pi
 
     def E(t):
         return e**(-k*t) * sin(2*t - pi)
 
     def dE(t):
-        return e**(-k*t) * (-k*sin(2*t - pi) + 2*cos(2*t - pi))
+        return e**(-k*t) * (k*sin(2*t) - 2*cos(2*t))
 
     def ddE(t):
-        return (-4*k*pi*cos(2*t - pi) + (-4 + k**2)*sin(2*t - pi)) * (e**(-k*t))
+        return (4*k*pi*cos(2*t) - (-4 + k**2)*sin(2*t)) * (e**(-k*t))
 
-    C = 0.3702
-    R = 1.1162
-    L = 1.5218
+    C = 0.2195
+    R = 1.3016
+    L = 1.685
 
     def df(x, y):
         return C*ddE(x) + (1/R)*dE(x) + (1/L)*E(x)
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     # Número de iterações(passos; para encontrar o e-nésimo valor de y deve-se fazer n+1 iterações):
     n = 151
     # Tamanho de cada passo:
-    h = 0.1959
+    h = 0.1576
         
     X, Y = ralston(df, x0, y0, h, n)
     # t = np.linspace(x0, n*h, 200)
@@ -73,4 +73,4 @@ if __name__ == '__main__':
     # plt.plot(t, ft, color = "green")
     plt.scatter(X, Y, label = "blue")
     plt.savefig("Exercício23 (corrente).png")
-    # plt.close()
+    plt.close()
