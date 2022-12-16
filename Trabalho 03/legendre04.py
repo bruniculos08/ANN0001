@@ -91,6 +91,7 @@ def aprox_coeffs(func_list, f, a, b, n):
 
 def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
     coeffs = []
+    print(coeffs_quadrature)
     for fi in func_list:
         ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)
         coeffs.append(ci)
@@ -127,7 +128,7 @@ def legendre(x, n):
 
 def optimized_legendre(n):
     """
-    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa
+    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa
     Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.
     """
     x = symbols('x')
@@ -156,7 +157,7 @@ if __name__ == '__main__':
     """
 
     def f(x):
-        return log(1 + x**2) * sin(10 * x)
+        return log(1 + x**2, e) * sin(10 * x)
 
     a = -1
     b = 1

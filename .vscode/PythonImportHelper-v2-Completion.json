@@ -643,6 +643,22 @@
         "documentation": {}
     },
     {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "cmath",
         "description": "cmath",
@@ -6311,6 +6327,96 @@
         "documentation": {}
     },
     {
+        "label": "trapz",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def trapz(f, a, b, h):\n    n = int((b - a)/h)\n    soma = 0\n    for k in range(1, n):\n        soma += f(a + k * h)\n    soma *= 2\n    soma += f(a) + f(b)\n    soma *= h/2\n    return soma\ndef simps(f, a, b, n):",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "simps",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def simps(f, a, b, n):\n    if n % 2 != 0:\n        print('O valor n deve ser par')\n        return None\n    num_parabolas = n / 2\n    soma = 0\n    h = (b - a) / n\n    for i in range(int(num_parabolas)):\n        x0 = a + (2 * i) * h\n        x1 = a + (2 * i + 1) * h",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "trapz_romberg",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def trapz_romberg(f, a, b, h):\n    n = int((b - a) / h)\n    soma = 0\n    for k in range(1, n):\n        soma += f(a + k * h)\n    return (h / 2) * (f(a) + 2 * soma + f(b))\ndef romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "romberg",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):\n        temp_col = [0] * (n - 1 - j)\n        for i in range(n - 1 - j):\n            power = j + 1\n            temp_col[i] = (4 ** power * coluna_f1[i + 1] - coluna_f1[i]) / (4 ** power - 1)\n        coluna_f1[:n - 1 - j] = temp_col\n        # print(f'F_{j+2} = {temp_col}')",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "best_func",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def best_func(f, funcs, a, b, method: ['trapz', 256]):\n    k = len(funcs)\n    A = [[0 for _ in range(k)] for _ in range(k)]\n    B = []\n    for i in range(k):\n        for j in range(k):\n            if i == j:\n                if j >= i:\n                    def f_ij(x):\n                        return funcs[j](x) * funcs[i](x)",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "quadratura",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def quadratura(funcao, pontos, pesos):\n    soma = 0\n    for xk, ck in zip(pontos, pesos):\n        soma += ck * funcao(xk)\n    return soma\ndef change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef legendre(x, n):",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "change",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef legendre(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def legendre(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:\n      return 1.0\n    elif n == 1:\n      return x\n    else:",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def temp(t):\n        return legendre(t, n)\n    return temp\ndef f(x):\n    return math.log(1 + x**2) * math.sin(10 * x)\nif __name__ == '__main__':\n    raiz2 = [-0.5773502691896257, 0.5773502691896257]\n    peso2 = [1.0, 1.0]\n    raiz3 = [0, -0.7745966692414834, 0.7745966692414834]",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "Trabalho 03.legendre04 (bidin version)",
+        "description": "Trabalho 03.legendre04 (bidin version)",
+        "peekOfCode": "def f(x):\n    return math.log(1 + x**2) * math.sin(10 * x)\nif __name__ == '__main__':\n    raiz2 = [-0.5773502691896257, 0.5773502691896257]\n    peso2 = [1.0, 1.0]\n    raiz3 = [0, -0.7745966692414834, 0.7745966692414834]\n    peso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\n    raiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\n    peso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\n    raiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]",
+        "detail": "Trabalho 03.legendre04 (bidin version)",
+        "documentation": {}
+    },
+    {
         "label": "trapeze_sum",
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
@@ -6369,7 +6475,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    print(coeffs_quadrature)\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6405,7 +6511,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6414,7 +6520,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6770,6 +6876,114 @@
         "documentation": {}
     },
     {
+        "label": "trapz",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 (bidin version)",
+        "description": "Trabalho 03.ortogonalização01 (bidin version)",
+        "peekOfCode": "def trapz(f, a, b, n):\n    h = abs(b - a) / n\n    sum_fx = 0\n    for i in range(1, n):\n        sum_fx += f(a + i * h)\n    return (f(a) + 2 * sum_fx + f(b)) * h / 2\ndef coef(f,g):\n    a = -1.43902\n    b = 1.33976\n    n = 256",
+        "detail": "Trabalho 03.ortogonalização01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "coef",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 (bidin version)",
+        "description": "Trabalho 03.ortogonalização01 (bidin version)",
+        "peekOfCode": "def coef(f,g):\n    a = -1.43902\n    b = 1.33976\n    n = 256\n    numer = trapz(\n        lambda x: (f(x) * g(x) ),\n        a,\n        b,\n        n\n    )",
+        "detail": "Trabalho 03.ortogonalização01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "coefs_comb",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 (bidin version)",
+        "description": "Trabalho 03.ortogonalização01 (bidin version)",
+        "peekOfCode": "def coefs_comb(f, funcs):\n    a = -1\n    b= 1\n    n = 256\n    list_coefs = []\n    for gk in funcs:\n        numer = trapz(\n            lambda x: f(x) * gk(x),\n            a,\n            b,",
+        "detail": "Trabalho 03.ortogonalização01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"\nFunção para ortogonalizar uma lista de funções (Gran Schimidt):\nNota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova\nfunção h(x) tal que:\n    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<g(x), g(x)>, \no que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "ortog_funcs",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    A = []\n    G_func_list = [symbolToFunc(func_list[0])]\n    for fi in func_list[1:]:\n        gi = fi\n        row = []\n        for gj in G:\n            gi -= proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n)*gj\n            row.append(proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n))",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "proj_k",
+        "kind": 2,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        print(row)",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
+        "label": "k",
+        "kind": 5,
+        "importPath": "Trabalho 03.ortogonalização01 copy",
+        "description": "Trabalho 03.ortogonalização01 copy",
+        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)",
+        "detail": "Trabalho 03.ortogonalização01 copy",
+        "documentation": {}
+    },
+    {
         "label": "trapeze_sum",
         "kind": 2,
         "importPath": "Trabalho 03.otimização01",
@@ -7010,42 +7224,6 @@
         "description": "Trabalho 03.prodesc02",
         "peekOfCode": "def prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)\nif __name__ == '__main__':\n    w = lambda x: e**(-x)\n    f1 = lambda x: x**3 + 1\n    f2 = lambda x: 1 + sin(3*x - 1)\n    from NodesAndWeights import *\n    exact_for_degree_less_than = 16\n    order = str(int(exact_for_degree_less_than/2))    \n    lists_names = ['raiz'+order, 'peso'+order]",
         "detail": "Trabalho 03.prodesc02",
-        "documentation": {}
-    },
-    {
-        "label": "trapeze_sum",
-        "kind": 2,
-        "importPath": "Trabalho 03.prodesc03",
-        "description": "Trabalho 03.prodesc03",
-        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)",
-        "detail": "Trabalho 03.prodesc03",
-        "documentation": {}
-    },
-    {
-        "label": "quadrature",
-        "kind": 2,
-        "importPath": "Trabalho 03.prodesc03",
-        "description": "Trabalho 03.prodesc03",
-        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g",
-        "detail": "Trabalho 03.prodesc03",
-        "documentation": {}
-    },
-    {
-        "label": "changeToQuadratureInterval",
-        "kind": 2,
-        "importPath": "Trabalho 03.prodesc03",
-        "description": "Trabalho 03.prodesc03",
-        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)",
-        "detail": "Trabalho 03.prodesc03",
-        "documentation": {}
-    },
-    {
-        "label": "prod_esc",
-        "kind": 2,
-        "importPath": "Trabalho 03.prodesc03",
-        "description": "Trabalho 03.prodesc03",
-        "peekOfCode": "def prod_esc(w, f, g, a, b, cord_quadrature, coeffs_quadrature):\n    return quadrature(lambda x: w(x)*f(x)*g(x), a, b, cord_quadrature, coeffs_quadrature)\nif __name__ == '__main__':\n    w = lambda x: 1\n    f1 = lambda x: x**3 + 1\n    f2 = lambda x: 1 + sin(3*x - 1)\n    from NodesAndWeights import *\n    exact_for_degree_less_than = 16\n    order = str(int(exact_for_degree_less_than/2))    \n    lists_names = ['raiz'+order, 'peso'+order]",
-        "detail": "Trabalho 03.prodesc03",
         "documentation": {}
     }
 ]
