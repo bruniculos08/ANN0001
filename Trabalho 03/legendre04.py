@@ -132,10 +132,13 @@ def optimized_legendre(n):
     Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.
     """
     x = symbols('x')
-    P = [1, x]
+    P = [float(1), x]
     P_func_list = [lambda x: 1, lambda x: x]
     for i in range(2, n+1):
-        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i
+        """
+        Nesta parte (de geração do polinômio p_i) estava ocorrendo problema de precisão caso não se converte-se i para float:
+        """
+        p_i = ((2 * float(i) - 1) * x * P[1] - (float(i) - 1) * P[0]) / float(i)
         p_i = simplify(p_i)
         P.pop(0)
         # print(p_i, "\n\n")

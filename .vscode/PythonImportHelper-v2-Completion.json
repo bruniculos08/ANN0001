@@ -6520,7 +6520,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [1, x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        p_i = ((2 * i - 1) * x * P[1] - (i - 1) * P[0]) / i",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [float(1), x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        \"\"\"",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
