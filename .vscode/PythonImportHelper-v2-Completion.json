@@ -2056,7 +2056,7 @@
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef aprox_coeffs(func_list, f, a, b, n):\n    A = []",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\n\"\"\"\nAviso: os polinômios de chebyshev são dois a dois ortogonais! Portanto deve-se usar a função 'aprox_coeffs_ort'(é mais ",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -2066,6 +2066,15 @@
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
         "peekOfCode": "def aprox_coeffs(func_list, f, a, b, n):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    w = lambda x: (1/sqrt(1-x**2))\n    coeffs = []\n    for fi in func_list:\n        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -2083,7 +2092,7 @@
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"",
+        "peekOfCode": "def changeToChebyInterval(f, a, b):\n    \"\"\"\n    A presente função, 'changeToChebyInterval', altera o intervalo de uma função de [a, b] para [-1, 1]; note que\n    essa mudança de variável é diferente da mudança de variável para quadratura gaussiana (na qual há uma mudança\n    de variável de dentro de uma integral).\n    \"\"\"\n    def F(u):\n        return f(((b-a)/2) * u + (a+b)/2)\n    return F\ndef changeFromChebyInterval(g, a, b):",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -2092,7 +2101,7 @@
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):\n    \"\"\"\n    Retorna o e-nésimo polinômio de chebyshev como um objeto de expressão\n    da biblioteca sympy (o que é diferente e melhor que um função recursiva\n    com complexidade O(2^n)).\n    \"\"\"",
+        "peekOfCode": "def changeFromChebyInterval(g, a, b):\n    \"\"\"\n    A presente função, 'changeFromChebyInterval', altera o intervalo de uma função de [-1, 1] para [a, b]; note que\n    essa mudança de variável é diferente da mudança de variável para quadratura gaussiana (na qual há uma mudança\n    de variável de dentro de uma integral).\n    \"\"\"\n    def G(u):\n        return g((2/(b-a)) * u - (a+b)/(a-b))\n    return G\ndef getChebyPoly(n):",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -2115,11 +2124,20 @@
         "documentation": {}
     },
     {
+        "label": "getFromSymbolToFuncList",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def getFromSymbolToFuncList(expr_list):\n    \"\"\"\n    A presente função, 'getFromSymbolToFuncList' converte uma lista de expressões com simbolos para uma lista de funções,\n    porém para a função 'getChebyPolyList' pode-se realizar tal conversão para um lista T_func_list dentro do loop (o que é \n    mais eficiente visto que é um loop a menos a ser percorrido)\n    \"\"\"\n    func_list = []\n    for expr in expr_list:\n        func_list.append(symbolToFunc(expr))\n    return func_list",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
         "label": "chebyRoots",
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\ndef stringToFunc(string):",
+        "peekOfCode": "def chebyRoots(n):\n    \"\"\"\n    Retorna as n raízes do e-nésimo polinômio de chebyshev.\n    \"\"\"\n    roots = []\n    for k in range(1, n+1):\n        x_k = cos((2*k-1)*pi/(2*n))\n        roots.append(x_k)\n    return roots\n\"\"\"",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -2128,7 +2146,16 @@
         "kind": 2,
         "importPath": "Polinômios de Chebyshev.Cheby",
         "description": "Polinômios de Chebyshev.Cheby",
-        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -1\n    b = 1",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)",
+        "detail": "Polinômios de Chebyshev.Cheby",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "Polinômios de Chebyshev.Cheby",
+        "description": "Polinômios de Chebyshev.Cheby",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -1\n    b = 1\n    \"\"\"\n    Para realizar um interpoção de grau n precisamos de n+1 pontos:",
         "detail": "Polinômios de Chebyshev.Cheby",
         "documentation": {}
     },
@@ -5400,6 +5427,15 @@
         "documentation": {}
     },
     {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby01",
+        "description": "Trabalho 03.cheby01",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, n):\n    w = lambda x: (1/sqrt(1-x**2))\n    # w = lambda x: 1\n    coeffs = []\n    for fi in func_list:\n        ck = trapeze_sum(lambda x: w(x)*f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: w(x)*fi(x)*fi(x), a, b, n)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):",
+        "detail": "Trabalho 03.cheby01",
+        "documentation": {}
+    },
+    {
         "label": "build_aprox_func",
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
@@ -5467,7 +5503,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.cheby01",
         "description": "Trabalho 03.cheby01",
-        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -1\n    b = 1\n    n = 8192\n    num_of_polys = 21",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\nif __name__ == '__main__':\n    # Exemplo 01:\n    def f(x):\n        return x * sin(-6 * x**2)\n    a = -2\n    b = 2\n    n = 8192\n    num_of_polys = 21",
         "detail": "Trabalho 03.cheby01",
         "documentation": {}
     },
@@ -5873,6 +5909,15 @@
         "importPath": "Trabalho 03.cheby04",
         "description": "Trabalho 03.cheby04",
         "peekOfCode": "def aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "Trabalho 03.cheby04",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "Trabalho 03.cheby04",
+        "description": "Trabalho 03.cheby04",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    # w = lambda x: (1/sqrt(1-x**2))\n    w = lambda x: 1\n    coeffs = []\n    for fi in func_list:\n        ck = quadrature(lambda x: w(x)*f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: w(x)*fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ck)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):",
         "detail": "Trabalho 03.cheby04",
         "documentation": {}
     },
@@ -6448,7 +6493,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += float(ci*g(xi))\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6457,7 +6502,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no\n    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.\n    \"\"\"\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\ndef aprox_coeffs(func_list, f, a, b, n):",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no\n    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.\n    \"\"\"\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6475,7 +6520,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    print(coeffs_quadrature)\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6484,7 +6529,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.legendre04",
         "description": "Trabalho 03.legendre04",
-        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n# Transforma string em função:\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nFunções auxiliares:\n\"\"\"\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)",
         "detail": "Trabalho 03.legendre04",
         "documentation": {}
     },
@@ -6961,7 +7006,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.ortogonalização01 copy",
         "description": "Trabalho 03.ortogonalização01 copy",
-        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return trapeze_sum(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.29505, 1.01135]",
         "detail": "Trabalho 03.ortogonalização01 copy",
         "documentation": {}
     },
@@ -6970,7 +7015,7 @@
         "kind": 2,
         "importPath": "Trabalho 03.ortogonalização01 copy",
         "description": "Trabalho 03.ortogonalização01 copy",
-        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        print(row)",
+        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.29505, 1.01135]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        # print(row)",
         "detail": "Trabalho 03.ortogonalização01 copy",
         "documentation": {}
     },
@@ -6979,7 +7024,7 @@
         "kind": 5,
         "importPath": "Trabalho 03.ortogonalização01 copy",
         "description": "Trabalho 03.ortogonalização01 copy",
-        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.43902, 1.33976]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)",
+        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.29505, 1.01135]\n    n = 256\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3]\n    result_list = ortog_funcs(func_list, a, b, n)",
         "detail": "Trabalho 03.ortogonalização01 copy",
         "documentation": {}
     },

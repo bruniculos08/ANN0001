@@ -132,6 +132,15 @@ def aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
         A.append(row)
     return np.linalg.solve(A, B)
 
+def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
+    # w = lambda x: (1/sqrt(1-x**2))
+    w = lambda x: 1
+    coeffs = []
+    for fi in func_list:
+        ck = quadrature(lambda x: w(x)*f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: w(x)*fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)
+        coeffs.append(ck)
+    return coeffs
+
 def build_aprox_func(func_list, coeffs):
     def g(x):
         return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
@@ -222,12 +231,13 @@ if __name__ == '__main__':
     coeffs_quadrature= locals()[lists_names[1]]
     print(cord_quadrature, coeffs_quadrature)
 
-    # f_cheby = changeToChebyInterval(f, a, b)
+    f_cheby = changeToChebyInterval(f, a, b)
     f_cheby = f
     cheby_polynomials = getChebyPolyList(last_poly_num+1)
-    coeffs = aprox_coeffs(cheby_polynomials, f_cheby, a, b, cord_quadrature, coeffs_quadrature)
+    
+    coeffs = aprox_coeffs_ort(cheby_polynomials, f_cheby, a, b, cord_quadrature, coeffs_quadrature)
     p = build_aprox_func(cheby_polynomials, coeffs)
-    # g = changeFromChebyInterval(p, a, b)
+    g = changeFromChebyInterval(p, a, b)
     g = p
 
     """
@@ -236,7 +246,7 @@ if __name__ == '__main__':
     for ci in coeffs:
         print(f"{ci},")
 
-    values = [-0.581, -0.152, 0.734]
+    values = [-0.467, -0.112, 0.471]
     for i, x_i in enumerate(values):
         print(f"g(x_{i}) = {g(x_i)},")
 
@@ -255,5 +265,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend()
-    # plt.savefig("cheby04.png")
+    plt.savefig("cheby04.png")
     plt.close()

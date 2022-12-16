@@ -56,6 +56,11 @@ def trapeze_sum(f, a, b, n):
     area = base*sum
     return area
 
+"""
+Aviso: os polinômios de chebyshev são dois a dois ortogonais! Portanto deve-se usar a função 'aprox_coeffs_ort'(é mais 
+eficiente) porém lembre-se de usar o a função w(x) no produto escalar.
+"""
+
 def aprox_coeffs(func_list, f, a, b, n):
     A = []
     B = []
@@ -80,6 +85,14 @@ def aprox_coeffs(func_list, f, a, b, n):
         A.append(row)
     return np.linalg.solve(A, B)
 
+def aprox_coeffs_ort(func_list, f, a, b, n):
+    w = lambda x: (1/sqrt(1-x**2))
+    coeffs = []
+    for fi in func_list:
+        ck = trapeze_sum(lambda x: f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: fi(x)*fi(x), a, b, n)
+        coeffs.append(ck)
+    return coeffs
+
 def build_aprox_func(func_list, coeffs):
     def g(x):
         return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
@@ -95,11 +108,22 @@ ou seja, esse polinômio minimiza a seguinte função erro:
 """
 
 def changeToChebyInterval(f, a, b):
+    """
+    A presente função, 'changeToChebyInterval', altera o intervalo de uma função de [a, b] para [-1, 1]; note que
+    essa mudança de variável é diferente da mudança de variável para quadratura gaussiana (na qual há uma mudança
+    de variável de dentro de uma integral).
+    """
     def F(u):
         return f(((b-a)/2) * u + (a+b)/2)
     return F
 
+
 def changeFromChebyInterval(g, a, b):
+    """
+    A presente função, 'changeFromChebyInterval', altera o intervalo de uma função de [-1, 1] para [a, b]; note que
+    essa mudança de variável é diferente da mudança de variável para quadratura gaussiana (na qual há uma mudança
+    de variável de dentro de uma integral).
+    """
     def G(u):
         return g((2/(b-a)) * u - (a+b)/(a-b))
     return G
@@ -115,6 +139,7 @@ def getChebyPoly(n):
     T = [1, x]
     for _ in range(1, n):
         t_n = 2*T[1]*x - T[0]
+        t_n = simplify(t_n)
         T = [T[1], t_n]
     return t_n
 
@@ -132,6 +157,18 @@ def getChebyPolyList(n):
         T.append(t_n)
     return T
 
+
+def getFromSymbolToFuncList(expr_list):
+    """
+    A presente função, 'getFromSymbolToFuncList' converte uma lista de expressões com simbolos para uma lista de funções,
+    porém para a função 'getChebyPolyList' pode-se realizar tal conversão para um lista T_func_list dentro do loop (o que é 
+    mais eficiente visto que é um loop a menos a ser percorrido)
+    """
+    func_list = []
+    for expr in expr_list:
+        func_list.append(symbolToFunc(expr))
+    return func_list
+
 def chebyRoots(n):
     """
     Retorna as n raízes do e-nésimo polinômio de chebyshev.
@@ -142,10 +179,17 @@ def chebyRoots(n):
         roots.append(x_k)
     return roots
 
+"""
+Métodos auxiliares:
+"""
+
 def stringToFunc(string):
     def f(x):
         return eval(string)
     return f
+
+def symbolToFunc(expr):
+    return stringToFunc(str(expr))
 
 
 if __name__ == '__main__':
@@ -158,6 +202,9 @@ if __name__ == '__main__':
     a = -1
     b = 1
 
+    """
+    Para realizar um interpoção de grau n precisamos de n+1 pontos:
+    """
     n = 4
     X = chebyRoots(n+1)
     Y = [f(xi) for xi in X]

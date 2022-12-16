@@ -4,7 +4,7 @@ from sympy import symbols, simplify
 from math import *
 
 """
-Métodos de integração e método do de aproximação de Funções:
+Métodos de integração:
 """
 
 def trapeze_sum(f, a, b, n):
@@ -53,7 +53,7 @@ def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):
     g = changeToQuadratureInterval(f, a, b)
     sum = 0
     for xi, ci in zip(cord_quadrature, coeffs_quadrature):
-        sum += ci*g(xi)
+        sum += float(ci*g(xi))
     return sum
 
 def changeToQuadratureInterval(f, a, b):
@@ -65,6 +65,10 @@ def changeToQuadratureInterval(f, a, b):
     def g(u):
         return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2
     return g
+
+"""
+Métodos do de aproximação de Funções:
+"""
 
 def aprox_coeffs(func_list, f, a, b, n):
     A = []
@@ -91,7 +95,6 @@ def aprox_coeffs(func_list, f, a, b, n):
 
 def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):
     coeffs = []
-    print(coeffs_quadrature)
     for fi in func_list:
         ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)
         coeffs.append(ci)
@@ -102,7 +105,10 @@ def build_aprox_func(func_list, coeffs):
         return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
     return g
 
-# Transforma string em função:
+"""
+Funções auxiliares:
+"""
+
 def stringToFunc(string):
     def f(x):
         return eval(string)
@@ -110,7 +116,6 @@ def stringToFunc(string):
 
 def symbolToFunc(expr):
     return stringToFunc(str(expr))
-    
 
 """
 Funções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,
@@ -141,7 +146,6 @@ def optimized_legendre(n):
         p_i = ((2 * float(i) - 1) * x * P[1] - (float(i) - 1) * P[0]) / float(i)
         p_i = simplify(p_i)
         P.pop(0)
-        # print(p_i, "\n\n")
         P.append(p_i)
         P_func_list.append(symbolToFunc(p_i))
     return P_func_list
@@ -181,7 +185,7 @@ if __name__ == '__main__':
     for ck in coeffs:
         print(f"{ck},")
 
-    values = [-0.837, 0.254, 0.915]
+    values = [-0.688, 0.11, 0.636]
     for i, xi in enumerate(values):
         print(f"g(x_{i+1}) = {g(xi)},")
 
@@ -196,5 +200,5 @@ if __name__ == '__main__':
     plt.plot(t, ft, color = "green", label = "f(x)")
     plt.plot(t, gt, color = "blue", label = "g(x)")
     plt.legend(loc="upper left")
-    plt.savefig("legendre04.png")
+    # plt.savefig("legendre04.png")
     plt.close()

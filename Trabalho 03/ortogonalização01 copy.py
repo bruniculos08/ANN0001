@@ -82,7 +82,7 @@ def proj_k(f, g, a, b, n) -> float:
 
 if __name__ == '__main__':
 
-    a, b = [-1.43902, 1.33976]
+    a, b = [-1.29505, 1.01135]
     n = 256
     x = symbols('x')
     func_list = [1,  x, x**2, x**3]
@@ -90,8 +90,8 @@ if __name__ == '__main__':
     result_list = ortog_funcs(func_list, a, b, n)
     
     for row in result_list:
-        print(row)
-        # for a_ij in row:
-        #     print(f"{a_ij},") 
+        # print(row)
+        for a_ij in row:
+            print(f"{a_ij},") 
 
     pass

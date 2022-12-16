@@ -80,6 +80,15 @@ def aprox_coeffs(func_list, f, a, b, n):
         A.append(row)
     return np.linalg.solve(A, B)
 
+def aprox_coeffs_ort(func_list, f, a, b, n):
+    w = lambda x: (1/sqrt(1-x**2))
+    # w = lambda x: 1
+    coeffs = []
+    for fi in func_list:
+        ck = trapeze_sum(lambda x: w(x)*f(x)*fi(x), a, b, n)/trapeze_sum(lambda x: w(x)*fi(x)*fi(x), a, b, n)
+        coeffs.append(ck)
+    return coeffs
+
 def build_aprox_func(func_list, coeffs):
     def g(x):
         return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))
@@ -159,14 +168,14 @@ if __name__ == '__main__':
     def f(x):
         return x * sin(-6 * x**2)
 
-    a = -1
-    b = 1
+    a = -2
+    b = 2
     n = 8192
     num_of_polys = 21
 
     f_cheby = changeToChebyInterval(f, a, b)
     cheby_polynomials = getChebyPolyList(num_of_polys+1)
-    coeffs = aprox_coeffs(cheby_polynomials, f_cheby, a, b, n)
+    coeffs = aprox_coeffs_ort(cheby_polynomials, f_cheby, -1+0.01, 1-0.01, n)
     p = build_aprox_func(cheby_polynomials, coeffs)
     g = changeFromChebyInterval(p, a, b)
 
