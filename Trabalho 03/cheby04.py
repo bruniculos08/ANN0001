@@ -232,7 +232,7 @@ if __name__ == '__main__':
     print(cord_quadrature, coeffs_quadrature)
 
     f_cheby = changeToChebyInterval(f, a, b)
-    f_cheby = f
+    # f_cheby = f
     cheby_polynomials = getChebyPolyList(last_poly_num+1)
     
     coeffs = aprox_coeffs_ort(cheby_polynomials, f_cheby, a, b, cord_quadrature, coeffs_quadrature)

@@ -1,0 +1,793 @@
+[
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "math",
+        "description": "math",
+        "isExtraImport": true,
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "symbols",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "simplify",
+        "importPath": "sympy",
+        "description": "sympy",
+        "isExtraImport": true,
+        "detail": "sympy",
+        "documentation": {}
+    },
+    {
+        "label": "heun",
+        "kind": 2,
+        "importPath": "edoRalston01",
+        "description": "edoRalston01",
+        "peekOfCode": "def heun(df, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        m1 = df(X[k-1], Y[k-1])\n        m2 = df(X[k-1] + h, Y[k-1] + m1*h)\n        xk = x0 + k*h\n        yk = Y[k-1] + (h/2)*(m1 + m2)\n        X.append(xk)",
+        "detail": "edoRalston01",
+        "documentation": {}
+    },
+    {
+        "label": "ralston",
+        "kind": 2,
+        "importPath": "edoRalston01",
+        "description": "edoRalston01",
+        "peekOfCode": "def ralston(df, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        m1 = df(X[k-1], Y[k-1])\n        m2 = df(X[k-1] + (3/4)*h, Y[k-1] + (3/4)*h*m1)\n        xk = x0 + k*h\n        yk = Y[k-1] + (h/3)*(m1 + 2*m2)\n        X.append(xk)",
+        "detail": "edoRalston01",
+        "documentation": {}
+    },
+    {
+        "label": "rungeKutta",
+        "kind": 2,
+        "importPath": "edoRungeKutta (ordem 4) - 02",
+        "description": "edoRungeKutta (ordem 4) - 02",
+        "peekOfCode": "def rungeKutta(df, x0, y0, X):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0] + X\n    Y = [y0]\n    n = len(X)\n    for k in range(1, n):\n        h = X[k] - X[k-1]\n        m1 = df(X[k-1], Y[k-1])\n        m2 = df(X[k-1] + h/2, Y[k-1] + m1*h/2)\n        m3 = df(X[k-1] + h/2, Y[k-1] + m2*h/2)",
+        "detail": "edoRungeKutta (ordem 4) - 02",
+        "documentation": {}
+    },
+    {
+        "label": "euler",
+        "kind": 2,
+        "importPath": "EulerFirstOrder",
+        "description": "EulerFirstOrder",
+        "peekOfCode": "def euler(f, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        # Calculando x_k+1:\n        x = x0 + k*h\n        # Calculando y_k:\n        y_k = Y[k-1] + f(X[k-1], Y[k-1])*h\n        X.append(x)",
+        "detail": "EulerFirstOrder",
+        "documentation": {}
+    },
+    {
+        "label": "heun",
+        "kind": 2,
+        "importPath": "Heun",
+        "description": "Heun",
+        "peekOfCode": "def heun(df, x0, y0, h, n):\n    # Criando listas de coordenadas com as coordenadas iniciais:\n    X = [x0]\n    Y = [y0]\n    for k in range(1, n):\n        m1 = df(X[k-1], Y[k-1])\n        m2 = df(X[k-1] + h, Y[k-1] + m1*h)\n        xk = x0 + k*h\n        yk = Y[k-1] + (h/2)*(m1 + m2)\n        X.append(xk)",
+        "detail": "Heun",
+        "documentation": {}
+    },
+    {
+        "label": "trapz",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def trapz(f, a, b, h):\n    n = int((b - a)/h)\n    soma = 0\n    for k in range(1, n):\n        soma += f(a + k * h)\n    soma *= 2\n    soma += f(a) + f(b)\n    soma *= h/2\n    return soma\ndef simps(f, a, b, n):",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "simps",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def simps(f, a, b, n):\n    if n % 2 != 0:\n        print('O valor n deve ser par')\n        return None\n    num_parabolas = n / 2\n    soma = 0\n    h = (b - a) / n\n    for i in range(int(num_parabolas)):\n        x0 = a + (2 * i) * h\n        x1 = a + (2 * i + 1) * h",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "trapz_romberg",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def trapz_romberg(f, a, b, h):\n    n = int((b - a) / h)\n    soma = 0\n    for k in range(1, n):\n        soma += f(a + k * h)\n    return (h / 2) * (f(a) + 2 * soma + f(b))\ndef romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "romberg",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def romberg(coluna_f1):\n    coluna_f1 = [i for i in coluna_f1]\n    n = len(coluna_f1)\n    for j in range(n - 1):\n        temp_col = [0] * (n - 1 - j)\n        for i in range(n - 1 - j):\n            power = j + 1\n            temp_col[i] = (4 ** power * coluna_f1[i + 1] - coluna_f1[i]) / (4 ** power - 1)\n        coluna_f1[:n - 1 - j] = temp_col\n        # print(f'F_{j+2} = {temp_col}')",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "best_func",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def best_func(f, funcs, a, b, method: ['trapz', 256]):\n    k = len(funcs)\n    A = [[0 for _ in range(k)] for _ in range(k)]\n    B = []\n    for i in range(k):\n        for j in range(k):\n            if i == j:\n                if j >= i:\n                    def f_ij(x):\n                        return funcs[j](x) * funcs[i](x)",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "quadratura",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def quadratura(funcao, pontos, pesos):\n    soma = 0\n    for xk, ck in zip(pontos, pesos):\n        soma += ck * funcao(xk)\n    return soma\ndef change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef legendre(x, n):",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "change",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def change(f, a, b):\n    def g(u):\n        return f((b + a) / 2 + (b - a) * u / 2) * (b - a) / 2\n    return g\ndef legendre(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def legendre(x, n):\n    f0 = 1.0\n    f1 = x\n    fn = 0\n    ni = 2\n    if n == 0:\n      return 1.0\n    elif n == 1:\n      return x\n    else:",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def temp(t):\n        return legendre(t, n)\n    return temp\ndef f(x):\n    return math.log(1 + x**2) * math.sin(10 * x)\nif __name__ == '__main__':\n    raiz2 = [-0.5773502691896257, 0.5773502691896257]\n    peso2 = [1.0, 1.0]\n    raiz3 = [0, -0.7745966692414834, 0.7745966692414834]",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "f",
+        "kind": 2,
+        "importPath": "legendre01 (bidin version)",
+        "description": "legendre01 (bidin version)",
+        "peekOfCode": "def f(x):\n    return math.log(1 + x**2) * math.sin(10 * x)\nif __name__ == '__main__':\n    raiz2 = [-0.5773502691896257, 0.5773502691896257]\n    peso2 = [1.0, 1.0]\n    raiz3 = [0, -0.7745966692414834, 0.7745966692414834]\n    peso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\n    raiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\n    peso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\n    raiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]",
+        "detail": "legendre01 (bidin version)",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "richardson",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def richardson(f, a, b, n, k):\n    table = []\n    # Obs.: dada essa função de erro inicial tem-se que Fk(h) diminui o erro para O(h^(2*k))\n    k = int(k/2)\n    for i in range(k):\n        item = trapeze_sum(f, a, b, (2**i)*n)\n        table.append(item)\n    for i in range(k):\n        for j in range(k-i-1):\n            new_item = ((4**(i+1))*table[j+1] - table[j])/(4**(i+1) - 1)",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += float(ci*g(xi))\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    \"\"\"\n    Muda uma função do intervalo [a, b] para o intervalo [-1, 1].\n    Obs.: Note que nesta transformação a função também é multiplicada, isto pois ao se realizar a substituição de x pela nova variável t no\n    intervalo [a, b] deve-se fazer a substituição dx = (dt/dx)dt.\n    \"\"\"\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def aprox_coeffs(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    A = []\n    B = []\n    # Obs.: note que a matriz A é simétrica portanto não precisamos calcular n² integrais\n    for i, fi in enumerate(func_list):\n        row = []\n        b_i = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        for j, fj in enumerate(func_list):\n            \"\"\"\n            Note que:",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "aprox_coeffs_ort",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def aprox_coeffs_ort(func_list, f, a, b, cord_quadrature, coeffs_quadrature):\n    coeffs = []\n    for fi in func_list:\n        ci = quadrature(lambda x: f(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)/quadrature(lambda x: fi(x)*fi(x), a, b, cord_quadrature, coeffs_quadrature)\n        coeffs.append(ci)\n    return coeffs\ndef build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "build_aprox_func",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def build_aprox_func(func_list, coeffs):\n    def g(x):\n        return sum(ck*fk(x) for ck, fk in zip(coeffs, func_list))\n    return g\n\"\"\"\nFunções auxiliares:\n\"\"\"\ndef stringToFunc(string):\n    def f(x):\n        return eval(string)",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunções recursivas para geração dos polinômios de Legendre (lembre-se que estes polinômios são dois a dois ortogonais,\nportanto podemos utilizar o método mais eficiente para se obter os coeficientes da aproximação para uma determinar função f(x)):\n(Anotação: fazer as funções de maneira não recursiva usando a biblioteca sympy)\n\"\"\"\ndef legendre(x, n):\n    if n == 0:\n        return 1",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "legendre",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def legendre(x, n):\n    if n == 0:\n        return 1\n    elif n == 1:\n        return x\n    else:\n        return ((2 * n - 1) * x * legendre(x, n - 1) - (n - 1) * legendre(x, n - 2)) / n\ndef optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "optimized_legendre",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def optimized_legendre(n):\n    \"\"\"\n    Função que gera a lista do primeiro até o e-nésimo (considerando que existe um 0-ésimo) polinômio de Legendre de maneira iterativa\n    Obs.: x deve ser um elemento da classe symbol da biblioteca sympy.\n    \"\"\"\n    x = symbols('x')\n    P = [float(1), x]\n    P_func_list = [lambda x: 1, lambda x: x]\n    for i in range(2, n+1):\n        \"\"\"",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "build_legendre_polynomial",
+        "kind": 2,
+        "importPath": "legendre01",
+        "description": "legendre01",
+        "peekOfCode": "def build_legendre_polynomial(n):\n    def p(x):\n        return legendre(x, n)\n    return p\nif __name__ == '__main__':\n    \"\"\"\n    Exemplo 02:\n    Não está funcionando (nota 7,71 na questão 10)\n    \"\"\"\n    def f(x):",
+        "detail": "legendre01",
+        "documentation": {}
+    },
+    {
+        "label": "raiz2",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz2 = [-0.5773502691896257, 0.5773502691896257]\npeso2 = [1.0, 1.0]\nraiz3 = [0, -0.7745966692414834, 0.7745966692414834]\npeso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\nraiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\npeso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso2",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso2 = [1.0, 1.0]\nraiz3 = [0, -0.7745966692414834, 0.7745966692414834]\npeso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\nraiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\npeso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz3",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz3 = [0, -0.7745966692414834, 0.7745966692414834]\npeso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\nraiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\npeso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso3",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso3 = [0.8888888888888888, 0.5555555555555556, 0.5555555555555556]\nraiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\npeso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz4",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz4 = [-0.33998104358485626, 0.33998104358485626, -0.8611363115940526, 0.8611363115940526]\npeso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso4",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso4 = [0.6521451548625461, 0.6521451548625461, 0.34785484513745385, 0.34785484513745385]\nraiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz5",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz5 = [0, -0.5384693101056831, 0.5384693101056831, -0.906179845938664, 0.906179845938664]\npeso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso5",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso5 = [0.5688888888888889, 0.47862867049936647, 0.47862867049936647, 0.23692688505618908, 0.23692688505618908]\nraiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]\nraiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz6",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz6 = [0.6612093864662645, -0.6612093864662645, -0.2386191860831969, 0.2386191860831969, -0.932469514203152,\n            0.932469514203152]\npeso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]\nraiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,\n            0.7966664774136267, -0.9602898564975363, 0.9602898564975363]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso6",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso6 = [0.3607615730481386, 0.3607615730481386, 0.46791393457269104, 0.46791393457269104, 0.17132449237917036,\n            0.17132449237917036]\nraiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]\nraiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,\n            0.7966664774136267, -0.9602898564975363, 0.9602898564975363]\npeso8 = [0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,\n            0.22238103445337448, 0.10122853629037626, 0.10122853629037626]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz7",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz7 = [0, 0.4058451513773972, -0.4058451513773972, -0.7415311855993945, 0.7415311855993945, -0.9491079123427585,\n            0.9491079123427585]\npeso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]\nraiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,\n            0.7966664774136267, -0.9602898564975363, 0.9602898564975363]\npeso8 = [0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,\n            0.22238103445337448, 0.10122853629037626, 0.10122853629037626]\nraiz9 = [0, -0.8360311073266358, 0.8360311073266358, -0.9681602395076261, 0.9681602395076261, -0.3242534234038089,\n            0.3242534234038089, -0.6133714327005904, 0.6133714327005904]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso7",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso7 = [0.4179591836734694, 0.3818300505051189, 0.3818300505051189, 0.27970539148927664, 0.27970539148927664,\n            0.1294849661688697, 0.1294849661688697]\nraiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,\n            0.7966664774136267, -0.9602898564975363, 0.9602898564975363]\npeso8 = [0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,\n            0.22238103445337448, 0.10122853629037626, 0.10122853629037626]\nraiz9 = [0, -0.8360311073266358, 0.8360311073266358, -0.9681602395076261, 0.9681602395076261, -0.3242534234038089,\n            0.3242534234038089, -0.6133714327005904, 0.6133714327005904]\npeso9 = [0.3302393550012598, 0.1806481606948574, 0.1806481606948574, 0.08127438836157441, 0.08127438836157441,\n            0.31234707704000286, 0.31234707704000286, 0.26061069640293544, 0.26061069640293544]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz8",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz8 = [-0.1834346424956498, 0.1834346424956498, -0.525532409916329, 0.525532409916329, -0.7966664774136267,\n            0.7966664774136267, -0.9602898564975363, 0.9602898564975363]\npeso8 = [0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,\n            0.22238103445337448, 0.10122853629037626, 0.10122853629037626]\nraiz9 = [0, -0.8360311073266358, 0.8360311073266358, -0.9681602395076261, 0.9681602395076261, -0.3242534234038089,\n            0.3242534234038089, -0.6133714327005904, 0.6133714327005904]\npeso9 = [0.3302393550012598, 0.1806481606948574, 0.1806481606948574, 0.08127438836157441, 0.08127438836157441,\n            0.31234707704000286, 0.31234707704000286, 0.26061069640293544, 0.26061069640293544]\nraiz10 = [-0.14887433898163122, 0.14887433898163122, -0.4333953941292472, 0.4333953941292472, -0.6794095682990244,\n            0.6794095682990244, -0.8650633666889845, 0.8650633666889845, -0.9739065285171717, 0.9739065285171717]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso8",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso8 = [0.362683783378362, 0.362683783378362, 0.31370664587788727, 0.31370664587788727, 0.22238103445337448,\n            0.22238103445337448, 0.10122853629037626, 0.10122853629037626]\nraiz9 = [0, -0.8360311073266358, 0.8360311073266358, -0.9681602395076261, 0.9681602395076261, -0.3242534234038089,\n            0.3242534234038089, -0.6133714327005904, 0.6133714327005904]\npeso9 = [0.3302393550012598, 0.1806481606948574, 0.1806481606948574, 0.08127438836157441, 0.08127438836157441,\n            0.31234707704000286, 0.31234707704000286, 0.26061069640293544, 0.26061069640293544]\nraiz10 = [-0.14887433898163122, 0.14887433898163122, -0.4333953941292472, 0.4333953941292472, -0.6794095682990244,\n            0.6794095682990244, -0.8650633666889845, 0.8650633666889845, -0.9739065285171717, 0.9739065285171717]\npeso10 = [0.29552422471475287, 0.29552422471475287, 0.26926671930999635, 0.26926671930999635, 0.21908636251598204,\n            0.21908636251598204, 0.1494513491505806, 0.1494513491505806, 0.06667134430868814, 0.06667134430868814]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz9",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz9 = [0, -0.8360311073266358, 0.8360311073266358, -0.9681602395076261, 0.9681602395076261, -0.3242534234038089,\n            0.3242534234038089, -0.6133714327005904, 0.6133714327005904]\npeso9 = [0.3302393550012598, 0.1806481606948574, 0.1806481606948574, 0.08127438836157441, 0.08127438836157441,\n            0.31234707704000286, 0.31234707704000286, 0.26061069640293544, 0.26061069640293544]\nraiz10 = [-0.14887433898163122, 0.14887433898163122, -0.4333953941292472, 0.4333953941292472, -0.6794095682990244,\n            0.6794095682990244, -0.8650633666889845, 0.8650633666889845, -0.9739065285171717, 0.9739065285171717]\npeso10 = [0.29552422471475287, 0.29552422471475287, 0.26926671930999635, 0.26926671930999635, 0.21908636251598204,\n            0.21908636251598204, 0.1494513491505806, 0.1494513491505806, 0.06667134430868814, 0.06667134430868814]\nraiz11 = [0, -0.26954315595234496, 0.26954315595234496, -0.5190961292068118, 0.5190961292068118,\n            -0.7301520055740494,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso9",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso9 = [0.3302393550012598, 0.1806481606948574, 0.1806481606948574, 0.08127438836157441, 0.08127438836157441,\n            0.31234707704000286, 0.31234707704000286, 0.26061069640293544, 0.26061069640293544]\nraiz10 = [-0.14887433898163122, 0.14887433898163122, -0.4333953941292472, 0.4333953941292472, -0.6794095682990244,\n            0.6794095682990244, -0.8650633666889845, 0.8650633666889845, -0.9739065285171717, 0.9739065285171717]\npeso10 = [0.29552422471475287, 0.29552422471475287, 0.26926671930999635, 0.26926671930999635, 0.21908636251598204,\n            0.21908636251598204, 0.1494513491505806, 0.1494513491505806, 0.06667134430868814, 0.06667134430868814]\nraiz11 = [0, -0.26954315595234496, 0.26954315595234496, -0.5190961292068118, 0.5190961292068118,\n            -0.7301520055740494,\n            0.7301520055740494, -0.8870625997680953, 0.8870625997680953, -0.978228658146057, 0.978228658146057]\npeso11 = [0.2729250867779006, 0.26280454451024665, 0.26280454451024665, 0.23319376459199048, 0.23319376459199048,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz10",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz10 = [-0.14887433898163122, 0.14887433898163122, -0.4333953941292472, 0.4333953941292472, -0.6794095682990244,\n            0.6794095682990244, -0.8650633666889845, 0.8650633666889845, -0.9739065285171717, 0.9739065285171717]\npeso10 = [0.29552422471475287, 0.29552422471475287, 0.26926671930999635, 0.26926671930999635, 0.21908636251598204,\n            0.21908636251598204, 0.1494513491505806, 0.1494513491505806, 0.06667134430868814, 0.06667134430868814]\nraiz11 = [0, -0.26954315595234496, 0.26954315595234496, -0.5190961292068118, 0.5190961292068118,\n            -0.7301520055740494,\n            0.7301520055740494, -0.8870625997680953, 0.8870625997680953, -0.978228658146057, 0.978228658146057]\npeso11 = [0.2729250867779006, 0.26280454451024665, 0.26280454451024665, 0.23319376459199048, 0.23319376459199048,\n            0.18629021092773426, 0.18629021092773426, 0.1255803694649046, 0.1255803694649046, 0.05566856711617366,\n            0.05566856711617366]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso10",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso10 = [0.29552422471475287, 0.29552422471475287, 0.26926671930999635, 0.26926671930999635, 0.21908636251598204,\n            0.21908636251598204, 0.1494513491505806, 0.1494513491505806, 0.06667134430868814, 0.06667134430868814]\nraiz11 = [0, -0.26954315595234496, 0.26954315595234496, -0.5190961292068118, 0.5190961292068118,\n            -0.7301520055740494,\n            0.7301520055740494, -0.8870625997680953, 0.8870625997680953, -0.978228658146057, 0.978228658146057]\npeso11 = [0.2729250867779006, 0.26280454451024665, 0.26280454451024665, 0.23319376459199048, 0.23319376459199048,\n            0.18629021092773426, 0.18629021092773426, 0.1255803694649046, 0.1255803694649046, 0.05566856711617366,\n            0.05566856711617366]\nraiz12 = [-0.1252334085114689, 0.1252334085114689, -0.3678314989981802, 0.3678314989981802, -0.5873179542866175,\n            0.5873179542866175, -0.7699026741943047, 0.7699026741943047, -0.9041172563704749, 0.9041172563704749,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz11",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz11 = [0, -0.26954315595234496, 0.26954315595234496, -0.5190961292068118, 0.5190961292068118,\n            -0.7301520055740494,\n            0.7301520055740494, -0.8870625997680953, 0.8870625997680953, -0.978228658146057, 0.978228658146057]\npeso11 = [0.2729250867779006, 0.26280454451024665, 0.26280454451024665, 0.23319376459199048, 0.23319376459199048,\n            0.18629021092773426, 0.18629021092773426, 0.1255803694649046, 0.1255803694649046, 0.05566856711617366,\n            0.05566856711617366]\nraiz12 = [-0.1252334085114689, 0.1252334085114689, -0.3678314989981802, 0.3678314989981802, -0.5873179542866175,\n            0.5873179542866175, -0.7699026741943047, 0.7699026741943047, -0.9041172563704749, 0.9041172563704749,\n            -0.9815606342467192, 0.9815606342467192]\npeso12 = [0.24914704581340277, 0.24914704581340277, 0.2334925365383548, 0.2334925365383548, 0.20316742672306592,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso11",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso11 = [0.2729250867779006, 0.26280454451024665, 0.26280454451024665, 0.23319376459199048, 0.23319376459199048,\n            0.18629021092773426, 0.18629021092773426, 0.1255803694649046, 0.1255803694649046, 0.05566856711617366,\n            0.05566856711617366]\nraiz12 = [-0.1252334085114689, 0.1252334085114689, -0.3678314989981802, 0.3678314989981802, -0.5873179542866175,\n            0.5873179542866175, -0.7699026741943047, 0.7699026741943047, -0.9041172563704749, 0.9041172563704749,\n            -0.9815606342467192, 0.9815606342467192]\npeso12 = [0.24914704581340277, 0.24914704581340277, 0.2334925365383548, 0.2334925365383548, 0.20316742672306592,\n            0.20316742672306592, 0.16007832854334622, 0.16007832854334622, 0.10693932599531843, 0.10693932599531843,\n            0.04717533638651183, 0.04717533638651183]\nraiz13 = [0, -0.2304583159551348, 0.2304583159551348, -0.44849275103644687, 0.44849275103644687,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz12",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz12 = [-0.1252334085114689, 0.1252334085114689, -0.3678314989981802, 0.3678314989981802, -0.5873179542866175,\n            0.5873179542866175, -0.7699026741943047, 0.7699026741943047, -0.9041172563704749, 0.9041172563704749,\n            -0.9815606342467192, 0.9815606342467192]\npeso12 = [0.24914704581340277, 0.24914704581340277, 0.2334925365383548, 0.2334925365383548, 0.20316742672306592,\n            0.20316742672306592, 0.16007832854334622, 0.16007832854334622, 0.10693932599531843, 0.10693932599531843,\n            0.04717533638651183, 0.04717533638651183]\nraiz13 = [0, -0.2304583159551348, 0.2304583159551348, -0.44849275103644687, 0.44849275103644687,\n            -0.6423493394403402,\n            0.6423493394403402, -0.8015780907333099, 0.8015780907333099, -0.9175983992229779, 0.9175983992229779,\n            -0.9841830547185881, 0.9841830547185881]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso12",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso12 = [0.24914704581340277, 0.24914704581340277, 0.2334925365383548, 0.2334925365383548, 0.20316742672306592,\n            0.20316742672306592, 0.16007832854334622, 0.16007832854334622, 0.10693932599531843, 0.10693932599531843,\n            0.04717533638651183, 0.04717533638651183]\nraiz13 = [0, -0.2304583159551348, 0.2304583159551348, -0.44849275103644687, 0.44849275103644687,\n            -0.6423493394403402,\n            0.6423493394403402, -0.8015780907333099, 0.8015780907333099, -0.9175983992229779, 0.9175983992229779,\n            -0.9841830547185881, 0.9841830547185881]\npeso13 = [0.2325515532308739, 0.22628318026289723, 0.22628318026289723, 0.2078160475368885, 0.2078160475368885,\n            0.17814598076194574, 0.17814598076194574, 0.13887351021978725, 0.13887351021978725, 0.09212149983772845,\n            0.09212149983772845, 0.04048400476531588, 0.04048400476531588]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz13",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz13 = [0, -0.2304583159551348, 0.2304583159551348, -0.44849275103644687, 0.44849275103644687,\n            -0.6423493394403402,\n            0.6423493394403402, -0.8015780907333099, 0.8015780907333099, -0.9175983992229779, 0.9175983992229779,\n            -0.9841830547185881, 0.9841830547185881]\npeso13 = [0.2325515532308739, 0.22628318026289723, 0.22628318026289723, 0.2078160475368885, 0.2078160475368885,\n            0.17814598076194574, 0.17814598076194574, 0.13887351021978725, 0.13887351021978725, 0.09212149983772845,\n            0.09212149983772845, 0.04048400476531588, 0.04048400476531588]\nraiz14 = [-0.10805494870734367, 0.10805494870734367, -0.31911236892788974, 0.31911236892788974, -0.5152486363581541,\n            0.5152486363581541, -0.6872929048116855, 0.6872929048116855, -0.827201315069765, 0.827201315069765,\n            -0.9284348836635735, 0.9284348836635735, -0.9862838086968123, 0.9862838086968123]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso13",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso13 = [0.2325515532308739, 0.22628318026289723, 0.22628318026289723, 0.2078160475368885, 0.2078160475368885,\n            0.17814598076194574, 0.17814598076194574, 0.13887351021978725, 0.13887351021978725, 0.09212149983772845,\n            0.09212149983772845, 0.04048400476531588, 0.04048400476531588]\nraiz14 = [-0.10805494870734367, 0.10805494870734367, -0.31911236892788974, 0.31911236892788974, -0.5152486363581541,\n            0.5152486363581541, -0.6872929048116855, 0.6872929048116855, -0.827201315069765, 0.827201315069765,\n            -0.9284348836635735, 0.9284348836635735, -0.9862838086968123, 0.9862838086968123]\npeso14 = [0.2152638534631578, 0.2152638534631578, 0.2051984637212956, 0.2051984637212956, 0.18553839747793782,\n            0.18553839747793782, 0.15720316715819355, 0.15720316715819355, 0.12151857068790319, 0.12151857068790319,\n            0.08015808715976021, 0.08015808715976021, 0.03511946033175186, 0.03511946033175186]\nraiz15 = [0, -0.20119409399743451, 0.20119409399743451, -0.3941513470775634, 0.3941513470775634,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz14",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz14 = [-0.10805494870734367, 0.10805494870734367, -0.31911236892788974, 0.31911236892788974, -0.5152486363581541,\n            0.5152486363581541, -0.6872929048116855, 0.6872929048116855, -0.827201315069765, 0.827201315069765,\n            -0.9284348836635735, 0.9284348836635735, -0.9862838086968123, 0.9862838086968123]\npeso14 = [0.2152638534631578, 0.2152638534631578, 0.2051984637212956, 0.2051984637212956, 0.18553839747793782,\n            0.18553839747793782, 0.15720316715819355, 0.15720316715819355, 0.12151857068790319, 0.12151857068790319,\n            0.08015808715976021, 0.08015808715976021, 0.03511946033175186, 0.03511946033175186]\nraiz15 = [0, -0.20119409399743451, 0.20119409399743451, -0.3941513470775634, 0.3941513470775634,\n            -0.5709721726085388,\n            0.5709721726085388, -0.7244177313601701, 0.7244177313601701, -0.8482065834104272, 0.8482065834104272,\n            -0.937273392400706, 0.937273392400706, -0.9879925180204854, 0.9879925180204854]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso14",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso14 = [0.2152638534631578, 0.2152638534631578, 0.2051984637212956, 0.2051984637212956, 0.18553839747793782,\n            0.18553839747793782, 0.15720316715819355, 0.15720316715819355, 0.12151857068790319, 0.12151857068790319,\n            0.08015808715976021, 0.08015808715976021, 0.03511946033175186, 0.03511946033175186]\nraiz15 = [0, -0.20119409399743451, 0.20119409399743451, -0.3941513470775634, 0.3941513470775634,\n            -0.5709721726085388,\n            0.5709721726085388, -0.7244177313601701, 0.7244177313601701, -0.8482065834104272, 0.8482065834104272,\n            -0.937273392400706, 0.937273392400706, -0.9879925180204854, 0.9879925180204854]\npeso15 = [0.2025782419255613, 0.19843148532711158, 0.19843148532711158, 0.1861610000155622, 0.1861610000155622,\n            0.16626920581699392, 0.16626920581699392, 0.13957067792615432, 0.13957067792615432, 0.10715922046717194,\n            0.10715922046717194, 0.07036604748810812, 0.07036604748810812, 0.03075324199611727, 0.03075324199611727]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz15",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz15 = [0, -0.20119409399743451, 0.20119409399743451, -0.3941513470775634, 0.3941513470775634,\n            -0.5709721726085388,\n            0.5709721726085388, -0.7244177313601701, 0.7244177313601701, -0.8482065834104272, 0.8482065834104272,\n            -0.937273392400706, 0.937273392400706, -0.9879925180204854, 0.9879925180204854]\npeso15 = [0.2025782419255613, 0.19843148532711158, 0.19843148532711158, 0.1861610000155622, 0.1861610000155622,\n            0.16626920581699392, 0.16626920581699392, 0.13957067792615432, 0.13957067792615432, 0.10715922046717194,\n            0.10715922046717194, 0.07036604748810812, 0.07036604748810812, 0.03075324199611727, 0.03075324199611727]\nraiz16 = [-0.09501250983763744, 0.09501250983763744, -0.2816035507792589, 0.2816035507792589, -0.45801677765722737,\n            0.45801677765722737, -0.6178762444026438, 0.6178762444026438, -0.755404408355003, 0.755404408355003,\n            -0.8656312023878318, 0.8656312023878318, -0.9445750230732326, 0.9445750230732326, -0.9894009349916499,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso15",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso15 = [0.2025782419255613, 0.19843148532711158, 0.19843148532711158, 0.1861610000155622, 0.1861610000155622,\n            0.16626920581699392, 0.16626920581699392, 0.13957067792615432, 0.13957067792615432, 0.10715922046717194,\n            0.10715922046717194, 0.07036604748810812, 0.07036604748810812, 0.03075324199611727, 0.03075324199611727]\nraiz16 = [-0.09501250983763744, 0.09501250983763744, -0.2816035507792589, 0.2816035507792589, -0.45801677765722737,\n            0.45801677765722737, -0.6178762444026438, 0.6178762444026438, -0.755404408355003, 0.755404408355003,\n            -0.8656312023878318, 0.8656312023878318, -0.9445750230732326, 0.9445750230732326, -0.9894009349916499,\n            0.9894009349916499]\npeso16 = [0.1894506104550685, 0.1894506104550685, 0.18260341504492358, 0.18260341504492358, 0.16915651939500254,\n            0.16915651939500254, 0.14959598881657674, 0.14959598881657674, 0.12462897125553388, 0.12462897125553388,\n            0.09515851168249279, 0.09515851168249279, 0.062253523938647894, 0.062253523938647894,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz16",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz16 = [-0.09501250983763744, 0.09501250983763744, -0.2816035507792589, 0.2816035507792589, -0.45801677765722737,\n            0.45801677765722737, -0.6178762444026438, 0.6178762444026438, -0.755404408355003, 0.755404408355003,\n            -0.8656312023878318, 0.8656312023878318, -0.9445750230732326, 0.9445750230732326, -0.9894009349916499,\n            0.9894009349916499]\npeso16 = [0.1894506104550685, 0.1894506104550685, 0.18260341504492358, 0.18260341504492358, 0.16915651939500254,\n            0.16915651939500254, 0.14959598881657674, 0.14959598881657674, 0.12462897125553388, 0.12462897125553388,\n            0.09515851168249279, 0.09515851168249279, 0.062253523938647894, 0.062253523938647894,\n            0.027152459411754096,\n            0.027152459411754096]\nraiz17 = [0, -0.17848418149584785, 0.17848418149584785, -0.3512317634538763, 0.3512317634538763,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso16",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso16 = [0.1894506104550685, 0.1894506104550685, 0.18260341504492358, 0.18260341504492358, 0.16915651939500254,\n            0.16915651939500254, 0.14959598881657674, 0.14959598881657674, 0.12462897125553388, 0.12462897125553388,\n            0.09515851168249279, 0.09515851168249279, 0.062253523938647894, 0.062253523938647894,\n            0.027152459411754096,\n            0.027152459411754096]\nraiz17 = [0, -0.17848418149584785, 0.17848418149584785, -0.3512317634538763, 0.3512317634538763,\n            -0.5126905370864769,\n            0.5126905370864769, -0.6576711592166907, 0.6576711592166907, -0.7815140038968014, 0.7815140038968014,\n            -0.8802391537269859, 0.8802391537269859, -0.9506755217687678, 0.9506755217687678, -0.9905754753144174,\n            0.9905754753144174]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz17",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz17 = [0, -0.17848418149584785, 0.17848418149584785, -0.3512317634538763, 0.3512317634538763,\n            -0.5126905370864769,\n            0.5126905370864769, -0.6576711592166907, 0.6576711592166907, -0.7815140038968014, 0.7815140038968014,\n            -0.8802391537269859, 0.8802391537269859, -0.9506755217687678, 0.9506755217687678, -0.9905754753144174,\n            0.9905754753144174]\npeso17 = [0.17944647035620653, 0.17656270536699264, 0.17656270536699264, 0.16800410215645004, 0.16800410215645004,\n            0.15404576107681028, 0.15404576107681028, 0.13513636846852548, 0.13513636846852548, 0.11188384719340397,\n            0.11188384719340397, 0.08503614831717918, 0.08503614831717918, 0.0554595293739872, 0.0554595293739872,\n            0.02414830286854793, 0.02414830286854793]\nraiz18 = [-0.0847750130417353, 0.0847750130417353, -0.2518862256915055, 0.2518862256915055, -0.41175116146284263,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso17",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso17 = [0.17944647035620653, 0.17656270536699264, 0.17656270536699264, 0.16800410215645004, 0.16800410215645004,\n            0.15404576107681028, 0.15404576107681028, 0.13513636846852548, 0.13513636846852548, 0.11188384719340397,\n            0.11188384719340397, 0.08503614831717918, 0.08503614831717918, 0.0554595293739872, 0.0554595293739872,\n            0.02414830286854793, 0.02414830286854793]\nraiz18 = [-0.0847750130417353, 0.0847750130417353, -0.2518862256915055, 0.2518862256915055, -0.41175116146284263,\n            0.41175116146284263, -0.5597708310739475, 0.5597708310739475, -0.6916870430603532, 0.6916870430603532,\n            -0.8037049589725231, 0.8037049589725231, -0.8926024664975557, 0.8926024664975557, -0.9558239495713977,\n            0.9558239495713977, -0.9915651684209309, 0.9915651684209309]\npeso18 = [0.1691423829631436, 0.1691423829631436, 0.16427648374583273, 0.16427648374583273, 0.15468467512626524,\n            0.15468467512626524, 0.14064291467065065, 0.14064291467065065, 0.12255520671147846, 0.12255520671147846,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz18",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz18 = [-0.0847750130417353, 0.0847750130417353, -0.2518862256915055, 0.2518862256915055, -0.41175116146284263,\n            0.41175116146284263, -0.5597708310739475, 0.5597708310739475, -0.6916870430603532, 0.6916870430603532,\n            -0.8037049589725231, 0.8037049589725231, -0.8926024664975557, 0.8926024664975557, -0.9558239495713977,\n            0.9558239495713977, -0.9915651684209309, 0.9915651684209309]\npeso18 = [0.1691423829631436, 0.1691423829631436, 0.16427648374583273, 0.16427648374583273, 0.15468467512626524,\n            0.15468467512626524, 0.14064291467065065, 0.14064291467065065, 0.12255520671147846, 0.12255520671147846,\n            0.10094204410628717, 0.10094204410628717, 0.07642573025488905, 0.07642573025488905, 0.0497145488949698,\n            0.0497145488949698, 0.02161601352648331, 0.02161601352648331]\nraiz19 = [0, -0.16035864564022537, 0.16035864564022537, -0.31656409996362983, 0.31656409996362983,\n            -0.46457074137596094,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso18",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso18 = [0.1691423829631436, 0.1691423829631436, 0.16427648374583273, 0.16427648374583273, 0.15468467512626524,\n            0.15468467512626524, 0.14064291467065065, 0.14064291467065065, 0.12255520671147846, 0.12255520671147846,\n            0.10094204410628717, 0.10094204410628717, 0.07642573025488905, 0.07642573025488905, 0.0497145488949698,\n            0.0497145488949698, 0.02161601352648331, 0.02161601352648331]\nraiz19 = [0, -0.16035864564022537, 0.16035864564022537, -0.31656409996362983, 0.31656409996362983,\n            -0.46457074137596094,\n            0.46457074137596094, -0.600545304661681, 0.600545304661681, -0.7209661773352294, 0.7209661773352294,\n            -0.8227146565371428, 0.8227146565371428, -0.9031559036148179, 0.9031559036148179, -0.96020815213483,\n            0.96020815213483, -0.9924068438435844, 0.9924068438435844]\npeso19 = [0.1610544498487837, 0.15896884339395434, 0.15896884339395434, 0.15276604206585967, 0.15276604206585967,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz19",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz19 = [0, -0.16035864564022537, 0.16035864564022537, -0.31656409996362983, 0.31656409996362983,\n            -0.46457074137596094,\n            0.46457074137596094, -0.600545304661681, 0.600545304661681, -0.7209661773352294, 0.7209661773352294,\n            -0.8227146565371428, 0.8227146565371428, -0.9031559036148179, 0.9031559036148179, -0.96020815213483,\n            0.96020815213483, -0.9924068438435844, 0.9924068438435844]\npeso19 = [0.1610544498487837, 0.15896884339395434, 0.15896884339395434, 0.15276604206585967, 0.15276604206585967,\n            0.1426067021736066, 0.1426067021736066, 0.12875396253933621, 0.12875396253933621, 0.11156664554733399,\n            0.11156664554733399, 0.09149002162245, 0.09149002162245, 0.06904454273764123, 0.06904454273764123,\n            0.0448142267656996, 0.0448142267656996, 0.019461788229726478, 0.019461788229726478]\nraiz20 = [-0.07652652113349734, 0.07652652113349734, -0.22778585114164507, 0.22778585114164507,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso19",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso19 = [0.1610544498487837, 0.15896884339395434, 0.15896884339395434, 0.15276604206585967, 0.15276604206585967,\n            0.1426067021736066, 0.1426067021736066, 0.12875396253933621, 0.12875396253933621, 0.11156664554733399,\n            0.11156664554733399, 0.09149002162245, 0.09149002162245, 0.06904454273764123, 0.06904454273764123,\n            0.0448142267656996, 0.0448142267656996, 0.019461788229726478, 0.019461788229726478]\nraiz20 = [-0.07652652113349734, 0.07652652113349734, -0.22778585114164507, 0.22778585114164507,\n            -0.37370608871541955,\n            0.37370608871541955, -0.5108670019508271, 0.5108670019508271, -0.636053680726515, 0.636053680726515,\n            -0.7463319064601508, 0.7463319064601508, -0.8391169718222188, 0.8391169718222188, -0.912234428251326,\n            0.912234428251326, -0.9639719272779138, 0.9639719272779138, -0.9931285991850949, 0.9931285991850949]\npeso20 = [0.15275338713072584, 0.15275338713072584, 0.14917298647260374, 0.14917298647260374, 0.14209610931838204,",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "raiz20",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "raiz20 = [-0.07652652113349734, 0.07652652113349734, -0.22778585114164507, 0.22778585114164507,\n            -0.37370608871541955,\n            0.37370608871541955, -0.5108670019508271, 0.5108670019508271, -0.636053680726515, 0.636053680726515,\n            -0.7463319064601508, 0.7463319064601508, -0.8391169718222188, 0.8391169718222188, -0.912234428251326,\n            0.912234428251326, -0.9639719272779138, 0.9639719272779138, -0.9931285991850949, 0.9931285991850949]\npeso20 = [0.15275338713072584, 0.15275338713072584, 0.14917298647260374, 0.14917298647260374, 0.14209610931838204,\n            0.14209610931838204, 0.13168863844917664, 0.13168863844917664, 0.11819453196151841, 0.11819453196151841,\n            0.10193011981724044, 0.10193011981724044, 0.08327674157670475, 0.08327674157670475, 0.06267204833410907,\n            0.06267204833410907, 0.04060142980038694, 0.04060142980038694, 0.017614007139152118, 0.017614007139152118]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "peso20",
+        "kind": 5,
+        "importPath": "NodesAndWeights",
+        "description": "NodesAndWeights",
+        "peekOfCode": "peso20 = [0.15275338713072584, 0.15275338713072584, 0.14917298647260374, 0.14917298647260374, 0.14209610931838204,\n            0.14209610931838204, 0.13168863844917664, 0.13168863844917664, 0.11819453196151841, 0.11819453196151841,\n            0.10193011981724044, 0.10193011981724044, 0.08327674157670475, 0.08327674157670475, 0.06267204833410907,\n            0.06267204833410907, 0.04060142980038694, 0.04060142980038694, 0.017614007139152118, 0.017614007139152118]",
+        "detail": "NodesAndWeights",
+        "documentation": {}
+    },
+    {
+        "label": "trapeze_sum",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def trapeze_sum(f, a, b, n):\n    sum = f(a)/2 + f(b)/2\n    base = (b-a)/n\n    # Lembre-se que x0 = a e xn = b, por isso no seguinte loop k varia de 1 até n-1:\n    for k in range(1, n):\n        sum += f(a + k*base)\n    area = base*sum\n    return area\ndef simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "simpson",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def simpson(f, a, b, num_subintervals):\n    # Obs.: num_intervals(n) é o número de subintervalos, n/2 é o número de parábolas e n+1 é o número de pontos na partição.\n    h = (b-a)/num_subintervals\n    sum = f(a) + f(b)\n    # k varia até 2n\n    for k in range(2, num_subintervals, 2):\n        sum += 2*f(a + k*h)\n    # k varia até 2n-1 (quando k = 2n+1 o loop para)\n    for k in range(1, num_subintervals, 2):\n        sum += 4*f(a + k*h)",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "quadrature",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def quadrature(f, a, b, cord_quadrature, coeffs_quadrature):\n    g = changeToQuadratureInterval(f, a, b)\n    sum = 0\n    for xi, ci in zip(cord_quadrature, coeffs_quadrature):\n        sum += ci*g(xi)\n    return sum\ndef changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "changeToQuadratureInterval",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def changeToQuadratureInterval(f, a, b):\n    def g(u):\n        return f((b+a)/2 + (b-a) * (u/2)) * (b-a)/2\n    return g\n\"\"\"\nFunção para ortogonalizar uma lista de funções (Gran Schimidt):\nNota: lembre-se que para ortogonalizar um função f(x) em relação à outra função g(x) deve se obter então uma nova\nfunção h(x) tal que:\n    h(x) = f(x) - proj<f(x), g(x)> = f(x) - k.g(x), onde k = <f(x), g(x)>/<g(x), g(x)>, \no que é igual a função f(x) subtraída da sua componente na mesma direção de g(x) (tratando as funções com vetores).",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "ortog_funcs",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def ortog_funcs(func_list, a, b, n):\n    G = [func_list[0]]\n    A = []\n    G_func_list = [symbolToFunc(func_list[0])]\n    for fi in func_list[1:]:\n        gi = fi\n        row = []\n        for gj in G:\n            gi -= proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n)*gj\n            row.append(proj_k(symbolToFunc(fi), symbolToFunc(gj), a, b, n))",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "stringToFunc",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def stringToFunc(string):\n    def f(x):\n        return eval(string)\n    return f\ndef symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "symbolToFunc",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def symbolToFunc(expr):\n    return stringToFunc(str(expr))\n\"\"\"\nFunção que retorna <f(x), g(x)> para um espaço vetorial de funções C[a,b], ou seja, que \nretorna o produto escalar entre duas funções f(x) e g(x) no intervalo [a,b]:\n\"\"\"\ndef prod_esc(f, g, a, b, n):\n    return simpson(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "prod_esc",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def prod_esc(f, g, a, b, n):\n    return simpson(lambda x: f(x)*g(x), a, b, n)\n\"\"\"\nFunção que retorna o resultado a constante k da projeção de f(x) em g(x), ou seja,\nk = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "proj_k",
+        "kind": 2,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "def proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)\n    for row in result_list:\n        # print(row)",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    },
+    {
+        "label": "k",
+        "kind": 5,
+        "importPath": "ortogonalização01",
+        "description": "ortogonalização01",
+        "peekOfCode": "k = <f(x), g(x)>/<g(x), g(x)>:\n\"\"\"\ndef proj_k(f, g, a, b, n) -> float:\n    return (prod_esc(f, g, a, b, n)/prod_esc(g, g, a, b, n))\nif __name__ == '__main__':\n    a, b = [-1.00088, 1.30114]\n    n = 500\n    x = symbols('x')\n    func_list = [1,  x, x**2, x**3, x**4, x**5, x**6, x**7, x**8, x**9]\n    result_list = ortog_funcs(func_list, a, b, n)",
+        "detail": "ortogonalização01",
+        "documentation": {}
+    }
+]
