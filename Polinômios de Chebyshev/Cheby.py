@@ -58,7 +58,8 @@ def trapeze_sum(f, a, b, n):
 
 """
 Aviso: os polinômios de chebyshev são dois a dois ortogonais! Portanto deve-se usar a função 'aprox_coeffs_ort'(é mais 
-eficiente) porém lembre-se de usar o a função w(x) no produto escalar.
+eficiente) porém lembre-se de usar o a função w(x) no produto escalar (mas isso aparentemente não está funcionando devido
+a ocorrência de divisão por zero dentro do intervalo de [-1, 1] dos polinômios de Chebyshev).
 """
 
 def aprox_coeffs(func_list, f, a, b, n):
